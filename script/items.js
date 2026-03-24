@@ -235,6 +235,13 @@ export const Cosmic_Crystallite = new ShopItem(
     ]
 )
 
+export const Book_of_The_Braves = new ShopItem(
+    "Book of The Braves",
+    "./resources/img/itemIcon/Book_of_The_Braves.png",
+    [
+        new Cost(currencies.Poetic, 100)
+    ]
+)
 
 export const Archaic_Enchanted_Ink = new Item(
     "Archaic Enchanted Ink",
@@ -553,4 +560,9 @@ export const Verdigris_Demiatma = new Item(
 export const Vexatious_Memory_of_the_Dying = new Item(
     "Vexatious Memory of the Dying",
     "./resources/img/itemIcon/Vexatious_Memory_of_the_Dying.png"
+)
+
+export const Alexandrite = new Item(
+    "Alexandrite",
+    "./resources/img/itemIcon/Alexandrite.png"
 )

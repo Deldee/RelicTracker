@@ -1,5 +1,7 @@
 import * as Items from './items.js';
 import * as Currencies from './currencies.js';
+import * as Steps from "./steps.js"
+window.Steps = Steps;
 window.Currencies = Currencies;
 window.Items = Items;
 window.getStepsCount = getStepsCount;

@@ -25,3 +25,40 @@ export class ShopItem extends Item {
     this.costs = costs; // Cost[]
   }
 };
+
+
+export class Step {
+    constructor(entries = []) {
+        this.entries = entries; // { item: Item, count: number }[]
+    }
+
+  getTotalCosts() {
+      const shopTotals = {};
+      const itemList   = [];
+
+      this.entries.forEach(({ item, count }) => {
+          if (item instanceof ShopItem) {
+              item.costs.forEach(cost => {
+                  const currencyName = cost.currency.name;
+
+                  if (!shopTotals[currencyName]) {
+                      shopTotals[currencyName] = { currency: cost.currency, total: 0 };
+                  }
+
+                  shopTotals[currencyName].total += cost.value * count;
+              });
+          } else {
+              itemList.push({ item, count });
+          }
+      });
+
+      return {
+          costs: Object.values(shopTotals),
+          items: itemList
+      };
+  }
+}
+
+export function entry(item, count) {
+    return { item, count };
+}
