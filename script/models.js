@@ -1,9 +1,4 @@
-export class Currency {
-  constructor(name, icon) {
-    this.name = name; // string
-    this.icon = icon; // url
-  }
-}
+
 
 export class Cost {
   constructor(currency, value) {
