@@ -26,4 +26,4 @@ function getStepsCount(expansion){
     
 }
 // Get icon from an items and set it
-// document.getElementById("testimg").src = Items.Unidentifiable_Seeds.costs[0].currency.icon
+//document.getElementById("testimg").src = Items.Unidentifiable_Seeds.costs[0].currency.icon

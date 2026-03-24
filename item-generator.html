@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Item Code Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0e0f14;
+    --surface:  #161820;
+    --surface2: #1e2029;
+    --border:   #2a2d3a;
+    --accent:   #7c6af7;
+    --accent2:  #4fc8a8;
+    --text:     #d4d6e0;
+    --muted:    #5a5d70;
+    --danger:   #e05c6b;
+    --mono:     'JetBrains Mono', monospace;
+    --sans:     'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(124,106,247,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 90%, rgba(79,200,168,0.05) 0%, transparent 60%);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  header span {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: rgba(124,106,247,0.12);
+    border: 1px solid rgba(124,106,247,0.25);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: -0.5rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  input[type="text"], input[type="number"], select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    padding: 0.6rem 0.85rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    appearance: none;
+  }
+
+  input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(124,106,247,0.15);
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235a5d70' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  select option { background: #1e2029; }
+
+  .cost-row {
+    display: grid;
+    grid-template-columns: 1fr auto 120px;
+    gap: 0.6rem;
+    align-items: end;
+  }
+
+  .cost-row .times {
+    font-family: var(--mono);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding-bottom: 0.65rem;
+    text-align: center;
+  }
+
+  .cost-row-2 { opacity: 0.4; transition: opacity 0.2s; }
+  .cost-row-2.active { opacity: 1; }
+
+  .hint {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: -0.2rem;
+  }
+
+  button.generate {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+
+  button.generate:hover { background: #6a58e0; }
+  button.generate:active { transform: scale(0.98); }
+
+  .output-block {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .output-block.visible { display: flex; }
+
+  .output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .output-header span {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  button.copy {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  button.copy:hover { border-color: var(--accent2); color: var(--accent2); }
+  button.copy.copied { border-color: var(--accent2); color: var(--accent2); }
+
+  pre {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.7;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* Syntax highlighting */
+  .kw  { color: #c792ea; }
+  .cn  { color: #82aaff; }
+  .str { color: #c3e88d; }
+  .num { color: #f78c6c; }
+  .cls { color: #4fc8a8; }
+  .cm  { color: #5a5d70; font-style: italic; }
+
+  .error {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--danger);
+    display: none;
+  }
+  .error.visible { display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Item Generator</h1>
+    <span>items.js</span>
+  </header>
+
+  <div class="card">
+    <p class="section-label">Item</p>
+
+    <div class="field">
+      <label for="itemName">Item name</label>
+      <input type="text" id="itemName" placeholder="Thavnairian Scalepowder" autocomplete="off">
+      <span class="hint" id="constHint">&nbsp;</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="section-label">Costs</p>
+
+    <div class="cost-row">
+      <div class="field">
+        <label>Currency 1</label>
+        <select id="currency1"></select>
+      </div>
+      <div class="times">×</div>
+      <div class="field">
+        <label>Value</label>
+        <input type="number" id="value1" min="1" placeholder="250">
+      </div>
+    </div>
+
+    <div class="cost-row cost-row-2" id="cost2wrap">
+      <div class="field">
+        <label>Currency 2 <span class="hint">(optional)</span></label>
+        <select id="currency2"></select>
+      </div>
+      <div class="times">×</div>
+      <div class="field">
+        <label>Value</label>
+        <input type="number" id="value2" min="1" placeholder="3" disabled>
+      </div>
+    </div>
+
+    <span class="error" id="errorMsg">Please fill in all required fields.</span>
+  </div>
+
+  <button class="generate" onclick="generate()">Generate code →</button>
+
+  <div class="output-block" id="output">
+    <div class="output-header">
+      <span>Generated code — paste into items.js</span>
+      <button class="copy" id="copyBtn" onclick="copyCode()">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="4" y="4" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Copy
+      </button>
+    </div>
+    <pre id="codeOut"></pre>
+  </div>
+
+</div>
+
+<script>
+  const currencies = [
+    "None",
+    "Poetic",
+    "SteelAmal",
+    "Rainbowtide_Psashp",
+    "WhiteCrafter",
+    "WhiteGatherer",
+    "PurpleCrafter",
+    "PurpleGatherer",
+	"Mathematic",
+	"GCSeals",
+  "Gil"
+  ];
+
+  function populateDropdowns() {
+    [document.getElementById("currency1"), document.getElementById("currency2")].forEach((sel, i) => {
+      currencies.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.textContent = c;
+        sel.appendChild(opt);
+      });
+      if (i === 1) sel.value = "None";
+    });
+  }
+
+  document.getElementById("itemName").addEventListener("input", function() {
+    const raw = this.value.trim();
+    const constName = raw.replace(/\s+/g, "_");
+    document.getElementById("constHint").textContent = constName
+      ? `const name: ${constName}`
+      : "\u00a0";
+  });
+
+  document.getElementById("currency2").addEventListener("change", function() {
+    const wrap = document.getElementById("cost2wrap");
+    const v2   = document.getElementById("value2");
+    const active = this.value !== "None";
+    wrap.classList.toggle("active", active);
+    v2.disabled = !active;
+    if (!active) v2.value = "";
+  });
+
+  function toConstName(str) {
+    return str.trim().replace(/\s+/g, "_");
+  }
+
+  function highlight(code) {
+    return code}/*
+      .replace(/\b(export|const|new)\b/g, '<span class="kw">$1</span>')
+      .replace(/\b(Item|Cost)\b/g, '<span class="cls">$1</span>')
+      .replace(/"([^"]*)"/g, '<span class="str">"$1"</span>')
+      .replace(/\b(\d+)\b/g, '<span class="num">$1</span>')
+      .replace(/(\/\/.*)/g, '<span class="cm">$1</span>');
+  }*/
+
+  function generate() {
+    const error  = document.getElementById("errorMsg");
+    const output = document.getElementById("output");
+    error.classList.remove("visible");
+    output.classList.remove("visible");
+
+    const name    = document.getElementById("itemName").value.trim();
+    const cur1    = document.getElementById("currency1").value;
+    const val1    = document.getElementById("value1").value;
+    const cur2    = document.getElementById("currency2").value;
+    const val2    = document.getElementById("value2").value;
+
+    if (!name || cur1 === "None" || !val1) {
+      error.textContent = "Item name, Currency 1 and its value are required.";
+      error.classList.add("visible");
+      return;
+    }
+
+    if (cur2 !== "None" && !val2) {
+      error.textContent = "Please enter a value for Currency 2, or set it to None.";
+      error.classList.add("visible");
+      return;
+    }
+
+    const constName = toConstName(name);
+    const iconPath  = `./resources/img/itemIcon/${constName}.png`;
+
+    const costs = [`        new Cost(currencies.${cur1}, ${val1})`];
+    if (cur2 !== "None") costs.push(`        new Cost(currencies.${cur2}, ${val2})`);
+
+    const raw = `export const ${constName} = new Item(\n    "${name}",\n    "${iconPath}",\n    [\n${costs.join(",\n")}\n    ]\n)`;
+
+    document.getElementById("codeOut").innerHTML = highlight(raw);
+    document.getElementById("codeOut").dataset.raw = raw;
+    output.classList.add("visible");
+  }
+
+  function copyCode() {
+    const raw = document.getElementById("codeOut").dataset.raw;
+    navigator.clipboard.writeText(raw).then(() => {
+      const btn = document.getElementById("copyBtn");
+      btn.textContent = "✓ Copied";
+      btn.classList.add("copied");
+      setTimeout(() => {
+        btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="4" y="4" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> Copy`;
+        btn.classList.remove("copied");
+      }, 2000);
+    });
+  }
+
+  populateDropdowns();
+</script>
+</body>
+</html>
