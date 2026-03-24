@@ -5,14 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Relic Tracker</title>
+	<script src="./script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
+<input id="clickMe" type="button" value="clickme" onclick="getStepsArray(1)" />
 <h1>Relic Tracker</h1>
 
 <div class="table-wrapper">
-  <table>
+  <table id="tracker">
     <thead>
       <tr>
         <th class="corner"></th>
@@ -822,8 +824,8 @@
           <span class="row-num">#11</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -888,9 +890,8 @@
           <span class="row-num">#12</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -955,9 +956,8 @@
           <span class="row-num">#13</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1022,15 +1022,13 @@
           <span class="row-num">#14</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1084,13 +1082,13 @@
           <span class="row-num">#15</span>
         </td>
 		<td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1145,18 +1143,18 @@
           <span class="row-num">#16</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1197,18 +1195,18 @@
           <span class="row-num">#17</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1248,27 +1246,23 @@
           <span class="row-num">#18</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1297,23 +1291,23 @@
           <span class="row-num">#19</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1342,28 +1336,28 @@
           <span class="row-num">#20</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
@@ -1383,33 +1377,28 @@
           <span class="row-num">#21</span>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled>
+            <option value="" disabled selected>None</option>
           </select>
         </td>
         <td class="dropdown-cell">
