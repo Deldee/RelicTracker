@@ -12,10 +12,16 @@ export class Cost {
   }
 }
 
-export class Item {
+export class Item{
+  constructor(name,icon){
+    this.name = name,
+    this.icon = icon
+  }
+}
+
+export class ShopItem extends Item {
   constructor(name, icon, costs = []) {
-    this.name  = name;  // string
-    this.icon  = icon;  // url
+    super(name,icon)
     this.costs = costs; // Cost[]
   }
 };

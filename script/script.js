@@ -1,8 +1,10 @@
 import * as Items from './items.js';
 import * as Currencies from './currencies.js';
-window.Items = Items;
 window.Currencies = Currencies;
+window.Items = Items;
 window.getStepsCount = getStepsCount;
+window.renderItemIcons = renderItemIcons;
+window.renderCurrIcons = renderCurrIcons;
 
 //Take the Id of the expansion (1-6) and return an array of every steps of every row
 function getStepsArray(expansion){
@@ -26,4 +28,20 @@ function getStepsCount(expansion){
     
 }
 // Get icon from an items and set it
-//document.getElementById("testimg").src = Items.Unidentifiable_Seeds.costs[0].currency.icon
+function renderItemIcons(Items) {
+    Object.values(Items).forEach(item => {
+        const img = document.createElement("img");
+        img.src = item.icon;
+        img.alt = item.name;
+        document.body.appendChild(img);
+    });
+}
+
+function renderCurrIcons(Items) {
+    Object.values(Currencies).forEach(item => {
+        const img = document.createElement("img");
+        img.src = item.icon;
+        img.alt = item.name;
+        document.body.appendChild(img);
+    });
+}
