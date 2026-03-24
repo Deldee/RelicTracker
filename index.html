@@ -1,242 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Image Grid Table</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --bg: #0f0f11;
-      --surface: #18181c;
-      --surface2: #222228;
-      --border: #2e2e38;
-      --accent: #c8ff57;
-      --text: #e8e8f0;
-      --text-muted: #7a7a96;
-      --header-img-width: 200px;
-	  --header-img-height: 80px;
-      --row-img-size: 36px;
-      --radius: 8px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Mono', monospace;
-      min-height: 100vh;
-      padding: 40px 24px;
-    }
-
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.6rem;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
-    }
-
-    .table-wrapper {
-      overflow-x: auto;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--surface);
-    }
-
-    thead tr { background: var(--surface2); }
-
-    th {
-      padding: 0;
-      border-right: 1px solid var(--border);
-      border-bottom: 2px solid var(--accent);
-    }
-    th:last-child { border-right: none; }
-
-    th.corner {
-      width: 80px;
-      min-width: 80px;
-      background: var(--bg);
-    }
-
-    th.img-header { min-width: 140px; }
-
-    .header-img-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 10px 10px;
-      gap: 8px;
-    }
-
-    .header-img-container img,
-    .header-img-placeholder {
-      width: var(--header-img-width);
-      height: var(--header-img-height);
-      border-radius: 6px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .header-img-placeholder {
-      background: var(--border);
-      border: 2px dashed var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .header-img-placeholder span {
-      font-size: 9px;
-      color: var(--text-muted);
-      text-align: center;
-      line-height: 1.3;
-      padding: 4px;
-    }
-
-    .header-label {
-      font-size: 10px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    tbody tr {
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
-    }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: rgba(200, 255, 87, 0.03); }
-    tbody tr:nth-child(even) { background: rgba(255,255,255,0.015); }
-    tbody tr:nth-child(even):hover { background: rgba(200, 255, 87, 0.03); }
-
-    td {
-      padding: 10px 8px;
-      border-right: 1px solid var(--border);
-      vertical-align: middle;
-    }
-    td:last-child { border-right: none; }
-
-    td.row-img-cell {
-      width: 80px;
-      min-width: 80px;
-      text-align: center;
-      background: var(--bg);
-    }
-
-    td.row-img-cell img,
-    .row-img-placeholder {
-      width: var(--row-img-size);
-      height: var(--row-img-size);
-      border-radius: 50%;
-      object-fit: cover;
-      display: inline-block;
-    }
-
-    .row-img-placeholder {
-      background: var(--border);
-      border: 1.5px dashed var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .row-img-placeholder span { font-size: 7px; color: var(--text-muted); }
-
-    .row-num {
-      font-size: 9px;
-      color: var(--text-muted);
-      margin-top: 3px;
-      display: block;
-    }
-
-    td.dropdown-cell { min-width: 130px; }
-
-    select {
-      width: 100%;
-      background: var(--bg);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 6px 8px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a7a96'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 8px center;
-      padding-right: 24px;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    select:hover { border-color: var(--text-muted); }
-
-    select:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(200, 255, 87, 0.15);
-    }
-
-    select option {
-      background: var(--surface2);
-      color: var(--text);
-    }
-  </style>
+	<link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Relic Tracker</title>
+    <script type="module" src="./script/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
+<input id="clickMe" type="button" value="clickme" onclick="getStepsCount(1)">
+<img id="testimg"/>
 <h1>Relic Tracker</h1>
 
 <div class="table-wrapper">
-  <table>
+  <table id="tracker">
     <thead>
       <tr>
         <th class="corner"></th>
         <th class="img-header">
           <div class="header-img-container">
-            <img src="./resources/img/Expansions/ARR.jpg"/>
+            <img src="./resources/img/Expansions/ARR.jpg">
             <span class="header-label">A Realm Reborn</span>
           </div>
         </th>
         <th class="img-header">
           <div class="header-img-container">
-            <img src="./resources/img/Expansions/HW.png"/>
+            <img src="./resources/img/Expansions/HW.png">
             <span class="header-label">Heavensward</span>
           </div>
         </th>
         <th class="img-header">
           <div class="header-img-container">
-            <img src="./resources/img/Expansions/SB.png"/>
+            <img src="./resources/img/Expansions/SB.png">
             <span class="header-label">StormBlood</span>
           </div>
         </th>
         <th class="img-header">
           <div class="header-img-container">
-            <img src="./resources/img/Expansions/ShB.png"/>
+            <img src="./resources/img/Expansions/ShB.png">
             <span class="header-label">ShadowBringer</span>
           </div>
         </th>
         <th class="img-header">
           <div class="header-img-container">
-            <img src="./resources/img/Expansions/EW.png"/>
+            <img src="./resources/img/Expansions/EW.png">
             <span class="header-label">EndWalker</span>
           </div>
         </th>
         <th class="img-header">
           <div class="header-img-container">
-            <img src="./resources/img/Expansions/DT.png"/>
+            <img src="./resources/img/Expansions/DT.png">
             <span class="header-label">DawnTrail</span>
           </div>
         </th>
@@ -247,12 +62,11 @@
       <!-- ROW 01 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Paladin.png"
-          <span class="row-num">#01</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Paladin.png" <span="" class="row-num">#01
         </td>
         <td class="dropdown-cell">
-          <select>
-			<option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+			<option value="" disabled="" selected="">— Select —</option>
 			<option value="curtana">Curtana (iL 80)</option>
 			<option value="curtana_zenith">Curtana Zenith (iL 90)</option>
 			<option value="curtana_atma">Curtana Atma (iL 100)</option>
@@ -264,8 +78,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="animated_hauteclaire">Animated Hauteclaire (iL 170)</option>
 			<option value="hauteclaire_awoken">Hauteclaire Awoken (iL 200)</option>
 			<option value="almace">Almace (iL 210)</option>
@@ -277,9 +91,9 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-             <option value="antiquated_galatyn">Antiquated Galatyn (iL 290)</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
+            <option value="antiquated_galatyn">Antiquated Galatyn (iL 290)</option>
 			<option value="galatyn">Galatyn (iL 290)</option>
 			<option value="galatyn_1">Galatyn +1 (iL 300)</option>
 			<option value="galatyn_2">Galatyn +2 (iL 300)</option>
@@ -298,8 +112,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="resistance_bastard_sword">Resistance Bastard Sword (iL 485)</option>
 			<option value="augmented_resistance_bastard_sword">Augmented Resistance Bastard Sword (iL 500)</option>
 			<option value="recollection_bastard_sword">Recollection Bastard Sword (iL 500)</option>
@@ -309,8 +123,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="manderville_sword">Manderville Sword (iL 615)</option>
 			<option value="amazing_manderville_sword">Amazing Manderville Sword (iL 630)</option>
 			<option value="majestic_manderville_sword">Majestic Manderville Sword (iL 645)</option>
@@ -318,12 +132,12 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="phantom_sword_penumbrae">Phantom Sword Penumbrae (iL 745)</option>
 			<option value="phantom_sword_umbrae">Phantom Sword Umbrae (iL 760)</option>
 			<option value="phantom_sword_obscurum">Phantom Sword Obscurum (iL 775)</option>
-</optgroup>
+
           </select>
         </td>
       </tr>
@@ -331,12 +145,11 @@
   <!-- ROW 02 -->
   <tr>
 	<td class="row-img-cell">
-	  <img src="./resources/img/FFXIVIconsJobIcons/Job/Warrior.png"
-	  <span class="row-num">#02</span>
+	  <img src="./resources/img/FFXIVIconsJobIcons/Job/Warrior.png" <span="" class="row-num">#02
 	</td>
 	<td class="dropdown-cell">
-	  <select>
-			<option value="" disabled selected>— Select —</option>
+	  <select class="ARR">
+			<option value="" disabled="" selected="">— Select —</option>
 			<option value="bravura">Bravura (iL 80)</option>
 			<option value="bravura_zenith">Bravura Zenith (iL 90)</option>
 			<option value="bravura_atma">Bravura Atma (iL 100)</option>
@@ -348,8 +161,8 @@
 		</select>
 	</td>
 	<td class="dropdown-cell">
-		<select>
-			<option value="" disabled selected>— Select —</option>
+		<select class="HW">
+			<option value="" disabled="" selected="">— Select —</option>
 			<option value="animated_parashu">Animated Parashu (iL 170)</option>
 			<option value="parashu_awoken">Parashu Awoken (iL 200)</option>
 			<option value="verethragna">Verethragna (iL 210)</option>
@@ -361,8 +174,8 @@
 		</select>
 	</td>
 	<td class="dropdown-cell">
-		<select>
-			<option value="" disabled selected>— Select —</option>
+		<select class="SB">
+			<option value="" disabled="" selected="">— Select —</option>
 			<option value="antiquated_farsha">Antiquated Farsha (iL 290)</option>
 			<option value="farsha">Farsha (iL 290)</option>
 			<option value="farsha_1">Farsha +1 (iL 300)</option>
@@ -382,8 +195,8 @@
 		</select>
 	</td>
 	<td class="dropdown-cell">
-		<select>
-			<option value="" disabled selected>— Select —</option>
+		<select class="ShB">
+			<option value="" disabled="" selected="">— Select —</option>
 			<option value="skullrender">Skullrender (iL 485)</option>
 			<option value="skullrender_augmented">Augmented Skullrender (iL 500)</option>
 			<option value="skullrender_recollection">Skullrender Recollection (iL 500)</option>
@@ -393,8 +206,8 @@
 		</select>
 	</td>
 	<td class="dropdown-cell">
-		<select>
-			<option value="" disabled selected>— Select —</option>
+		<select class="EW">
+			<option value="" disabled="" selected="">— Select —</option>
 			<option value="manderville_axe">Manderville Axe (iL 615)</option>
 			<option value="amazing_manderville_axe">Amazing Manderville Axe (iL 630)</option>
 			<option value="majestic_manderville_bardiche">Majestic Manderville Bardiche (iL 645)</option>
@@ -402,8 +215,8 @@
 		</select>
 	</td>
 	<td class="dropdown-cell">
-		<select>
-			<option value="" disabled selected>— Select —</option>
+		<select class="DT">
+			<option value="" disabled="" selected="">— Select —</option>
 			<option value="phantom_bardiche_penumbrae">Phantom Bardiche Penumbrae (iL 745)</option>
 			<option value="phantom_bardiche_umbrae">Phantom Bardiche Umbrae (iL 760)</option>
 			<option value="phantom_bardiche_obscurum">Phantom Bardiche Obscurum (iL 775)</option>
@@ -414,12 +227,11 @@
       <!-- ROW 03 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Dragoon.png"
-          <span class="row-num">#03</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Dragoon.png" <span="" class="row-num">#03
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Gae Bolg"> Gae Bolg </option>
 			<option value="Gae Bolg Zenith"> Gae Bolg Zenith </option>
 			<option value="Gae Bolg Atma"> Gae Bolg Atma </option>
@@ -431,8 +243,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Rhongomiant"> Rhongomiant </option>
 			<option value="Hyperconductive Rhongomiant"> Hyperconductive Rhongomiant </option>
 			<option value="Trident of the Overlord"> Trident of the Overlord </option>
@@ -442,8 +254,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+		  <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Lance"> Elemental Lance </option>
 			<option value="Elemental Lance +1"> Elemental Lance +1 </option>
 			<option value="Elemental Lance +2"> Elemental Lance +2 </option>
@@ -453,11 +265,11 @@
 			<option value="Daboya"> Daboya </option>
 			<option value="Daboya Eureka"> Daboya Eureka </option>
 			<option value="Daboya Physeos"> Daboya Physeos </option>
-			  </select>
+		  </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Dreizack"> Dreizack </option>
 			<option value="Augmented Dreizack"> Augmented Dreizack </option>
 			<option value="Dreizack Recollection"> Dreizack Recollection </option>
@@ -467,8 +279,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Spear"> Manderville Spear </option>
 			<option value="Amazing Manderville Spear"> Amazing Manderville Spear </option>
 			<option value="Majestic Manderville Spear"> Majestic Manderville Spear </option>
@@ -476,8 +288,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Spear Umbrae"> Phantom Spear Umbrae </option>
 			<option value="Phantom Spear Penumbrae"> Phantom Spear Penumbrae </option>
 			<option value="Phantom Fork Obscurum"> Phantom Fork Obscurum </option>
@@ -488,12 +300,11 @@
       <!-- ROW 04 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Monk.png"
-          <span class="row-num">#04</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Monk.png" <span="" class="row-num">#04
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Sphairai"> Sphairai </option>
 			<option value="Sphairai Zenith"> Sphairai Zenith </option>
 			<option value="Sphairai Atma"> Sphairai Atma </option>
@@ -505,8 +316,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Verethragna"> Verethragna </option>
 			<option value="Hyperconductive Verethragna"> Hyperconductive Verethragna </option>
 			<option value="Sultan's Fists"> Sultan's Fists </option>
@@ -516,8 +327,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Knuckles"> Elemental Knuckles </option>
 			<option value="Elemental Knuckles +1"> Elemental Knuckles +1 </option>
 			<option value="Elemental Knuckles +2"> Elemental Knuckles +2 </option>
@@ -530,8 +341,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Samsara"> Samsara </option>
 			<option value="Augmented Samsara"> Augmented Samsara </option>
 			<option value="Samsara Recollection"> Samsara Recollection </option>
@@ -541,8 +352,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Knuckles"> Manderville Knuckles </option>
 			<option value="Amazing Manderville Knuckles"> Amazing Manderville Knuckles </option>
 			<option value="Majestic Manderville Fists"> Majestic Manderville Fists </option>
@@ -550,8 +361,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Knuckles Umbrae"> Phantom Knuckles Umbrae </option>
 			<option value="Phantom Knuckles Penumbrae"> Phantom Knuckles Penumbrae </option>
 			<option value="Phantom Jamadhars Obscurum"> Phantom Jamadhars Obscurum </option>
@@ -562,12 +373,11 @@
       <!-- ROW 05 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Ninja.png"
-          <span class="row-num">#05</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Ninja.png" <span="" class="row-num">#05
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Yoshimitsu"> Yoshimitsu </option>
 			<option value="Yoshimitsu Zenith"> Yoshimitsu Zenith </option>
 			<option value="Yoshimitsu Atma"> Yoshimitsu Atma </option>
@@ -579,8 +389,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Kannagi"> Kannagi </option>
 			<option value="Hyperconductive Kannagi"> Hyperconductive Kannagi </option>
 			<option value="Spurs of the Thorn Prince"> Spurs of the Thorn Prince </option>
@@ -590,8 +400,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Knives"> Elemental Knives </option>
 			<option value="Elemental Knives +1"> Elemental Knives +1 </option>
 			<option value="Elemental Knives +2"> Elemental Knives +2 </option>
@@ -604,8 +414,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Honeshirazu"> Honeshirazu </option>
 			<option value="Augmented Honeshirazu"> Augmented Honeshirazu </option>
 			<option value="Honeshirazu Recollection"> Honeshirazu Recollection </option>
@@ -615,8 +425,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Knives"> Manderville Knives </option>
 			<option value="Amazing Manderville Knives"> Amazing Manderville Knives </option>
 			<option value="Majestic Manderville Knives"> Majestic Manderville Knives </option>
@@ -624,8 +434,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Cleavers Umbrae"> Phantom Cleavers Umbrae </option>
 			<option value="Phantom Cleavers Penumbrae"> Phantom Cleavers Penumbrae </option>
 			<option value="Phantom Khukuri Obscurum"> Phantom Khukuri Obscurum </option>
@@ -636,12 +446,11 @@
       <!-- ROW 06 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Bard.png"
-          <span class="row-num">#06</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Bard.png" <span="" class="row-num">#06
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Artemis Bow"> Artemis Bow </option>
 			<option value="Artemis Bow Zenith"> Artemis Bow Zenith </option>
 			<option value="Artemis Bow Atma"> Artemis Bow Atma </option>
@@ -653,8 +462,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Gandiva"> Gandiva </option>
 			<option value="Hyperconductive Gandiva"> Hyperconductive Gandiva </option>
 			<option value="Bow of the Autarch"> Bow of the Autarch </option>
@@ -664,8 +473,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Harp Bow"> Elemental Harp Bow </option>
 			<option value="Elemental Harp Bow +1"> Elemental Harp Bow +1 </option>
 			<option value="Elemental Harp Bow +2"> Elemental Harp Bow +2 </option>
@@ -678,8 +487,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Brilliance"> Brilliance </option>
 			<option value="Augmented Brilliance"> Augmented Brilliance </option>
 			<option value="Brilliance Recollection"> Brilliance Recollection </option>
@@ -689,8 +498,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Harp Bow"> Manderville Harp Bow </option>
 			<option value="Amazing Manderville Harp Bow"> Amazing Manderville Harp Bow </option>
 			<option value="Majestic Manderville Harp Bow"> Majestic Manderville Harp Bow </option>
@@ -698,8 +507,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Harp Bow Umbrae"> Phantom Harp Bow Umbrae </option>
 			<option value="Phantom Harp Bow Penumbrae"> Phantom Harp Bow Penumbrae </option>
 			<option value="Phantom Longbow Obscurum"> Phantom Longbow Obscurum </option>
@@ -710,12 +519,11 @@
       <!-- ROW 07 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/BlackMage.png"
-          <span class="row-num">#07</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/BlackMage.png" <span="" class="row-num">#07
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Stardust Rod"> Stardust Rod </option>
 			<option value="Stardust Rod Zenith"> Stardust Rod Zenith </option>
 			<option value="Stardust Rod Atma"> Stardust Rod Atma </option>
@@ -727,8 +535,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Hvergelmir"> Hvergelmir </option>
 			<option value="Hyperconductive Hvergelmir"> Hyperconductive Hvergelmir </option>
 			<option value="Rod of the Black Khan"> Rod of the Black Khan </option>
@@ -738,8 +546,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Rod"> Elemental Rod </option>
 			<option value="Elemental Rod +1"> Elemental Rod +1 </option>
 			<option value="Elemental Rod +2"> Elemental Rod +2 </option>
@@ -752,8 +560,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Soulscourge"> Soulscourge </option>
 			<option value="Augmented Soulscourge"> Augmented Soulscourge </option>
 			<option value="Soulscourge Recollection"> Soulscourge Recollection </option>
@@ -763,8 +571,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Rod"> Manderville Rod </option>
 			<option value="Amazing Manderville Rod"> Amazing Manderville Rod </option>
 			<option value="Majestic Manderville Staff"> Majestic Manderville Staff </option>
@@ -772,8 +580,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Staff Umbrae"> Phantom Staff Umbrae </option>
 			<option value="Phantom Staff Penumbrae"> Phantom Staff Penumbrae </option>
 			<option value="Phantom Longpole Obscurum"> Phantom Longpole Obscurum </option>
@@ -784,12 +592,11 @@
       <!-- ROW 08 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Summoner.png"
-          <span class="row-num">#08</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Summoner.png" <span="" class="row-num">#08
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="The Veil of Wiyu"> The Veil of Wiyu </option>
 			<option value="The Veil of Wiyu Zenith"> The Veil of Wiyu Zenith </option>
 			<option value="The Veil of Wiyu Atma"> The Veil of Wiyu Atma </option>
@@ -801,8 +608,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Draconomicon"> Draconomicon </option>
 			<option value="Hyperconductive Draconomicon"> Hyperconductive Draconomicon </option>
 			<option value="Book of the Mad Queen"> Book of the Mad Queen </option>
@@ -812,8 +619,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Grimoire"> Elemental Grimoire </option>
 			<option value="Elemental Grimoire +1"> Elemental Grimoire +1 </option>
 			<option value="Elemental Grimoire +2"> Elemental Grimoire +2 </option>
@@ -826,8 +633,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Espiritus"> Espiritus </option>
 			<option value="Augmented Espiritus"> Augmented Espiritus </option>
 			<option value="Espiritus Recollection"> Espiritus Recollection </option>
@@ -837,8 +644,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Index"> Manderville Index </option>
 			<option value="Amazing Manderville Index"> Amazing Manderville Index </option>
 			<option value="Majestic Manderville Index"> Majestic Manderville Index </option>
@@ -846,8 +653,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Index Umbrae"> Phantom Index Umbrae </option>
 			<option value="Phantom Index Penumbrae"> Phantom Index Penumbrae </option>
 			<option value="Phantom Index Obscurum"> Phantom Index Obscurum </option>
@@ -858,12 +665,11 @@
       <!-- ROW 09 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/WhiteMage.png"
-          <span class="row-num">#09</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/WhiteMage.png" <span="" class="row-num">#09
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Thyrus"> Thyrus </option>
 			<option value="Thyrus Zenith"> Thyrus Zenith </option>
 			<option value="Thyrus Atma"> Thyrus Atma </option>
@@ -875,8 +681,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Majestas"> Majestas </option>
 			<option value="Hyperconductive Majestas"> Hyperconductive Majestas </option>
 			<option value="Cane of the White Tsar"> Cane of the White Tsar </option>
@@ -886,8 +692,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Cane"> Elemental Cane </option>
 			<option value="Elemental Cane +1"> Elemental Cane +1 </option>
 			<option value="Elemental Cane +2"> Elemental Cane +2 </option>
@@ -900,8 +706,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Ingrimm"> Ingrimm </option>
 			<option value="Augmented Ingrimm"> Augmented Ingrimm </option>
 			<option value="Ingrimm Recollection"> Ingrimm Recollection </option>
@@ -911,8 +717,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Cane"> Manderville Cane </option>
 			<option value="Amazing Manderville Cane"> Amazing Manderville Cane </option>
 			<option value="Majestic Manderville Wand"> Majestic Manderville Wand </option>
@@ -920,8 +726,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Crook Umbrae"> Phantom Crook Umbrae </option>
 			<option value="Phantom Crook Penumbrae"> Phantom Crook Penumbrae </option>
 			<option value="Phantom Cane Obscurum"> Phantom Cane Obscurum </option>
@@ -932,12 +738,11 @@
       <!-- ROW 10 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Scholar.png"
-          <span class="row-num">#10</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Scholar.png" <span="" class="row-num">#10
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ARR">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Omnilex"> Omnilex </option>
 			<option value="Omnilex Zenith"> Omnilex Zenith </option>
 			<option value="Omnilex Atma"> Omnilex Atma </option>
@@ -949,8 +754,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Tetrabiblos"> Tetrabiblos </option>
 			<option value="Hyperconductive Tetrabiblos"> Hyperconductive Tetrabiblos </option>
 			<option value="Word of the Magnate"> Word of the Magnate </option>
@@ -960,8 +765,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Codex"> Elemental Codex </option>
 			<option value="Elemental Codex +1"> Elemental Codex +1 </option>
 			<option value="Elemental Codex +2"> Elemental Codex +2 </option>
@@ -974,8 +779,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Akademos"> Akademos </option>
 			<option value="Augmented Akademos"> Augmented Akademos </option>
 			<option value="Akademos Recollection"> Akademos Recollection </option>
@@ -985,8 +790,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Codex"> Manderville Codex </option>
 			<option value="Amazing Manderville Codex"> Amazing Manderville Codex </option>
 			<option value="Majestic Manderville Codex"> Majestic Manderville Codex </option>
@@ -994,8 +799,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Codex Umbrae"> Phantom Codex Umbrae </option>
 			<option value="Phantom Codex Penumbrae"> Phantom Codex Penumbrae </option>
 			<option value="Phantom Codex Obscurum"> Phantom Codex Obscurum </option>
@@ -1006,17 +811,16 @@
       <!-- ROW 11 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/DarkKnight.png"
-          <span class="row-num">#11</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/DarkKnight.png" <span="" class="row-num">#11
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Nothung"> Nothung </option>
 			<option value="Hyperconductive Nothung"> Hyperconductive Nothung </option>
 			<option value="Guillotine of the Tyrant"> Guillotine of the Tyrant </option>
@@ -1026,8 +830,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Guillotine"> Elemental Guillotine </option>
 			<option value="Elemental Guillotine +1"> Elemental Guillotine +1 </option>
 			<option value="Elemental Guillotine +2"> Elemental Guillotine +2 </option>
@@ -1040,8 +844,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Woeborn"> Woeborn </option>
 			<option value="Augmented Woeborn"> Augmented Woeborn </option>
 			<option value="Woeborn Recollection"> Woeborn Recollection </option>
@@ -1051,8 +855,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Zweihander"> Manderville Zweihander </option>
 			<option value="Amazing Manderville Zweihander"> Amazing Manderville Zweihander </option>
 			<option value="Majestic Manderville Greatsword"> Majestic Manderville Greatsword </option>
@@ -1060,8 +864,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Guillotine Umbrae"> Phantom Guillotine Umbrae </option>
 			<option value="Phantom Guillotine Penumbrae"> Phantom Guillotine Penumbrae </option>
 			<option value="Phantom Guillotine Obscurum"> Phantom Guillotine Obscurum </option>
@@ -1072,18 +876,16 @@
       <!-- ROW 12 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Machinist.png"
-          <span class="row-num">#12</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Machinist.png" <span="" class="row-num">#12
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Armageddon"> Armageddon </option>
 			<option value="Hyperconductive Armageddon"> Hyperconductive Armageddon </option>
 			<option value="Flame of the Dynast"> Flame of the Dynast </option>
@@ -1093,8 +895,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Handgonne"> Elemental Handgonne </option>
 			<option value="Elemental Handgonne +1"> Elemental Handgonne +1 </option>
 			<option value="Elemental Handgonne +2"> Elemental Handgonne +2 </option>
@@ -1107,8 +909,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Lawman"> Lawman </option>
 			<option value="Augmented Lawman"> Augmented Lawman </option>
 			<option value="Lawman Recollection"> Lawman Recollection </option>
@@ -1118,8 +920,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Revolver"> Manderville Revolver </option>
 			<option value="Amazing Manderville Revolver"> Amazing Manderville Revolver </option>
 			<option value="Majestic Manderville Pistol"> Majestic Manderville Pistol </option>
@@ -1127,8 +929,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Arquebus Umbrae"> Phantom Arquebus Umbrae </option>
 			<option value="Phantom Arquebus Penumbrae"> Phantom Arquebus Penumbrae </option>
 			<option value="Phantom Musketoon Obscurum"> Phantom Musketoon Obscurum </option>
@@ -1139,18 +941,16 @@
       <!-- ROW 13 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Astrologian.png"
-          <span class="row-num">#13</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Astrologian.png" <span="" class="row-num">#13
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="HW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Deneb"> Deneb </option>
 			<option value="Hyperconductive Deneb"> Hyperconductive Deneb </option>
 			<option value="Sphere of the Last Heir"> Sphere of the Last Heir </option>
@@ -1160,8 +960,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Astrometer"> Elemental Astrometer </option>
 			<option value="Elemental Astrometer +1"> Elemental Astrometer +1 </option>
 			<option value="Elemental Astrometer +2"> Elemental Astrometer +2 </option>
@@ -1174,8 +974,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Solstice"> Solstice </option>
 			<option value="Augmented Solstice"> Augmented Solstice </option>
 			<option value="Solstice Recollection"> Solstice Recollection </option>
@@ -1185,8 +985,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Torquetum"> Manderville Torquetum </option>
 			<option value="Amazing Manderville Torquetum"> Amazing Manderville Torquetum </option>
 			<option value="Majestic Manderville Orrery"> Majestic Manderville Orrery </option>
@@ -1194,8 +994,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Star Globe Umbrae"> Phantom Star Globe Umbrae </option>
 			<option value="Phantom Star Globe Penumbrae"> Phantom Star Globe Penumbrae </option>
 			<option value="Phantom Star Pendant Obscurum"> Phantom Star Pendant Obscurum </option>
@@ -1206,24 +1006,21 @@
       <!-- ROW 14 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Samurai.png"
-          <span class="row-num">#14</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Samurai.png" <span="" class="row-num">#14
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Blade"> Elemental Blade </option>
 			<option value="Elemental Blade +1"> Elemental Blade +1 </option>
 			<option value="Elemental Blade +2"> Elemental Blade +2 </option>
@@ -1236,8 +1033,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Hoshikiri"> Hoshikiri </option>
 			<option value="Augmented Hoshikiri"> Augmented Hoshikiri </option>
 			<option value="Hoshikiri Recollection"> Hoshikiri Recollection </option>
@@ -1247,8 +1044,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Samurai Blade"> Manderville Samurai Blade </option>
 			<option value="Amazing Manderville Samurai Blade"> Amazing Manderville Samurai Blade </option>
 			<option value="Majestic Manderville Samurai Blade"> Majestic Manderville Samurai Blade </option>
@@ -1256,8 +1053,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Blade Umbrae"> Phantom Blade Umbrae </option>
 			<option value="Phantom Blade Penumbrae"> Phantom Blade Penumbrae </option>
 			<option value="Phantom Blade Obscurum"> Phantom Blade Obscurum </option>
@@ -1268,22 +1065,21 @@
       <!-- ROW 15 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/RedMage.png"
-          <span class="row-num">#15</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/RedMage.png" <span="" class="row-num">#15
         </td>
 		<td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="SB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Elemental Tuck"> Elemental Tuck </option>
 			<option value="Elemental Tuck +1"> Elemental Tuck +1 </option>
 			<option value="Elemental Tuck +2"> Elemental Tuck +2 </option>
@@ -1296,8 +1092,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Talekeeper"> Talekeeper </option>
 			<option value="Augmented Talekeeper"> Augmented Talekeeper </option>
 			<option value="Talekeeper Recollection"> Talekeeper Recollection </option>
@@ -1307,8 +1103,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Rapier"> Manderville Rapier </option>
 			<option value="Amazing Manderville Rapier"> Amazing Manderville Rapier </option>
 			<option value="Majestic Manderville Degen"> Majestic Manderville Degen </option>
@@ -1316,8 +1112,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Rapier Umbrae"> Phantom Rapier Umbrae </option>
 			<option value="Phantom Rapier Penumbrae"> Phantom Rapier Penumbrae </option>
 			<option value="Phantom Hanger Obscurum"> Phantom Hanger Obscurum </option>
@@ -1329,27 +1125,26 @@
       <!-- ROW 16 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Gunbreaker.png"
-          <span class="row-num">#16</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Gunbreaker.png" <span="" class="row-num">#16
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="SB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Crownsblade"> Crownsblade </option>
 			<option value="Augmented Crownsblade"> Augmented Crownsblade </option>
 			<option value="Crownsblade Recollection"> Crownsblade Recollection </option>
@@ -1360,8 +1155,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Gunblade"> Manderville Gunblade </option>
 			<option value="Amazing Manderville Gunblade"> Amazing Manderville Gunblade </option>
 			<option value="Majestic Manderville Bayonet"> Majestic Manderville Bayonet </option>
@@ -1369,8 +1164,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Bayonet Umbrae"> Phantom Bayonet Umbrae </option>
 			<option value="Phantom Bayonet Penumbrae"> Phantom Bayonet Penumbrae </option>
 			<option value="Phantom Gunblade Obscurum"> Phantom Gunblade Obscurum </option>
@@ -1381,27 +1176,26 @@
       <!-- ROW 17 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Dancer.png"
-          <span class="row-num">#17</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Dancer.png" <span="" class="row-num">#17
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="SB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="ShB">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Enchufla"> Enchufla </option>
 			<option value="Augmented Enchufla"> Augmented Enchufla </option>
 			<option value="Enchufla Recollection"> Enchufla Recollection </option>
@@ -1411,8 +1205,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Chakrams"> Manderville Chakrams </option>
 			<option value="Amazing Manderville Chakrams"> Amazing Manderville Chakrams </option>
 			<option value="Majestic Manderville Chakrams"> Majestic Manderville Chakrams </option>
@@ -1420,8 +1214,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Terpna Umbrae"> Phantom Terpna Umbrae </option>
 			<option value="Phantom Terpna Penumbrae"> Phantom Terpna Penumbrae </option>
 			<option value="Phantom Tathlums Obscurum"> Phantom Tathlums Obscurum </option>
@@ -1432,36 +1226,31 @@
       <!-- ROW 18 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Reaper.png"
-          <span class="row-num">#18</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Reaper.png" <span="" class="row-num">#18
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="SB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="ShB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Scythe"> Manderville Scythe </option>
 			<option value="Amazing Manderville Scythe"> Amazing Manderville Scythe </option>
 			<option value="Majestic Manderville War Scythe"> Majestic Manderville War Scythe </option>
@@ -1469,8 +1258,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom War Scythe Umbrae"> Phantom War Scythe Umbrae </option>
 			<option value="Phantom War Scythe Penumbrae"> Phantom War Scythe Penumbrae </option>
 			<option value="Phantom War Scythe Obscurum"> Phantom War Scythe Obscurum </option>
@@ -1481,32 +1270,31 @@
       <!-- ROW 19 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Sage.png"
-          <span class="row-num">#19</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Sage.png" <span="" class="row-num">#19
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="SB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ShB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="EW">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Manderville Milpreves"> Manderville Milpreves </option>
 			<option value="Amazing Manderville Milpreves"> Amazing Manderville Milpreves </option>
 			<option value="Majestic Manderville Wings"> Majestic Manderville Wings </option>
@@ -1514,8 +1302,8 @@
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Pendulums Umbrae"> Phantom Pendulums Umbrae </option>
 			<option value="Phantom Pendulums Penumbrae"> Phantom Pendulums Penumbrae </option>
 			<option value="Phantom Wings Obscurum"> Phantom Wings Obscurum </option>
@@ -1526,37 +1314,36 @@
       <!-- ROW 20 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Viper.png"
-          <span class="row-num">#20</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Viper.png" <span="" class="row-num">#20
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="SB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="ShB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select disabled="" class="EW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Twinfangs Umbrae"> Phantom Twinfangs Umbrae </option>
 			<option value="Phantom Twinfangs Penumbrae"> Phantom Twinfangs Penumbrae </option>
 			<option value="Phantom Twinfangs Obscurum"> Phantom Twinfangs Obscurum </option>
@@ -1567,42 +1354,36 @@
       <!-- ROW 21 -->
       <tr>
         <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Pictomancer.png"
-          <span class="row-num">#21</span>
+          <img src="./resources/img/FFXIVIconsJobIcons/Job/Pictomancer.png" <span="" class="row-num">#21
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="ARR">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="HW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="SB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="ShB">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
-
+          <select disabled="" class="EW">
+            <option value="" disabled="" selected="">None</option>
           </select>
         </td>
         <td class="dropdown-cell">
-          <select>
-            <option value="" disabled selected>— Select —</option>
+          <select class="DT">
+            <option value="" disabled="" selected="">— Select —</option>
 			<option value="Phantom Twinfangs Umbrae"> Phantom Twinfangs Umbrae </option>
 			<option value="Phantom Twinfangs Penumbrae"> Phantom Twinfangs Penumbrae </option>
 			<option value="Phantom Twinfangs Obscurum"> Phantom Twinfangs Obscurum </option>
@@ -1613,6 +1394,8 @@
     </tbody>
   </table>
 </div>
+
+
 
 </body>
 </html>

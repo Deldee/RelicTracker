@@ -1,0 +1,55 @@
+item {
+	name : string
+	icon : url
+	costs :  [Cost]
+}
+Cost {
+	Currency : Currency
+	value : num
+	
+}
+
+Currency {
+	name : string
+	icon : url
+}
+
+
+
+class Currency {
+  constructor(name, icon) {
+    this.name = name; // string
+    this.icon = icon; // url
+  }
+}
+
+class Cost {
+  constructor(currency, value) {
+    this.currency = currency; // Currency
+    this.value    = value;    // number
+  }
+}
+
+class Item {
+  constructor(name, icon, costs = []) {
+    this.name  = name;  // string
+    this.icon  = icon;  // url
+    this.costs = costs; // Cost[]
+  }
+}
+
+use example : 
+const gold = new Currency("Gold", "https://example.com/icons/gold.png");
+const gem  = new Currency("Gem",  "https://example.com/icons/gem.png");
+
+const sword = new Item(
+  "Excalibur",
+  "https://example.com/icons/sword.png",
+  [
+    new Cost(gold, 500),
+    new Cost(gem, 3),
+  ]
+);
+
+console.log(sword.costs[0].currency.name); // "Gold"
+console.log(sword.costs[0].value);         // 500
