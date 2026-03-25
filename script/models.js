@@ -1,10 +1,17 @@
 
 
+export class CurrencyAmount {
+    constructor(currency, value) {
+        this.currency = currency;
+        this.value    = value;
+    }
+}
+
 export class Cost {
-  constructor(currency, value) {
-    this.currency = currency; // Currency
-    this.value    = value;    // number
-  }
+    constructor(label, amounts = []) {
+        this.label   = label;   // e.g. "Quartermasters's Shop"
+        this.amounts = amounts; // CurrencyAmount[]
+    }
 }
 
 export class Item{
@@ -19,6 +26,14 @@ export class ShopItem extends Item {
     super(name,icon)
     this.costs = costs; // Cost[]
   }
+
+    getMainCost() {
+        return this.costs[0] ?? null;
+    }
+
+    getAlternateCosts() {
+        return this.costs.slice(1);
+    }
 };
 
 
@@ -31,16 +46,22 @@ export class Step {
       const shopTotals = {};
       const itemList   = [];
 
-      this.entries.forEach(({ item, count }) => {
+      this.entries.forEach(({ item, count, costIndex = 0 }) => {
           if (item instanceof ShopItem) {
-              item.costs.forEach(cost => {
-                  const currencyName = cost.currency.name;
+              const source = item.costs[costIndex]; // pick the purchase source
 
-                  if (!shopTotals[currencyName]) {
-                      shopTotals[currencyName] = { currency: cost.currency, total: 0 };
+            if (!source || !Array.isArray(source.amounts)) {
+                console.warn(`Item "${item.name}" has an invalid Cost structure`, source);
+                return; // skip this item
+            }
+              source.amounts.forEach(({ currency, value }) => {
+                  const key = currency.name;
+
+                  if (!shopTotals[key]) {
+                      shopTotals[key] = { currency, total: 0 };
                   }
 
-                  shopTotals[currencyName].total += cost.value * count;
+                  shopTotals[key].total += value * count;
               });
           } else {
               itemList.push({ item, count });
@@ -54,6 +75,6 @@ export class Step {
   }
 }
 
-export function entry(item, count) {
-    return { item, count };
+export function entry(item, count, costIndex = 0) {
+    return { item, count, costIndex };
 }
