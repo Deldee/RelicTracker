@@ -1,4 +1,3 @@
-import * as currencies from './currencies.js'
 import * as Items from "./items.js"
 import { Item, Step ,entry } from './models.js'
 
@@ -204,4 +203,59 @@ export const oneTime2ShB = new Step([
 
 export const BladeShB = new Step([
     entry(Items.Raw_Emotion,15)
+])
+
+export const MandervilleEW = new Step([
+    entry(Items.Manderium_Meteorite,3)
+])
+
+export const AmazingEW = new Step([
+    entry(Items.Complementary_Chondrite,3)
+])
+
+export const MajesticEW = new Step([
+    entry(Items.Amplifying_Achondrite,3)
+])
+
+export const MandervillousEW = new Step([
+    entry(Items.Cosmic_Crystallite,3)
+])
+
+export const PenumbraePreDT = new Step([
+    entry(Items.Azurite_Demiatma,3),
+    entry(Items.Verdigris_Demiatma,3),
+    entry(Items.Malachite_Demiatma,3),
+    entry(Items.Realgar_Demiatma,3),
+    entry(Items.Caput_Mortuum_Demiatma,3),
+    entry(Items.Orpiment_Demiatma,3)
+])
+
+export const PenumbraeDT = new Step([
+    entry(Items.Arcanite,3),
+])
+
+export const UmbraePreDT = new Step([
+    entry(Items.Rroneek_Glue,1),
+    entry(Items.Utohmu_Siderite,1),
+    entry(Items.Synthetic_Dark_Matter_Alpha,1),
+    entry(Items.Synthetic_Dark_Matter_Beta,1),
+    entry(Items.Synthetic_Dark_Matter_Gamma,1),
+
+])
+
+export const UmbraeDT = new Step([
+    entry(Items.Waxing_Arcanite,3),
+])
+
+export const ObscurumPreDT = new Step([
+    entry(Items.Umbral_Clay,1),
+    entry(Items.Aspected_Aether_Agglomerate,1),
+    entry(Items.Aspected_Aetherocatalyst,1),
+    entry(Items.Aspected_Aetheroconductor,1),
+    entry(Items.Crystal_Paste,1200),
+
+])
+
+export const ObscurumDT = new Step([
+    entry(Items.Waning_Arcanite,3),
 ])

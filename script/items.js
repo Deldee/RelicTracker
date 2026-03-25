@@ -352,6 +352,40 @@ export const Compact_Spring = new Item(
 
 
 
+export const Synthetic_Dark_Matter_Beta = new Item(
+    "Synthetic Dark Matter Beta",
+    "./resources/img/itemIcon/Synthetic_Dark_Matter_Beta.png" 
+)
+
+export const Synthetic_Dark_Matter_Alpha = new Item(
+    "Synthetic Dark Matter Alpha",
+    "./resources/img/itemIcon/Synthetic_Dark_Matter_Alpha.png" 
+)
+
+export const Synthetic_Dark_Matter_Gamma = new Item(
+    "Synthetic Dark Matter Gamma",
+    "./resources/img/itemIcon/Synthetic_Dark_Matter_Gamma.png" 
+)
+
+export const Utohmu_Siderite = new Item(
+    "Ut'ohmu Siderite",
+    "./resources/img/itemIcon/Utohmu_Siderite.png" 
+)
+
+export const Aspected_Aetherocatalyst= new Item(
+    "Aspected Aetherocatalyst",
+    "./resources/img/itemIcon/Aspected_Aetherocatalyst.png" 
+)
+
+export const Aspected_Aetheroconductor = new Item(
+    "Aspected Aetheroconductor",
+    "./resources/img/itemIcon/Aspected_Aetheroconductor.png" 
+)
+
+export const Aspected_Aether_Agglomerate = new Item(
+    "Aspected Aether Agglomerate",
+    "./resources/img/itemIcon/Aspected_Aether_Agglomerate.png" 
+)
 
 
 
@@ -364,6 +398,23 @@ export const Compact_Spring = new Item(
 
 
 
+
+
+export const Umbral_Clay = new ShopItem(
+    "Umbral Clay",
+    "./resources/img/itemIcon/Umbral_Clay.png" ,
+    [
+        new Cost(Gil, 500000)
+    ]
+)
+
+export const Rroneek_Glue = new ShopItem(
+    "Rroneek Glue",
+    "./resources/img/itemIcon/Rroneek_Glue.png" ,
+    [
+        new Cost(Gil, 300000)
+    ]
+)
 
 export const Pazuzus_Feather = new ShopItem(
     "Pazuzu's Feather",
