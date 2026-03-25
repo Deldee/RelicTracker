@@ -43,11 +43,11 @@ function getSelectIndexes() {
 
 function saveSelectsToCookie() {
     const indexes = getSelectIndexes();
-    document.cookie = `selectIndexes=${JSON.stringify(indexes)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+    document.cookie = `relicTrack=${JSON.stringify(indexes)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
 }
 
 function loadSelectsFromCookie() {
-    const match = document.cookie.split("; ").find(row => row.startsWith("selectIndexes="));
+    const match = document.cookie.split("; ").find(row => row.startsWith("relicTrack="));
     if (!match) return null;
     return JSON.parse(match.split("=")[1]);
 }
