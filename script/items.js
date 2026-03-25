@@ -1,46 +1,55 @@
-import { ShopItem, Cost, Item }                          from './models.js';
+import { ShopItem, Cost, Item,CurrencyAmount }                          from './models.js';
 
 
-export const Poetic = new Item(
-    "Tomestone of Poetics",
-    "./resources/img/currencyIcon/Allagan_Tomestone_of_Poetics.png"
+export const Allagan_Tomestone_of_Poetics = new Item(
+    "Allagan Tomestone of Poetics",
+    "./resources/img/itemIcon/Allagan_Tomestone_of_Poetics.png"
 );
 
-export const Mathematic = new Item(
-    "Tomestone of Mathematic",
-    "./resources/img/currencyIcon/Allagan_Tomestone_of_Mathematics.png"
+export const Allagan_Tomestone_of_Mathematics = new Item(
+    "Allagan Tomestone of Mathematic",
+    "./resources/img/itemIcon/Allagan_Tomestone_of_Mathematics.png"
 )
 
 export const Gil = new Item(
     "Gil",
-    "./resources/img/currencyIcon/Gil.png"
+    "./resources/img/itemIcon/Gil.png"
 )
 
-export const SteelAmal = new Item(
+export const Steel_Amaljok = new Item(
     "Steel Amalj'ok",
-    "./resources/img/currencyIcon/Steel_Amalj'ok.png"
+    "./resources/img/itemIcon/Steel_Amaljok.png"
 )
 
 export const Sylphic_Goldleaf = new Item(
     "Sylphic Goldleaf",
-    "./resources/img/currencyIcon/Sylphic_Goldleaf.png"
+    "./resources/img/itemIcon/Sylphic_Goldleaf.png"
 )
 
 export const Titan_Cobaltpiece = new Item(
     "Titan Cobaltpiece",
-    "./resources/img/currencyIcon/Titan_Cobaltpiece.png"
+    "./resources/img/itemIcon/Titan_Cobaltpiece.png"
 )
 
 export const Rainbowtide_Psashp = new Item(
     "Rainbowtide Psashp",
-    "./resources/img/currencyIcon/Rainbowtide_Psashp.png"
+    "./resources/img/itemIcon/Rainbowtide_Psashp.png"
 )
 
-export const GCSeals = new Item(
+export const Allied_Seal = new Item(
     "Grand Company Seals",
-    "./resources/img/currencyIcon/Company_Seal.png"
+    "./resources/img/itemIcon/Allied_Seal.png"
 )
 
+export const Purple_Crafters_Scrip = new Item(
+    "Purple Crafters Scrip",
+    "./resources/img/itemIcon/Purple_Crafters_Scrip.png"
+)
+
+export const Purple_Gatherers_Scrip = new Item(
+    "Purple Gatherers Scrip",
+    "./resources/img/itemIcon/Purple_Gatherers_Scrip.png"
+)
 
 export const Atma_of_the_Archer = new Item(
     "Atma of the Archer",
@@ -149,12 +158,6 @@ export const Crystal_Paste = new Item(
     "./resources/img/itemIcon/Crystal_Paste.png"
 )
 
-export const Crystal_Sand = new Item(
-    "Crystal Sand",
-    "./resources/img/itemIcon/Crystal_Sand.png"
-)
-
-
 export const Eureka_Fragment = new Item(
     "Eureka Fragment",
     "./resources/img/itemIcon/Eureka_Fragment.png"
@@ -186,15 +189,9 @@ export const Hydatos_Crystal = new Item(
     "./resources/img/itemIcon/Hydatos_Crystal.png"
 )
 
-
 export const Loathsome_Memory_of_the_Dying = new Item(
     "Loathsome Memory of the Dying",
     "./resources/img/itemIcon/Loathsome_Memory_of_the_Dying.png"
-)
-
-export const Louhis_Ice = new Item(
-    "Louhi's Ice",
-    "./resources/img/itemIcon/Louhi's_Ice.png"
 )
 
 export const Luminous_Earth_Crystal = new Item(
@@ -247,16 +244,6 @@ export const Pagos_Crystal = new Item(
     "./resources/img/itemIcon/Pagos_Crystal.png"
 )
 
-export const Pazuzus_Feather = new Item(
-    "Pazuzu's Feather",
-    "./resources/img/itemIcon/Pazuzu's_Feather.png"
-)
-
-export const Penthesileas_Flame = new Item(
-    "Penthesilea's Flame",
-    "./resources/img/itemIcon/Penthesilea's_Flame.png"
-)
-
 export const Perfect_Cloth = new Item(
     "Perfect Cloth",
     "./resources/img/itemIcon/Perfect_Cloth.png"
@@ -287,8 +274,6 @@ export const Perfect_Vellum = new Item(
     "./resources/img/itemIcon/Perfect_Vellum.png"
 )
 
-
-
 export const Protean_Crystal = new Item(
     "Protean Crystal",
     "./resources/img/itemIcon/Protean_Crystal.png"
@@ -298,8 +283,6 @@ export const Pyros_Crystal = new Item(
     "Pyros Crystal",
     "./resources/img/itemIcon/Pyros_Crystal.png"
 )
-
-
 
 export const Raw_Emotion = new Item(
     "Raw Emotion",
@@ -311,40 +294,30 @@ export const Realgar_Demiatma = new Item(
     "./resources/img/itemIcon/Realgar_Demiatma.png"
 )
 
-
-
 export const Sharlayan_Aether_Oil = new Item(
     "Sharlayan Aether Oil",
     "./resources/img/itemIcon/Sharlayan_Aether_Oil.png"
 )
-
-
 
 export const Sorrowful_Memory_of_the_Dying = new Item(
     "Sorrowful Memory of the Dying",
     "./resources/img/itemIcon/Sorrowful_Memory_of_the_Dying.png"
 )
 
-
-
 export const Tailor_made_Eel_Pie = new Item(
     "Tailor made Eel Pie",
     "./resources/img/itemIcon/Tailor-made_Eel_Pie.png"
 )
-
-
 
 export const Timeworn_Artifact = new Item(
     "Timeworn Artifact",
     "./resources/img/itemIcon/Timeworn_Artifact.png"
 )
 
-
 export const Tortured_Memory_of_the_Dying = new Item(
     "Tortured Memory of the Dying",
     "./resources/img/itemIcon/Tortured_Memory_of_the_Dying.png"
 )
-
 
 export const Verdigris_Demiatma = new Item(
     "Verdigris Demiatma",
@@ -360,6 +333,47 @@ export const Alexandrite = new Item(
     "Alexandrite",
     "./resources/img/itemIcon/Alexandrite.png"
 )
+export const Compact_Spring = new Item(
+    "Compact Spring",
+    "./resources/img/itemIcon/Compact_Spring.png" 
+)
+
+
+
+export const Synthetic_Dark_Matter_Beta = new Item(
+    "Synthetic Dark Matter Beta",
+    "./resources/img/itemIcon/Synthetic_Dark_Matter_Beta.png" 
+)
+
+export const Synthetic_Dark_Matter_Alpha = new Item(
+    "Synthetic Dark Matter Alpha",
+    "./resources/img/itemIcon/Synthetic_Dark_Matter_Alpha.png" 
+)
+
+export const Synthetic_Dark_Matter_Gamma = new Item(
+    "Synthetic Dark Matter Gamma",
+    "./resources/img/itemIcon/Synthetic_Dark_Matter_Gamma.png" 
+)
+
+export const Utohmu_Siderite = new Item(
+    "Ut'ohmu Siderite",
+    "./resources/img/itemIcon/Utohmu_Siderite.png" 
+)
+
+export const Aspected_Aetherocatalyst= new Item(
+    "Aspected Aetherocatalyst",
+    "./resources/img/itemIcon/Aspected_Aetherocatalyst.png" 
+)
+
+export const Aspected_Aetheroconductor = new Item(
+    "Aspected Aetheroconductor",
+    "./resources/img/itemIcon/Aspected_Aetheroconductor.png" 
+)
+
+export const Aspected_Aether_Agglomerate = new Item(
+    "Aspected Aether Agglomerate",
+    "./resources/img/itemIcon/Aspected_Aether_Agglomerate.png" 
+)
 
 
 
@@ -369,36 +383,107 @@ export const Alexandrite = new Item(
 
 
 
+export const Blue_Crafters_Scrip_Token = new ShopItem(
+    "Blue Crafters Scrip Token",
+    "./resources/img/itemIcon/Blue_Crafters_Scrip_Token.png" ,
+    [
+        new Cost("",[
+            new CurrencyAmount(Purple_Crafters_Scrip,25)
+        ]),
+    ]
+)
 
+export const Blue_Gatherers_Scrip_Token = new Item(
+    "Blue Gatherers Scrip Token",
+    "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png" ,
+    [
+        new Cost("",[
+            new CurrencyAmount(Purple_Gatherers_Scrip,25)
+        ]),
+    ]
+)
 
+export const Umbral_Clay = new ShopItem(
+    "Umbral Clay",
+    "./resources/img/itemIcon/Umbral_Clay.png" ,
+    [
+        new Cost("", [
+            new CurrencyAmount(Gil, 500000)
+        ])
+    ]
+)
 
+export const Rroneek_Glue = new ShopItem(
+    "Rroneek Glue",
+    "./resources/img/itemIcon/Rroneek_Glue.png" ,
+    [
+        new Cost("", [
+            new CurrencyAmount(Gil, 300000)
+        ])
+    ]
+)
 
+export const Pazuzus_Feather = new ShopItem(
+    "Pazuzu's Feather",
+    "./resources/img/itemIcon/Pazuzu's_Feather.png",
+    [
+        new Cost("", [
+            new CurrencyAmount(Protean_Crystal, 300)
+        ])
+    ]
+)
 
+export const Penthesileas_Flame = new ShopItem(
+    "Penthesilea's Flame",
+    "./resources/img/itemIcon/Penthesilea's_Flame.png",
+    [
+        new Cost("", [
+            new CurrencyAmount(Pyros_Crystal, 50)
+        ])
+    ]
 
+)
 
-
-
+export const Louhis_Ice = new ShopItem(
+    "Louhi's Ice",
+    "./resources/img/itemIcon/Louhi's_Ice.png",
+    [
+        new Cost("", [
+            new CurrencyAmount(Pagos_Crystal, 50)
+        ])
+    ]
+)
 
 export const Archaic_Enchanted_Ink = new ShopItem(
     "Archaic Enchanted Ink",
     "./resources/img/itemIcon/Archaic_Enchanted_Ink.png",
     [
-        new Cost(Poetic,500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
+        ])
     ]
 )
 
 export const Thavnairian_Scalepowder = new ShopItem(
     "Thavnairian Scalepowder",
     "./resources/img/itemIcon/Thavnairian_Scalepowder.png",
-    [ new Cost(Poetic,250)]
+    [
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 250)
+        ])
+    ]
 )
 
 export const Unidentifiable_Bone = new ShopItem(
     "Unidentifiable Bone",
     "./resources/img/itemIcon/Unidentifiable_Bone.png",
     [
-        new Cost(Poetic, 150),
-        new Cost(SteelAmal,3)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
+        ]),
+        new Cost("",[
+            new CurrencyAmount(Steel_Amaljok, 3)
+        ])
     ]
 )
 
@@ -406,8 +491,12 @@ export const Unidentifiable_Shell = new ShopItem(
     "Unidentifiable Shell",
     "./resources/img/itemIcon/Unidentifiable_Shell.png",
     [
-        new Cost(Poetic, 150),
-        new Cost(Rainbowtide_Psashp,3)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
+        ]),
+        new Cost("",[
+            new CurrencyAmount(Rainbowtide_Psashp, 3)
+        ])
     ]
 )
 
@@ -415,8 +504,12 @@ export const Unidentifiable_Ore = new ShopItem(
     "Unidentifiable Ore",
     "./resources/img/itemIcon/Unidentifiable_Ore.png",
     [
-        new Cost(Poetic, 150),
-        new Cost(Titan_Cobaltpiece,3)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
+        ]),
+        new Cost("",[
+            new CurrencyAmount(Titan_Cobaltpiece, 3)
+        ])
     ]
 )
 
@@ -424,8 +517,12 @@ export const Unidentifiable_Seeds = new ShopItem(
     "Unidentifiable Bone",
     "./resources/img/itemIcon/Unidentifiable_Seeds.png",
     [
-        new Cost(Poetic, 150),
-        new Cost(Sylphic_Goldleaf,3)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
+        ]),
+        new Cost("",[
+            new CurrencyAmount(Sylphic_Goldleaf, 3)
+        ])
     ]
 )
 
@@ -433,7 +530,9 @@ export const Adamantite_Francesca = new ShopItem(
     "Adamantite Francesca",
     "./resources/img/itemIcon/Adamantite_Francesca.png",
     [
-        new Cost(GCSeals, 5000),
+        new Cost("", [
+            new CurrencyAmount(Allied_Seal, 5000)
+        ])
     ]
 )
 
@@ -441,7 +540,9 @@ export const Titanium_Alloy_Mirror = new ShopItem(
     "Titanium Alloy Mirror",
     "./resources/img/itemIcon/Titanium_Alloy_Mirror.png",
     [
-        new Cost(GCSeals, 5000),
+        new Cost("", [
+            new CurrencyAmount(Allied_Seal, 5000)
+        ])
     ]
 )
 
@@ -449,7 +550,9 @@ export const Dispelling_Arrow = new ShopItem(
     "Dispelling Arrow",
     "./resources/img/itemIcon/Dispelling_Arrow.png",
     [
-        new Cost(GCSeals, 5000),
+        new Cost("", [
+            new CurrencyAmount(Allied_Seal, 5000)
+        ])
     ]
 )
 
@@ -457,7 +560,9 @@ export const Kingcake = new ShopItem(
     "Kingcake",
     "./resources/img/itemIcon/Kingcake.png",
     [
-        new Cost(GCSeals, 5000),
+        new Cost("", [
+            new CurrencyAmount(Allied_Seal, 5000)
+        ])
     ]
 )
 
@@ -465,7 +570,9 @@ export const Arcanite = new ShopItem(
     "Arcanite",
     "./resources/img/itemIcon/Arcanite.png",
     [
-        new Cost(Mathematic, 1500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 1500)
+        ])
     ]
 )
 
@@ -473,7 +580,9 @@ export const Waning_Arcanite = new ShopItem(
     "Waning Arcanite",
     "./resources/img/itemIcon/Waning_Arcanite.png",
     [
-        new Cost(Mathematic, 1500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 1500)
+        ])
     ]
 )
 
@@ -481,7 +590,9 @@ export const Waxing_Arcanite = new ShopItem(
     "Waxing Arcanite",
     "./resources/img/itemIcon/Waxing_Arcanite.png",
     [
-        new Cost(Mathematic, 1500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 1500)
+        ])
     ]
 )
 
@@ -489,7 +600,9 @@ export const Radz_at_Han_Quenching_Oil = new ShopItem(
     "Radz-at-Han Quenching Oil",
     "./resources/img/itemIcon/Radz-at-Han_Quenching_Oil.png",
     [
-        new Cost(Poetic, 15)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 15)
+        ])
     ]
 )
 
@@ -497,7 +610,9 @@ export const Thavnairian_Mist = new ShopItem(
     "Thavnairian Mist",
     "./resources/img/itemIcon/Thavnairian_Mist.png",
     [
-        new Cost(Poetic, 20)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 20)
+        ])
     ]
 )
 
@@ -505,7 +620,9 @@ export const Superior_Enchanted_Ink = new ShopItem(
     "Superior Enchanted Ink",
     "./resources/img/itemIcon/Superior_Enchanted_Ink.png",
     [
-        new Cost(Poetic, 25)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 25)
+        ])
     ]
 )
 
@@ -513,7 +630,9 @@ export const Bombard_Core = new ShopItem(
     "Bombard Core",
     "./resources/img/itemIcon/Bombard_Core.png",
     [
-        new Cost(GCSeals, 20000)
+        new Cost("", [
+            new CurrencyAmount(Allied_Seal, 20000)
+        ])
     ]
 )
 
@@ -521,7 +640,9 @@ export const Sacred_Spring_Water = new ShopItem(
     "Sacred Spring Water",
     "./resources/img/itemIcon/Sacred_Spring_Water.png",
     [
-        new Cost(Poetic, 200)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 200)
+        ])
     ]
 )
 
@@ -529,7 +650,9 @@ export const Furite_Sand = new ShopItem(
     "Furite Sand",
     "./resources/img/itemIcon/Furite_Sand.png",
     [
-        new Cost(Gil, 100000)
+        new Cost("", [
+            new CurrencyAmount(Gil, 100000)
+        ])
     ]
 )
 
@@ -537,7 +660,9 @@ export const Allagan_Resin = new ShopItem(
     "Allagan Resin",
     "./resources/img/itemIcon/Allagan_Resin.png",
     [
-        new Cost(Gil, 100000)
+        new Cost("", [
+            new CurrencyAmount(Gil, 100000)
+        ])
     ]
 )
 
@@ -545,7 +670,9 @@ export const Bronze_Lake_Crystal = new ShopItem(
     "Bronze Lake Crystal",
     "./resources/img/itemIcon/Bronze_Lake_Crystal.png",
     [
-        new Cost(Gil, 100000)
+        new Cost("", [
+            new CurrencyAmount(Gil, 100000)
+        ])
     ]
 )
 
@@ -553,7 +680,9 @@ export const Brass_Kettle = new ShopItem(
     "Brass Kettle",
     "./resources/img/itemIcon/Brass_Kettle.png",
     [
-        new Cost(Gil, 100000)
+        new Cost("", [
+            new CurrencyAmount(Gil, 100000)
+        ])
     ]
 )
 
@@ -561,7 +690,9 @@ export const Aether_Oil = new ShopItem(
     "Aether Oil",
     "./resources/img/itemIcon/Aether_Oil.png",
     [
-        new Cost(Poetic, 350)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 350)
+        ])
     ]
 )
 
@@ -569,7 +700,9 @@ export const Umbrite = new ShopItem(
     "Umbrite",
     "./resources/img/itemIcon/Umbrite.png",
     [
-        new Cost(Poetic, 75)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 75)
+        ])
     ]
 )
 
@@ -577,7 +710,9 @@ export const Singing_Cluster = new ShopItem(
     "Singing Cluster",
     "./resources/img/itemIcon/Singing_Cluster.png",
     [
-        new Cost(Poetic, 40)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 40)
+        ])
     ]
 )
 
@@ -585,8 +720,12 @@ export const Pneumite = new ShopItem(
     "Pneumite",
     "./resources/img/itemIcon/Pneumite.png",
     [
-        new Cost(Poetic, 100),
-        new Cost(GCSeals,4000)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 100),
+        ]),
+        new Cost("",[
+            new CurrencyAmount(Allied_Seal, 4000)
+        ])
     ]
 )
 
@@ -594,7 +733,9 @@ export const Manderium_Meteorite = new ShopItem(
     "Manderium Meteorite",
     "./resources/img/itemIcon/Manderium_Meteorite.png",
     [
-        new Cost(Poetic, 500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
+        ])
     ]
 )
 
@@ -602,7 +743,9 @@ export const Complementary_Chondrite = new ShopItem(
     "Complementary Chondrite",
     "./resources/img/itemIcon/Complementary_Chondrite.png",
     [
-        new Cost(Poetic, 500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
+        ])
     ]
 )
 
@@ -610,7 +753,9 @@ export const Amplifying_Achondrite = new ShopItem(
     "Amplifying Achondrite",
     "./resources/img/itemIcon/Amplifying_Achondrite.png",
     [
-        new Cost(Poetic, 500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
+        ])
     ]
 )
 
@@ -618,15 +763,19 @@ export const Cosmic_Crystallite = new ShopItem(
     "Cosmic Crystallite",
     "./resources/img/itemIcon/Cosmic_Crystallite.png",
     [
-        new Cost(Poetic, 500)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
+        ])
     ]
 )
 
 export const Book_of_The_Braves = new ShopItem(
     "Book of The Braves",
-    "./resources/img/itemIcon/Book_of_The_Braves.png",
+    "./resources/img/itemIcon/Book_of_Skylight.png",
     [
-        new Cost(Poetic, 100)
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 100)
+        ])
     ]
 )
 
@@ -634,9 +783,11 @@ export const Astral_Nodule = new ShopItem(
     "Astral Nodule",
     "./resources/img/itemIcon/Astral_Nodule.png",
     [
-        new Cost(Luminous_Wind_Crystal, 1),
-        new Cost(Luminous_Fire_Crystal, 1),
-        new Cost(Luminous_Lightning_Crystal, 1)
+        new Cost("", [
+            new CurrencyAmount(Luminous_Wind_Crystal, 1),
+            new CurrencyAmount(Luminous_Fire_Crystal, 1),
+            new CurrencyAmount(Luminous_Lightning_Crystal, 1)
+        ])
     ]
 )
 
@@ -644,8 +795,28 @@ export const Umbral_Nodule = new ShopItem(
     "Umbral Nodule",
     "./resources/img/itemIcon/Umbral_Nodule.png",
     [
-        new Cost(Luminous_Ice_Crystal, 1),
-        new Cost(Luminous_Earth_Crystal, 1),
-        new Cost(Luminous_Water_Crystal, 1)
+        new Cost("", [
+            new CurrencyAmount(Luminous_Ice_Crystal, 1),
+            new CurrencyAmount(Luminous_Earth_Crystal, 1),
+            new CurrencyAmount(Luminous_Water_Crystal, 1)
+        ])
+    ]
+)
+
+export const Crystal_Sand = new ShopItem(
+    "Crystal Sand",
+    "./resources/img/itemIcon/Crystal_Sand.png",
+    [
+        new Cost("",[
+            new CurrencyAmount(Blue_Gatherers_Scrip_Token,5)
+        ]),
+        new Cost("", [
+            new CurrencyAmount(Superior_Enchanted_Ink, 5),
+            new CurrencyAmount(Thavnairian_Mist,5)
+        ]),
+        new Cost("",[
+            new CurrencyAmount(Blue_Crafters_Scrip_Token,5)
+        ])
+
     ]
 )
