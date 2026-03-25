@@ -4,7 +4,6 @@ window.Steps = Steps;
 window.Items = Items;
 window.getStepsCount = getStepsCount;
 window.renderItemIcons = renderItemIcons;
-window.renderCurrIcons = renderCurrIcons;
 
 //Take the Id of the expansion (1-6) and return an array of every steps of every row
 function getStepsArray(expansion){

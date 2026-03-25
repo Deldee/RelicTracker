@@ -42,18 +42,19 @@ export class Step {
         this.entries = entries; // { item: Item, count: number }[]
     }
 
-  getTotalCosts() {
+  getTotalCosts(count = 1) {
       const shopTotals = {};
       const itemList   = [];
 
-      this.entries.forEach(({ item, count, costIndex = 0 }) => {
+      this.entries.forEach(({ item, count: entryCount }) => {
           if (item instanceof ShopItem) {
-              const source = item.costs[costIndex]; // pick the purchase source
+              const source = item.getMainSource();
 
-            if (!source || !Array.isArray(source.amounts)) {
-                console.warn(`Item "${item.name}" has an invalid Cost structure`, source);
-                return; // skip this item
-            }
+              if (!source || !Array.isArray(source.amounts)) {
+                  console.warn(`Item "${item.name}" has an invalid Cost structure`, source);
+                  return;
+              }
+
               source.amounts.forEach(({ currency, value }) => {
                   const key = currency.name;
 
@@ -61,10 +62,10 @@ export class Step {
                       shopTotals[key] = { currency, total: 0 };
                   }
 
-                  shopTotals[key].total += value * count;
+                  shopTotals[key].total += value * entryCount * count;
               });
           } else {
-              itemList.push({ item, count });
+              itemList.push({ item, count: entryCount * count });
           }
       });
 

@@ -375,23 +375,33 @@ export const Aspected_Aether_Agglomerate = new Item(
     "./resources/img/itemIcon/Aspected_Aether_Agglomerate.png" 
 )
 
-export const Blue_Crafters_Scrip_Token = new Item(
+
+
+
+
+
+
+
+
+export const Blue_Crafters_Scrip_Token = new ShopItem(
     "Blue Crafters Scrip Token",
-    "./resources/img/itemIcon/Blue_Crafters_Scrip_Token.png" 
+    "./resources/img/itemIcon/Blue_Crafters_Scrip_Token.png" ,
+    [
+        new Cost("",[
+            new CurrencyAmount(Purple_Crafters_Scrip,25)
+        ]),
+    ]
 )
 
 export const Blue_Gatherers_Scrip_Token = new Item(
     "Blue Gatherers Scrip Token",
-    "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png" 
+    "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png" ,
+    [
+        new Cost("",[
+            new CurrencyAmount(Purple_Gatherers_Scrip,25)
+        ]),
+    ]
 )
-
-
-
-
-
-
-
-
 
 export const Umbral_Clay = new ShopItem(
     "Umbral Clay",
@@ -797,15 +807,16 @@ export const Crystal_Sand = new ShopItem(
     "Crystal Sand",
     "./resources/img/itemIcon/Crystal_Sand.png",
     [
+        new Cost("",[
+            new CurrencyAmount(Blue_Gatherers_Scrip_Token,5)
+        ]),
         new Cost("", [
             new CurrencyAmount(Superior_Enchanted_Ink, 5),
             new CurrencyAmount(Thavnairian_Mist,5)
         ]),
         new Cost("",[
             new CurrencyAmount(Blue_Crafters_Scrip_Token,5)
-        ]),
-        new Cost("",[
-            new CurrencyAmount(Blue_Gatherers_Scrip_Token,5)
         ])
+
     ]
 )
