@@ -192,11 +192,6 @@ export const Loathsome_Memory_of_the_Dying = new Item(
     "./resources/img/itemIcon/Loathsome_Memory_of_the_Dying.png"
 )
 
-export const Louhis_Ice = new Item(
-    "Louhi's Ice",
-    "./resources/img/itemIcon/Louhi's_Ice.png"
-)
-
 export const Luminous_Earth_Crystal = new Item(
     "Luminous Earth Crystal",
     "./resources/img/itemIcon/Luminous_Earth_Crystal.png"
@@ -245,16 +240,6 @@ export const Orpiment_Demiatma = new Item(
 export const Pagos_Crystal = new Item(
     "Pagos Crystal",
     "./resources/img/itemIcon/Pagos_Crystal.png"
-)
-
-export const Pazuzus_Feather = new Item(
-    "Pazuzu's Feather",
-    "./resources/img/itemIcon/Pazuzu's_Feather.png"
-)
-
-export const Penthesileas_Flame = new Item(
-    "Penthesilea's Flame",
-    "./resources/img/itemIcon/Penthesilea's_Flame.png"
 )
 
 export const Perfect_Cloth = new Item(
@@ -360,6 +345,10 @@ export const Alexandrite = new Item(
     "Alexandrite",
     "./resources/img/itemIcon/Alexandrite.png"
 )
+export const Compact_Spring = new Item(
+    "Compact Spring",
+    "./resources/img/itemIcon/Compact_Spring.png" 
+)
 
 
 
@@ -376,8 +365,30 @@ export const Alexandrite = new Item(
 
 
 
+export const Pazuzus_Feather = new ShopItem(
+    "Pazuzu's Feather",
+    "./resources/img/itemIcon/Pazuzu's_Feather.png",
+    [
+        new Cost(Protean_Crystal,300)
+    ]
+)
 
+export const Penthesileas_Flame = new ShopItem(
+    "Penthesilea's Flame",
+    "./resources/img/itemIcon/Penthesilea's_Flame.png",
+    [
+        new Cost(Pyros_Crystal,50)
+    ]
 
+)
+
+export const Louhis_Ice = new ShopItem(
+    "Louhi's Ice",
+    "./resources/img/itemIcon/Louhi's_Ice.png",
+    [
+        new Cost(Pagos_Crystal,50)
+    ]
+)
 
 export const Archaic_Enchanted_Ink = new ShopItem(
     "Archaic Enchanted Ink",

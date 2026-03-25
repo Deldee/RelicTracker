@@ -101,3 +101,107 @@ export const LuxHW = new Step([
     entry(Items.Archaic_Enchanted_Ink,1)
 ])
 
+export const StarterSB = new Step([
+    entry(Items.Protean_Crystal,100)
+])
+
+export const Starter1SB = new Step([
+    entry(Items.Protean_Crystal,100)
+])
+
+export const Starter2SB = new Step([
+    entry(Items.Protean_Crystal,400)
+])
+
+export const AnemosSB = new Step([
+    entry(Items.Pazuzus_Feather,3),
+    entry(Items.Protean_Crystal,800)
+])
+
+export const PagosSB = new Step([
+    entry(Items.Frosted_Protean_Crystal,5)
+])
+
+export const Pagos1SB = new Step([
+    entry(Items.Frosted_Protean_Crystal,10),
+    entry(Items.Pagos_Crystal,500)
+])
+
+export const ElementalSB = new Step([
+    entry(Items.Frosted_Protean_Crystal,16),
+    entry(Items.Louhis_Ice,5)
+])
+
+export const Elemental1SB = new Step([
+    entry(Items.Pyros_Crystal,150)
+])
+
+export const Elemental2SB = new Step([
+    entry(Items.Pyros_Crystal,200)
+])
+
+export const PyrosSB = new Step([
+    entry(Items.Pyros_Crystal,300),
+    entry(Items.Penthesileas_Flame,5)
+])
+
+export const HydatosSB = new Step([
+    entry(Items.Hydatos_Crystal,50),
+])
+
+export const Hydatos1SB = new Step([
+    entry(Items.Hydatos_Crystal,100),
+])
+
+export const BaseEurekaSB = new Step([
+    entry(Items.Hydatos_Crystal,100),
+])
+
+export const EurekaSB = new Step([
+    entry(Items.Hydatos_Crystal,100),
+    entry(Items.Crystalline_Scale,5)
+])
+
+export const PhyseosSB = new Step([
+    entry(Items.Eureka_Fragment,100)
+])
+
+export const ResistanceShB = new Step([
+    entry(Items.Thavnairian_Scalepowder,4)
+])
+
+export const AugmentedResistanceShB = new Step([
+    entry(Items.Tortured_Memory_of_the_Dying,20),
+    entry(Items.Sorrowful_Memory_of_the_Dying,20),
+    entry(Items.Harrowing_Memory_of_the_Dying,20)
+])
+
+export const RecollectionShB = new Step([
+    entry(Items.Bitter_Memory_of_the_Dying,6)
+])
+
+export const LawOrderShB = new Step([
+    entry(Items.Loathsome_Memory_of_the_Dying,15)
+])
+
+export const oneTime1ShB = new Step([
+    entry(Items.Haunting_Memory_of_the_Dying,15),
+    entry(Items.Vexatious_Memory_of_the_Dying,15)
+])
+
+export const AugmentedLawOrderShB = new Step([
+    entry(Items.Timeworn_Artifact,15)
+])
+
+export const oneTime2ShB = new Step([
+    entry(Items.Compact_Axle,30),
+    entry(Items.Compact_Spring,30),
+    entry(Items.A_Day_in_the_Life_Battles_for_the_Realm,30),
+    entry(Items.A_Day_in_the_Life_Beyond_the_Rift,30),
+    entry(Items.Bleak_Memory_of_the_Dying,30),
+    entry(Items.Lurid_Memory_of_the_Dying,30),
+])
+
+export const BladeShB = new Step([
+    entry(Items.Raw_Emotion,15)
+])
