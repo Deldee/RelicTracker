@@ -1,69 +1,6 @@
 import * as Items from "./items.js"
 import { Item, Step ,entry } from './models.js'
 
-//Collection of steps, so that they match 1-1 with the index returned by the relic tracker, to make it easy to calculate the materials
-
-export const ARRSteps= [
-    BaseARR,
-    ZenithARR,
-    AtmaARR,
-    AnimusARR,
-    NovusARR,
-    NexusARR,
-    BravesARR,
-    ZetaARR
-]
-
-export const HWSteps= [
-    AnimatedHW,
-    AwokenHW,
-    AnimaHW,
-    HyperconductiveHW,
-    ReconditionedHW,
-    SharpenedHW,
-    CompleteHW,
-    LuxHW
-]
-//EXCLUDES One time, handle those manually
-export const SBSteps=[
-    StarterSB,
-    Starter1SB,
-    Starter2SB,
-    AnemosSB,
-    PagosSB,
-    Pagos1SB,
-    ElementalSB,
-    Elemental1SB,
-    Elemental2SB,
-    PyrosSB,
-    HydatosSB,
-    Hydatos1SB,
-    BaseEurekaSB,
-    EurekaSB,
-    PhyseosSB
-]
-
-export const ShBteps = [
-    ResistanceShB, 
-    AugmentedResistanceShB,
-    RecollectionShB,
-    LawOrderShB,
-    AugmentedLawOrderShB,
-    BladeShB
-]
-
-export const EWSteps = [
-    MandervilleEW,
-    AmazingEW,
-    MajesticEW,
-    MandervillousEW
-]
-//EXCLUDES One time, handle those manually
-export const DTSteps = [
-    PenumbraeDT,
-    UmbraeDT,
-    ObscurumDT
-]
 
 export const BaseARR = new Step([
     entry(Items.Radz_at_Han_Quenching_Oil,1)
@@ -162,6 +99,10 @@ export const CompleteHW = new Step([
 
 export const LuxHW = new Step([
     entry(Items.Archaic_Enchanted_Ink,1)
+])
+
+export const AntiquatedSB = new Step([
+    entry(Items.Gil,10000)
 ])
 
 export const StarterSB = new Step([
@@ -323,3 +264,67 @@ export const ObscurumPreDT = new Step([
 export const ObscurumDT = new Step([
     entry(Items.Waning_Arcanite,3),
 ])
+
+//Collection of steps, so that they match 1-1 with the index returned by the relic tracker, to make it easy to calculate the materials
+export const ARRSteps= [
+    BaseARR,
+    ZenithARR,
+    AtmaARR,
+    AnimusARR,
+    NovusARR,
+    NexusARR,
+    BravesARR,
+    ZetaARR
+]
+
+export const HWSteps= [
+    AnimatedHW,
+    AwokenHW,
+    AnimaHW,
+    HyperconductiveHW,
+    ReconditionedHW,
+    SharpenedHW,
+    CompleteHW,
+    LuxHW
+]
+//EXCLUDES One time, handle those manually
+export const SBSteps=[
+    AntiquatedSB,
+    StarterSB,
+    Starter1SB,
+    Starter2SB,
+    AnemosSB,
+    PagosSB,
+    Pagos1SB,
+    ElementalSB,
+    Elemental1SB,
+    Elemental2SB,
+    PyrosSB,
+    HydatosSB,
+    Hydatos1SB,
+    BaseEurekaSB,
+    EurekaSB,
+    PhyseosSB
+]
+
+export const ShBteps = [
+    ResistanceShB, 
+    AugmentedResistanceShB,
+    RecollectionShB,
+    LawOrderShB,
+    AugmentedLawOrderShB,
+    BladeShB
+]
+
+export const EWSteps = [
+    MandervilleEW,
+    AmazingEW,
+    MajesticEW,
+    MandervillousEW
+]
+//EXCLUDES One time, handle those manually
+export const DTSteps = [
+    PenumbraeDT,
+    UmbraeDT,
+    ObscurumDT
+]
