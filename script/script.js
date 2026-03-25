@@ -9,11 +9,12 @@ window.renderItemIcons = renderItemIcons;
 
 //Take the Id of the expansion (1-6) and return an array of every steps of every row
 function getStepsArray(expansion){
-    let result= [];
+    let result = [];
     const table = document.getElementById("tracker");
     for(let row = 1; row < table.rows.length; row++){
-        //push the current select index into the array
-        result.push(table.rows[row].cells[expansion].getElementsByTagName("select")[0].selectedIndex)
+        const select = table.rows[row].cells[expansion].getElementsByTagName("select")[0];
+        if (select.classList.contains("disabled")) continue;
+        result.push(select.selectedIndex);
     }
     console.log("Raw array " + result)
     return result;
