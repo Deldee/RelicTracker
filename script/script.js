@@ -35,3 +35,41 @@ function renderItemIcons(Items) {
         document.body.appendChild(img);
     });
 }
+
+function getSelectIndexes() {
+    const selects = document.querySelectorAll("select");
+    return Array.from(selects).map(select => select.selectedIndex);
+}
+
+function saveSelectsToCookie() {
+    const indexes = getSelectIndexes();
+    document.cookie = `selectIndexes=${JSON.stringify(indexes)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+}
+
+function loadSelectsFromCookie() {
+    const match = document.cookie.split("; ").find(row => row.startsWith("selectIndexes="));
+    if (!match) return null;
+    return JSON.parse(match.split("=")[1]);
+}
+
+function restoreSelects() {
+    const indexes = loadSelectsFromCookie();
+    if (!indexes) return;
+
+    const selects = document.querySelectorAll("select");
+    selects.forEach((select, i) => {
+        if (indexes[i] !== undefined) {
+            select.selectedIndex = indexes[i];
+        }
+    });
+}
+
+// Save whenever any select changes
+document.addEventListener("change", (e) => {
+    if (e.target.tagName === "SELECT") {
+        saveSelectsToCookie();
+    }
+});
+
+// Restore on page load
+restoreSelects();
