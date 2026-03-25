@@ -802,10 +802,10 @@ export const Crystal_Sand = new ShopItem(
             new CurrencyAmount(Thavnairian_Mist,5)
         ]),
         new Cost("",[
-            new CurrencyAmount(Blue_Crafters_Scrip_Token)
+            new CurrencyAmount(Blue_Crafters_Scrip_Token,5)
         ]),
         new Cost("",[
-            new CurrencyAmount(Blue_Gatherers_Scrip_Token)
+            new CurrencyAmount(Blue_Gatherers_Scrip_Token,5)
         ])
     ]
 )

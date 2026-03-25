@@ -84,8 +84,8 @@ export const HyperconductiveHW = new Step([
 ])
 
 export const ReconditionedHW = new Step([
-    entry(Items.Umbrite,60)
-    //TODO Add Crystal Sand 
+    entry(Items.Umbrite,60),
+    entry(Items.Crystal_Sand,60)
 ])
 
 export const SharpenedHW = new Step([

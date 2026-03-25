@@ -36,12 +36,3 @@ function renderItemIcons(Items) {
         document.body.appendChild(img);
     });
 }
-
-function renderCurrIcons(Items) {
-    Object.values(Currencies).forEach(item => {
-        const img = document.createElement("img");
-        img.src = item.icon;
-        img.alt = item.name;
-        document.body.appendChild(img);
-    });
-}
