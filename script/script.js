@@ -21,8 +21,8 @@ function getStepsArray(expansion){
 
 function getStepsCount(expansion){
     let result= []
-    const array = getStepsArray(expansion)
-    for(var i = 0; i < 20; i++){
+    const array = getStepsArray(expansion.numericID)
+    for(var i = 0; i <= expansion.stepCollection.length; i++){
         result.push(array.filter(v => (v == i)).length)
     }
     console.log("count of each steps : " + result)
@@ -73,7 +73,7 @@ document.addEventListener("change", (e) => {
 
         const currentExpansion = Expansions.find(exp => e.target.classList.contains(exp.abbreviation));
         console.log(currentExpansion);
-        getStepsArray(currentExpansion.numericID);
+        getStepsCount(currentExpansion);
     }
 });
 

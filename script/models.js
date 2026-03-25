@@ -81,10 +81,11 @@ export function entry(item, count, costIndex = 0) {
 }
 
 export class Expansion {
-    constructor(name, abbreviation, numericID, maximumSteps) {
+    constructor(name, abbreviation, numericID, maximumRelics, stepCollection) {
         this.name         = name;
         this.abbreviation = abbreviation;
         this.numericID    = numericID;
         this.maximumRelics = maximumRelics;
+        this.stepCollection = stepCollection;
     }
 }

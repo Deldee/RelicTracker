@@ -1,1401 +1,1518 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<link rel="stylesheet" href="./style.css">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Relic Tracker</title>
-    <script type="module" src="./script/script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relic Tracker</title>
+  <script type="module" src="./script/script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700&display=swap"
+    rel="stylesheet" />
 </head>
+
 <body>
 
-<input id="clickMe" type="button" value="clickme" onclick="getStepsCount(1)">
-<img id="testimg"/>
-<h1>Relic Tracker</h1>
+  <input id="clickMe" type="button" value="clickme" onclick="getStepsCount(1)">
+  <img id="testimg" />
+  <h1>Relic Tracker</h1>
 
-<div class="table-wrapper">
-  <table id="tracker">
-    <thead>
-      <tr>
-        <th class="corner"></th>
-        <th class="img-header">
-          <div class="header-img-container">
-            <img src="./resources/img/Expansions/ARR.jpg">
-            <span class="header-label">A Realm Reborn</span>
-          </div>
-        </th>
-        <th class="img-header">
-          <div class="header-img-container">
-            <img src="./resources/img/Expansions/HW.png">
-            <span class="header-label">Heavensward</span>
-          </div>
-        </th>
-        <th class="img-header">
-          <div class="header-img-container">
-            <img src="./resources/img/Expansions/SB.png">
-            <span class="header-label">StormBlood</span>
-          </div>
-        </th>
-        <th class="img-header">
-          <div class="header-img-container">
-            <img src="./resources/img/Expansions/ShB.png">
-            <span class="header-label">ShadowBringer</span>
-          </div>
-        </th>
-        <th class="img-header">
-          <div class="header-img-container">
-            <img src="./resources/img/Expansions/EW.png">
-            <span class="header-label">EndWalker</span>
-          </div>
-        </th>
-        <th class="img-header">
-          <div class="header-img-container">
-            <img src="./resources/img/Expansions/DT.png">
-            <span class="header-label">DawnTrail</span>
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="table-wrapper">
+    <table id="tracker">
+      <thead>
+        <tr>
+          <th class="corner"></th>
+          <th class="img-header">
+            <div class="header-img-container">
+              <img src="./resources/img/Expansions/ARR.jpg">
+              <span class="header-label">A Realm Reborn</span>
+            </div>
+          </th>
+          <th class="img-header">
+            <div class="header-img-container">
+              <img src="./resources/img/Expansions/HW.png">
+              <span class="header-label">Heavensward</span>
+            </div>
+          </th>
+          <th class="img-header">
+            <div class="header-img-container">
+              <img src="./resources/img/Expansions/SB.png">
+              <span class="header-label">StormBlood</span>
+            </div>
+          </th>
+          <th class="img-header">
+            <div class="header-img-container">
+              <img src="./resources/img/Expansions/ShB.png">
+              <span class="header-label">ShadowBringer</span>
+            </div>
+          </th>
+          <th class="img-header">
+            <div class="header-img-container">
+              <img src="./resources/img/Expansions/EW.png">
+              <span class="header-label">EndWalker</span>
+            </div>
+          </th>
+          <th class="img-header">
+            <div class="header-img-container">
+              <img src="./resources/img/Expansions/DT.png">
+              <span class="header-label">DawnTrail</span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
 
-      <!-- ROW 01 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Paladin.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-			<option value="" selected="">None</option>
-			<option value="curtana">Curtana</option>
-			<option value="curtana_zenith">Curtana Zenith</option>
-			<option value="curtana_atma">Curtana Atma</option>
-			<option value="curtana_animus">Curtana Animus</option>
-			<option value="curtana_novus">Curtana Novus</option>
-			<option value="curtana_nexus">Curtana Nexus</option>
-			<option value="excalibur">Excalibur</option>
-			<option value="excalibur_zeta">Excalibur Zeta</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="animated_hauteclaire">Animated Hauteclaire</option>
-			<option value="hauteclaire_awoken">Hauteclaire Awoken</option>
-			<option value="almace">Almace</option>
-			<option value="almace_hyperconductive">Almace Hyperconductive</option>
-			<option value="almace_reconditioned">Almace Reconditioned</option>
-			<option value="almace_sharpened">Almace Sharpened</option>
-			<option value="almace_complete">Almace Complete</option>
-			<option value="aettir_lux">Aettir Lux</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-            <option value="antiquated_galatyn">Antiquated Galatyn</option>
-			<option value="galatyn">Galatyn</option>
-			<option value="galatyn_1">Galatyn +1</option>
-			<option value="galatyn_2">Galatyn +2</option>
-			<option value="galatyn_anemos">Galatyn Anemos</option>
-			<option value="galatyn_pagos">Galatyn Pagos</option>
-			<option value="galatyn_pagos_1">Galatyn Pagos +1</option>
-			<option value="galatyn_elemental">Galatyn Elemental</option>
-			<option value="galatyn_elemental_1">Galatyn Elemental +1</option>
-			<option value="galatyn_elemental_2">Galatyn Elemental +2</option>
-			<option value="galatyn_pyros">Galatyn Pyros</option>
-			<option value="hydatos_sword">Hydatos Sword</option>
-			<option value="hydatos_sword_1">Hydatos Sword +1</option>
-			<option value="antea_eureka">Antea Eureka</option>
-			<option value="antea">Antea</option>
-			<option value="antea_physeos">Antea Physeos</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="resistance_bastard_sword">Resistance Bastard Sword</option>
-			<option value="augmented_resistance_bastard_sword">Augmented Resistance Bastard Sword</option>
-			<option value="recollection_bastard_sword">Recollection Bastard Sword</option>
-			<option value="laws_order_bastard_sword">Law's Order Bastard Sword</option>
-			<option value="augmented_laws_order_bastard_sword">Augmented Law's Order Bastard Sword</option>
-			<option value="blades_honor">Blade's Honor</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="manderville_sword">Manderville Sword</option>
-			<option value="amazing_manderville_sword">Amazing Manderville Sword</option>
-			<option value="majestic_manderville_sword">Majestic Manderville Sword</option>
-			<option value="mandervillous_sword">Mandervillous Sword</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="phantom_sword_penumbrae">Phantom Sword Penumbrae</option>
-			<option value="phantom_sword_umbrae">Phantom Sword Umbrae</option>
-			<option value="phantom_sword_obscurum">Phantom Sword Obscurum</option>
+        <!-- ROW 01 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Paladin.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="curtana">Curtana</option>
+              <option value="curtana_zenith">Curtana Zenith</option>
+              <option value="curtana_atma">Curtana Atma</option>
+              <option value="curtana_animus">Curtana Animus</option>
+              <option value="curtana_novus">Curtana Novus</option>
+              <option value="curtana_nexus">Curtana Nexus</option>
+              <option value="excalibur">Excalibur</option>
+              <option value="excalibur_zeta">Excalibur Zeta</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="animated_hauteclaire">Animated Hauteclaire</option>
+              <option value="hauteclaire_awoken">Hauteclaire Awoken</option>
+              <option value="almace">Almace</option>
+              <option value="almace_hyperconductive">Almace Hyperconductive</option>
+              <option value="almace_reconditioned">Almace Reconditioned</option>
+              <option value="almace_sharpened">Almace Sharpened</option>
+              <option value="almace_complete">Almace Complete</option>
+              <option value="aettir_lux">Aettir Lux</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="antiquated_galatyn">Antiquated Galatyn</option>
+              <option value="galatyn">Galatyn</option>
+              <option value="galatyn_1">Galatyn +1</option>
+              <option value="galatyn_2">Galatyn +2</option>
+              <option value="galatyn_anemos">Galatyn Anemos</option>
+              <option value="galatyn_pagos">Galatyn Pagos</option>
+              <option value="galatyn_pagos_1">Galatyn Pagos +1</option>
+              <option value="galatyn_elemental">Galatyn Elemental</option>
+              <option value="galatyn_elemental_1">Galatyn Elemental +1</option>
+              <option value="galatyn_elemental_2">Galatyn Elemental +2</option>
+              <option value="galatyn_pyros">Galatyn Pyros</option>
+              <option value="hydatos_sword">Hydatos Sword</option>
+              <option value="hydatos_sword_1">Hydatos Sword +1</option>
+              <option value="antea_eureka">Antea Eureka</option>
+              <option value="antea">Antea</option>
+              <option value="antea_physeos">Antea Physeos</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="resistance_bastard_sword">Resistance Bastard Sword</option>
+              <option value="augmented_resistance_bastard_sword">Augmented Resistance Bastard Sword</option>
+              <option value="recollection_bastard_sword">Recollection Bastard Sword</option>
+              <option value="laws_order_bastard_sword">Law's Order Bastard Sword</option>
+              <option value="augmented_laws_order_bastard_sword">Augmented Law's Order Bastard Sword</option>
+              <option value="blades_honor">Blade's Honor</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="manderville_sword">Manderville Sword</option>
+              <option value="amazing_manderville_sword">Amazing Manderville Sword</option>
+              <option value="majestic_manderville_sword">Majestic Manderville Sword</option>
+              <option value="mandervillous_sword">Mandervillous Sword</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="phantom_sword_penumbrae">Phantom Sword Penumbrae</option>
+              <option value="phantom_sword_umbrae">Phantom Sword Umbrae</option>
+              <option value="phantom_sword_obscurum">Phantom Sword Obscurum</option>
 
-          </select>
-        </td>
-      </tr>
+            </select>
+          </td>
+        </tr>
 
-  <!-- ROW 02 -->
-  <tr>
-	<td class="row-img-cell">
-	  <img src="./resources/img/FFXIVIconsJobIcons/Job/Warrior.png">
-	</td>
-	<td class="dropdown-cell">
-	  <select class="ARR">
-			<option value="" selected="">None</option>
-			<option value="bravura">Bravura</option>
-			<option value="bravura_zenith">Bravura Zenith</option>
-			<option value="bravura_atma">Bravura Atma</option>
-			<option value="bravura_animus">Bravura Animus</option>
-			<option value="bravura_novus">Bravura Novus</option>
-			<option value="bravura_nexus">Bravura Nexus</option>
-			<option value="ragnarok">Ragnarok</option>
-			<option value="ragnarok_zeta">Ragnarok Zeta</option>
-		</select>
-	</td>
-	<td class="dropdown-cell">
-		<select class="HW">
-			<option value="" selected="">None</option>
-			<option value="animated_parashu">Animated Parashu</option>
-			<option value="parashu_awoken">Parashu Awoken</option>
-			<option value="verethragna">Verethragna</option>
-			<option value="verethragna_hyperconductive">Verethragna Hyperconductive</option>
-			<option value="verethragna_reconditioned">Verethragna Reconditioned</option>
-			<option value="verethragna_sharpened">Verethragna Sharpened</option>
-			<option value="verethragna_complete">Verethragna Complete</option>
-			<option value="verethragna_lux">Verethragna Lux</option>
-		</select>
-	</td>
-	<td class="dropdown-cell">
-		<select class="SB">
-			<option value="" selected="">None</option>
-			<option value="antiquated_farsha">Antiquated Farsha</option>
-			<option value="farsha">Farsha</option>
-			<option value="farsha_1">Farsha +1</option>
-			<option value="farsha_2">Farsha +2</option>
-			<option value="farsha_anemos">Farsha Anemos</option>
-			<option value="farsha_pagos">Farsha Pagos</option>
-			<option value="farsha_pagos_1">Farsha Pagos +1</option>
-			<option value="farsha_elemental">Farsha Elemental</option>
-			<option value="farsha_elemental_1">Farsha Elemental +1</option>
-			<option value="farsha_elemental_2">Farsha Elemental +2</option>
-			<option value="farsha_pyros">Farsha Pyros</option>
-			<option value="farsha_hydatos">Farsha Hydatos</option>
-			<option value="farsha_hydatos_1">Farsha Hydatos +1</option>
-			<option value="chamunda_eureka">Chamunda Eureka</option>
-			<option value="chamunda">Chamunda</option>
-			<option value="chamunda_physeos">Chamunda Physeos</option>
-		</select>
-	</td>
-	<td class="dropdown-cell">
-		<select class="ShB">
-			<option value="" selected="">None</option>
-			<option value="skullrender">Skullrender</option>
-			<option value="skullrender_augmented">Augmented Skullrender</option>
-			<option value="skullrender_recollection">Skullrender Recollection</option>
-			<option value="laws_order_labrys">Law's Order Labrys</option>
-			<option value="augmented_laws_order_labrys">Augmented Law's Order Labrys</option>
-			<option value="blades_valor">Blade's Valor</option>
-		</select>
-	</td>
-	<td class="dropdown-cell">
-		<select class="EW">
-			<option value="" selected="">None</option>
-			<option value="manderville_axe">Manderville Axe</option>
-			<option value="amazing_manderville_axe">Amazing Manderville Axe</option>
-			<option value="majestic_manderville_bardiche">Majestic Manderville Bardiche</option>
-			<option value="mandervillous_bardiche">Mandervillous Bardiche</option>
-		</select>
-	</td>
-	<td class="dropdown-cell">
-		<select class="DT">
-			<option value="" selected="">None</option>
-			<option value="phantom_bardiche_penumbrae">Phantom Bardiche Penumbrae</option>
-			<option value="phantom_bardiche_umbrae">Phantom Bardiche Umbrae</option>
-			<option value="phantom_bardiche_obscurum">Phantom Bardiche Obscurum</option>
-	  </select>
-	</td>
-  </tr>
+        <!-- ROW 02 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Warrior.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="bravura">Bravura</option>
+              <option value="bravura_zenith">Bravura Zenith</option>
+              <option value="bravura_atma">Bravura Atma</option>
+              <option value="bravura_animus">Bravura Animus</option>
+              <option value="bravura_novus">Bravura Novus</option>
+              <option value="bravura_nexus">Bravura Nexus</option>
+              <option value="ragnarok">Ragnarok</option>
+              <option value="ragnarok_zeta">Ragnarok Zeta</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Parashu">Animated Parashu</option>
+              <option value="Parashu_Awoken">Parashu Awoken</option>
+              <option value="verethragna">Verethragna</option>
+              <option value="verethragna_hyperconductive">Verethragna Hyperconductive</option>
+              <option value="verethragna_reconditioned">Verethragna Reconditioned</option>
+              <option value="verethragna_sharpened">Verethragna Sharpened</option>
+              <option value="verethragna_complete">Verethragna Complete</option>
+              <option value="verethragna_lux">Verethragna Lux</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="antiquated_farsha">Antiquated Farsha</option>
+              <option value="farsha">Farsha</option>
+              <option value="farsha_1">Farsha +1</option>
+              <option value="farsha_2">Farsha +2</option>
+              <option value="farsha_anemos">Farsha Anemos</option>
+              <option value="farsha_pagos">Farsha Pagos</option>
+              <option value="farsha_pagos_1">Farsha Pagos +1</option>
+              <option value="farsha_elemental">Farsha Elemental</option>
+              <option value="farsha_elemental_1">Farsha Elemental +1</option>
+              <option value="farsha_elemental_2">Farsha Elemental +2</option>
+              <option value="farsha_pyros">Farsha Pyros</option>
+              <option value="farsha_hydatos">Farsha Hydatos</option>
+              <option value="farsha_hydatos_1">Farsha Hydatos +1</option>
+              <option value="chamunda_eureka">Chamunda Eureka</option>
+              <option value="chamunda">Chamunda</option>
+              <option value="chamunda_physeos">Chamunda Physeos</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="skullrender">Skullrender</option>
+              <option value="skullrender_augmented">Augmented Skullrender</option>
+              <option value="skullrender_recollection">Skullrender Recollection</option>
+              <option value="laws_order_labrys">Law's Order Labrys</option>
+              <option value="augmented_laws_order_labrys">Augmented Law's Order Labrys</option>
+              <option value="blades_valor">Blade's Valor</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="manderville_axe">Manderville Axe</option>
+              <option value="amazing_manderville_axe">Amazing Manderville Axe</option>
+              <option value="majestic_manderville_bardiche">Majestic Manderville Bardiche</option>
+              <option value="mandervillous_bardiche">Mandervillous Bardiche</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="phantom_bardiche_penumbrae">Phantom Bardiche Penumbrae</option>
+              <option value="phantom_bardiche_umbrae">Phantom Bardiche Umbrae</option>
+              <option value="phantom_bardiche_obscurum">Phantom Bardiche Obscurum</option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 03 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Dragoon.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="Gae Bolg"> Gae Bolg </option>
-			<option value="Gae Bolg Zenith"> Gae Bolg Zenith </option>
-			<option value="Gae Bolg Atma"> Gae Bolg Atma </option>
-			<option value="Gae Bolg Animus"> Gae Bolg Animus </option>
-			<option value="Gae Bolg Novus"> Gae Bolg Novus </option>
-			<option value="Gae Bolg Nexus"> Gae Bolg Nexus </option>
-			<option value="Longinus"> Longinus </option>
-			<option value="Longinus Zeta"> Longinus Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Rhongomiant"> Rhongomiant </option>
-			<option value="Hyperconductive Rhongomiant"> Hyperconductive Rhongomiant </option>
-			<option value="Trident of the Overlord"> Trident of the Overlord </option>
-			<option value="Sharpened Trident of the Overlord"> Sharpened Trident of the Overlord </option>
-			<option value="Areadbhar"> Areadbhar </option>
-			<option value="Areadbhar Lux"> Areadbhar Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-		  <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Lance"> Elemental Lance </option>
-			<option value="Elemental Lance +1"> Elemental Lance +1 </option>
-			<option value="Elemental Lance +2"> Elemental Lance +2 </option>
-			<option value="Pyros Lance"> Pyros Lance </option>
-			<option value="Hydatos Lance"> Hydatos Lance </option>
-			<option value="Hydatos Lance +1"> Hydatos Lance +1 </option>
-			<option value="Daboya"> Daboya </option>
-			<option value="Daboya Eureka"> Daboya Eureka </option>
-			<option value="Daboya Physeos"> Daboya Physeos </option>
-		  </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Dreizack"> Dreizack </option>
-			<option value="Augmented Dreizack"> Augmented Dreizack </option>
-			<option value="Dreizack Recollection"> Dreizack Recollection </option>
-			<option value="Law's Order Spear"> Law's Order Spear </option>
-			<option value="Augmented Law's Order Spear"> Augmented Law's Order Spear </option>
-			<option value="Blade's Glory"> Blade's Glory </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Spear"> Manderville Spear </option>
-			<option value="Amazing Manderville Spear"> Amazing Manderville Spear </option>
-			<option value="Majestic Manderville Spear"> Majestic Manderville Spear </option>
-			<option value="Mandervillous Trident"> Mandervillous Trident </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Spear Umbrae"> Phantom Spear Umbrae </option>
-			<option value="Phantom Spear Penumbrae"> Phantom Spear Penumbrae </option>
-			<option value="Phantom Fork Obscurum"> Phantom Fork Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 03 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Dragoon.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="Gae Bolg"> Gae Bolg </option>
+              <option value="Gae Bolg Zenith"> Gae Bolg Zenith </option>
+              <option value="Gae Bolg Atma"> Gae Bolg Atma </option>
+              <option value="Gae Bolg Animus"> Gae Bolg Animus </option>
+              <option value="Gae Bolg Novus"> Gae Bolg Novus </option>
+              <option value="Gae Bolg Nexus"> Gae Bolg Nexus </option>
+              <option value="Longinus"> Longinus </option>
+              <option value="Longinus Zeta"> Longinus Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Brionac">Animated Brionac</option>
+              <option value="Brionac_Awoken">Brionac Awoken</option>
+              <option value="Rhongomiant"> Rhongomiant </option>
+              <option value="Hyperconductive Rhongomiant"> Hyperconductive Rhongomiant </option>
+              <option value="Trident of the Overlord"> Trident of the Overlord </option>
+              <option value="Sharpened Trident of the Overlord"> Sharpened Trident of the Overlord </option>
+              <option value="Areadbhar"> Areadbhar </option>
+              <option value="Areadbhar Lux"> Areadbhar Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Ryunohige">Antiquated Ryunohige</option>
+              <option value="Ryunohige">Ryunohige</option>
+              <option value="Ryunohige_1">Ryunohige +1</option>
+              <option value="Ryunohige_2">Ryunohige +2</option>
+              <option value="Ryunohige_Anemos">Ryunohige Anemos</option>
+              <option value="Ryunohige_Pagos">Ryunohige Pagos</option>
+              <option value="Ryunohige_Pagos_1">Ryunohige Pagos +1</option>
+              <option value="Elemental Lance"> Elemental Lance </option>
+              <option value="Elemental Lance +1"> Elemental Lance +1 </option>
+              <option value="Elemental Lance +2"> Elemental Lance +2 </option>
+              <option value="Pyros Lance"> Pyros Lance </option>
+              <option value="Hydatos Lance"> Hydatos Lance </option>
+              <option value="Hydatos Lance +1"> Hydatos Lance +1 </option>
+              <option value="Daboya"> Daboya </option>
+              <option value="Daboya Eureka"> Daboya Eureka </option>
+              <option value="Daboya Physeos"> Daboya Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Dreizack"> Dreizack </option>
+              <option value="Augmented Dreizack"> Augmented Dreizack </option>
+              <option value="Dreizack Recollection"> Dreizack Recollection </option>
+              <option value="Law's Order Spear"> Law's Order Spear </option>
+              <option value="Augmented Law's Order Spear"> Augmented Law's Order Spear </option>
+              <option value="Blade's Glory"> Blade's Glory </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Spear"> Manderville Spear </option>
+              <option value="Amazing Manderville Spear"> Amazing Manderville Spear </option>
+              <option value="Majestic Manderville Spear"> Majestic Manderville Spear </option>
+              <option value="Mandervillous Trident"> Mandervillous Trident </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Spear Umbrae"> Phantom Spear Umbrae </option>
+              <option value="Phantom Spear Penumbrae"> Phantom Spear Penumbrae </option>
+              <option value="Phantom Fork Obscurum"> Phantom Fork Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 04 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Monk.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="Sphairai"> Sphairai </option>
-			<option value="Sphairai Zenith"> Sphairai Zenith </option>
-			<option value="Sphairai Atma"> Sphairai Atma </option>
-			<option value="Sphairai Animus"> Sphairai Animus </option>
-			<option value="Sphairai Novus"> Sphairai Novus </option>
-			<option value="Sphairai Nexus"> Sphairai Nexus </option>
-			<option value="Kaiser Knuckles"> Kaiser Knuckles </option>
-			<option value="Kaiser Knuckles Zeta"> Kaiser Knuckles Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Verethragna"> Verethragna </option>
-			<option value="Hyperconductive Verethragna"> Hyperconductive Verethragna </option>
-			<option value="Sultan's Fists"> Sultan's Fists </option>
-			<option value="Sharpened Sultan's Fists"> Sharpened Sultan's Fists </option>
-			<option value="Nyepels"> Nyepels </option>
-			<option value="Nyepels Lux"> Nyepels Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Knuckles"> Elemental Knuckles </option>
-			<option value="Elemental Knuckles +1"> Elemental Knuckles +1 </option>
-			<option value="Elemental Knuckles +2"> Elemental Knuckles +2 </option>
-			<option value="Pyros Knuckles"> Pyros Knuckles </option>
-			<option value="Hydatos Knuckles"> Hydatos Knuckles </option>
-			<option value="Hydatos Knuckles +1"> Hydatos Knuckles +1 </option>
-			<option value="Dumuzis"> Dumuzis </option>
-			<option value="Dumuzis Eureka"> Dumuzis Eureka </option>
-			<option value="Dumuzis Physeos"> Dumuzis Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Samsara"> Samsara </option>
-			<option value="Augmented Samsara"> Augmented Samsara </option>
-			<option value="Samsara Recollection"> Samsara Recollection </option>
-			<option value="Law's Order Knuckles"> Law's Order Knuckles </option>
-			<option value="Augmented Law's Order Knuckles"> Augmented Law's Order Knuckles </option>
-			<option value="Blade's Serenity"> Blade's Serenity </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Knuckles"> Manderville Knuckles </option>
-			<option value="Amazing Manderville Knuckles"> Amazing Manderville Knuckles </option>
-			<option value="Majestic Manderville Fists"> Majestic Manderville Fists </option>
-			<option value="Mandervillous Fists"> Mandervillous Fists </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Knuckles Umbrae"> Phantom Knuckles Umbrae </option>
-			<option value="Phantom Knuckles Penumbrae"> Phantom Knuckles Penumbrae </option>
-			<option value="Phantom Jamadhars Obscurum"> Phantom Jamadhars Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 04 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Monk.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="Sphairai"> Sphairai </option>
+              <option value="Sphairai Zenith"> Sphairai Zenith </option>
+              <option value="Sphairai Atma"> Sphairai Atma </option>
+              <option value="Sphairai Animus"> Sphairai Animus </option>
+              <option value="Sphairai Novus"> Sphairai Novus </option>
+              <option value="Sphairai Nexus"> Sphairai Nexus </option>
+              <option value="Kaiser Knuckles"> Kaiser Knuckles </option>
+              <option value="Kaiser Knuckles Zeta"> Kaiser Knuckles Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Rising_Suns">Animated Rising Suns</option>
+              <option value="Rising_Suns_Awoken">Rising Suns Awoken</option>
+              <option value="Verethragna"> Verethragna </option>
+              <option value="Hyperconductive Verethragna"> Hyperconductive Verethragna </option>
+              <option value="Sultan's Fists"> Sultan's Fists </option>
+              <option value="Sharpened Sultan's Fists"> Sharpened Sultan's Fists </option>
+              <option value="Nyepels"> Nyepels </option>
+              <option value="Nyepels Lux"> Nyepels Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Sudarshana_Chakra">Antiquated Sudarshana Chakra</option>
+              <option value="Sudarshana_Chakra">Sudarshana Chakra</option>
+              <option value="Sudarshana_Chakra_1">Sudarshana Chakra +1</option>
+              <option value="Sudarshana_Chakra_2">Sudarshana Chakra +2</option>
+              <option value="Sudarshana_Chakra_Anemos">Sudarshana Chakra Anemos</option>
+              <option value="Sudarshana_Chakra_Pagos">Sudarshana Chakra Pagos</option>
+              <option value="Sudarshana_Chakra_Pagos_1">Sudarshana Chakra Pagos +1</option>
+              <option value="Elemental Knuckles"> Elemental Knuckles </option>
+              <option value="Elemental Knuckles +1"> Elemental Knuckles +1 </option>
+              <option value="Elemental Knuckles +2"> Elemental Knuckles +2 </option>
+              <option value="Pyros Knuckles"> Pyros Knuckles </option>
+              <option value="Hydatos Knuckles"> Hydatos Knuckles </option>
+              <option value="Hydatos Knuckles +1"> Hydatos Knuckles +1 </option>
+              <option value="Dumuzis"> Dumuzis </option>
+              <option value="Dumuzis Eureka"> Dumuzis Eureka </option>
+              <option value="Dumuzis Physeos"> Dumuzis Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Samsara"> Samsara </option>
+              <option value="Augmented Samsara"> Augmented Samsara </option>
+              <option value="Samsara Recollection"> Samsara Recollection </option>
+              <option value="Law's Order Knuckles"> Law's Order Knuckles </option>
+              <option value="Augmented Law's Order Knuckles"> Augmented Law's Order Knuckles </option>
+              <option value="Blade's Serenity"> Blade's Serenity </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Knuckles"> Manderville Knuckles </option>
+              <option value="Amazing Manderville Knuckles"> Amazing Manderville Knuckles </option>
+              <option value="Majestic Manderville Fists"> Majestic Manderville Fists </option>
+              <option value="Mandervillous Fists"> Mandervillous Fists </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Knuckles Umbrae"> Phantom Knuckles Umbrae </option>
+              <option value="Phantom Knuckles Penumbrae"> Phantom Knuckles Penumbrae </option>
+              <option value="Phantom Jamadhars Obscurum"> Phantom Jamadhars Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 05 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Ninja.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="Yoshimitsu"> Yoshimitsu </option>
-			<option value="Yoshimitsu Zenith"> Yoshimitsu Zenith </option>
-			<option value="Yoshimitsu Atma"> Yoshimitsu Atma </option>
-			<option value="Yoshimitsu Animus"> Yoshimitsu Animus </option>
-			<option value="Yoshimitsu Novus"> Yoshimitsu Novus </option>
-			<option value="Yoshimitsu Nexus"> Yoshimitsu Nexus </option>
-			<option value="Sasuke's Blades"> Sasuke's Blades </option>
-			<option value="Sasuke's Blades Zeta"> Sasuke's Blades Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Kannagi"> Kannagi </option>
-			<option value="Hyperconductive Kannagi"> Hyperconductive Kannagi </option>
-			<option value="Spurs of the Thorn Prince"> Spurs of the Thorn Prince </option>
-			<option value="Sharpened Spurs of the Thorn Prince"> Sharpened Spurs of the Thorn Prince </option>
-			<option value="Sandungs"> Sandungs </option>
-			<option value="Sandungs Lux"> Sandungs Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Knives"> Elemental Knives </option>
-			<option value="Elemental Knives +1"> Elemental Knives +1 </option>
-			<option value="Elemental Knives +2"> Elemental Knives +2 </option>
-			<option value="Pyros Knives"> Pyros Knives </option>
-			<option value="Hydatos Knives"> Hydatos Knives </option>
-			<option value="Hydatos Knives +1"> Hydatos Knives +1 </option>
-			<option value="Kasasagi"> Kasasagi </option>
-			<option value="Kasasagi Eureka"> Kasasagi Eureka </option>
-			<option value="Kasasagi Physeos"> Kasasagi Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Honeshirazu"> Honeshirazu </option>
-			<option value="Augmented Honeshirazu"> Augmented Honeshirazu </option>
-			<option value="Honeshirazu Recollection"> Honeshirazu Recollection </option>
-			<option value="Law's Order Knives"> Law's Order Knives </option>
-			<option value="Augmented Law's Order Knives"> Augmented Law's Order Knives </option>
-			<option value="Blade's Subtlety"> Blade's Subtlety </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Knives"> Manderville Knives </option>
-			<option value="Amazing Manderville Knives"> Amazing Manderville Knives </option>
-			<option value="Majestic Manderville Knives"> Majestic Manderville Knives </option>
-			<option value="Mandervillous Knives"> Mandervillous Knives </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Cleavers Umbrae"> Phantom Cleavers Umbrae </option>
-			<option value="Phantom Cleavers Penumbrae"> Phantom Cleavers Penumbrae </option>
-			<option value="Phantom Khukuri Obscurum"> Phantom Khukuri Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 05 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Ninja.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="Yoshimitsu"> Yoshimitsu </option>
+              <option value="Yoshimitsu Zenith"> Yoshimitsu Zenith </option>
+              <option value="Yoshimitsu Atma"> Yoshimitsu Atma </option>
+              <option value="Yoshimitsu Animus"> Yoshimitsu Animus </option>
+              <option value="Yoshimitsu Novus"> Yoshimitsu Novus </option>
+              <option value="Yoshimitsu Nexus"> Yoshimitsu Nexus </option>
+              <option value="Sasuke's Blades"> Sasuke's Blades </option>
+              <option value="Sasuke's Blades Zeta"> Sasuke's Blades Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Yukimitsu">Animated Yukimitsu</option>
+              <option value="Yukimitsu_Awoken">Yukimitsu Awoken</option>
+              <option value="Kannagi"> Kannagi </option>
+              <option value="Hyperconductive Kannagi"> Hyperconductive Kannagi </option>
+              <option value="Spurs of the Thorn Prince"> Spurs of the Thorn Prince </option>
+              <option value="Sharpened Spurs of the Thorn Prince"> Sharpened Spurs of the Thorn Prince </option>
+              <option value="Sandungs"> Sandungs </option>
+              <option value="Sandungs Lux"> Sandungs Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Nagi">Antiquated Nagi</option>
+              <option value="Nagi">Nagi</option>
+              <option value="Nagi_1">Nagi +1</option>
+              <option value="Nagi_2">Nagi +2</option>
+              <option value="Nagi_Anemos">Nagi Anemos</option>
+              <option value="Nagi_Pagos">Nagi Pagos</option>
+              <option value="Nagi_Pagos_1">Nagi Pagos +1</option>
+              <option value="Elemental Knives"> Elemental Knives </option>
+              <option value="Elemental Knives +1"> Elemental Knives +1 </option>
+              <option value="Elemental Knives +2"> Elemental Knives +2 </option>
+              <option value="Pyros Knives"> Pyros Knives </option>
+              <option value="Hydatos Knives"> Hydatos Knives </option>
+              <option value="Hydatos Knives +1"> Hydatos Knives +1 </option>
+              <option value="Kasasagi"> Kasasagi </option>
+              <option value="Kasasagi Eureka"> Kasasagi Eureka </option>
+              <option value="Kasasagi Physeos"> Kasasagi Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Honeshirazu"> Honeshirazu </option>
+              <option value="Augmented Honeshirazu"> Augmented Honeshirazu </option>
+              <option value="Honeshirazu Recollection"> Honeshirazu Recollection </option>
+              <option value="Law's Order Knives"> Law's Order Knives </option>
+              <option value="Augmented Law's Order Knives"> Augmented Law's Order Knives </option>
+              <option value="Blade's Subtlety"> Blade's Subtlety </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Knives"> Manderville Knives </option>
+              <option value="Amazing Manderville Knives"> Amazing Manderville Knives </option>
+              <option value="Majestic Manderville Knives"> Majestic Manderville Knives </option>
+              <option value="Mandervillous Knives"> Mandervillous Knives </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Cleavers Umbrae"> Phantom Cleavers Umbrae </option>
+              <option value="Phantom Cleavers Penumbrae"> Phantom Cleavers Penumbrae </option>
+              <option value="Phantom Khukuri Obscurum"> Phantom Khukuri Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 06 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Bard.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="Artemis Bow"> Artemis Bow </option>
-			<option value="Artemis Bow Zenith"> Artemis Bow Zenith </option>
-			<option value="Artemis Bow Atma"> Artemis Bow Atma </option>
-			<option value="Artemis Bow Animus"> Artemis Bow Animus </option>
-			<option value="Artemis Bow Novus"> Artemis Bow Novus </option>
-			<option value="Artemis Bow Nexus"> Artemis Bow Nexus </option>
-			<option value="Yoichi Bow"> Yoichi Bow </option>
-			<option value="Yoichi Bow Zeta"> Yoichi Bow Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Gandiva"> Gandiva </option>
-			<option value="Hyperconductive Gandiva"> Hyperconductive Gandiva </option>
-			<option value="Bow of the Autarch"> Bow of the Autarch </option>
-			<option value="Sharpened Bow of the Autarch"> Sharpened Bow of the Autarch </option>
-			<option value="Terpander"> Terpander </option>
-			<option value="Terpander Lux"> Terpander Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Harp Bow"> Elemental Harp Bow </option>
-			<option value="Elemental Harp Bow +1"> Elemental Harp Bow +1 </option>
-			<option value="Elemental Harp Bow +2"> Elemental Harp Bow +2 </option>
-			<option value="Pyros Harp Bow"> Pyros Harp Bow </option>
-			<option value="Hydatos Harp Bow"> Hydatos Harp Bow </option>
-			<option value="Hydatos Harp Bow +1"> Hydatos Harp Bow +1 </option>
-			<option value="Circinae"> Circinae </option>
-			<option value="Circinae Eureka"> Circinae Eureka </option>
-			<option value="Circinae Physeos"> Circinae Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Brilliance"> Brilliance </option>
-			<option value="Augmented Brilliance"> Augmented Brilliance </option>
-			<option value="Brilliance Recollection"> Brilliance Recollection </option>
-			<option value="Law's Order Composite Bow"> Law's Order Composite Bow </option>
-			<option value="Augmented Law's Order Composite Bow"> Augmented Law's Order Composite Bow </option>
-			<option value="Blade's Muse"> Blade's Muse </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Harp Bow"> Manderville Harp Bow </option>
-			<option value="Amazing Manderville Harp Bow"> Amazing Manderville Harp Bow </option>
-			<option value="Majestic Manderville Harp Bow"> Majestic Manderville Harp Bow </option>
-			<option value="Mandervillous Compound Bow"> Mandervillous Compound Bow </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Harp Bow Umbrae"> Phantom Harp Bow Umbrae </option>
-			<option value="Phantom Harp Bow Penumbrae"> Phantom Harp Bow Penumbrae </option>
-			<option value="Phantom Longbow Obscurum"> Phantom Longbow Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 06 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Bard.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="Artemis Bow"> Artemis Bow </option>
+              <option value="Artemis Bow Zenith"> Artemis Bow Zenith </option>
+              <option value="Artemis Bow Atma"> Artemis Bow Atma </option>
+              <option value="Artemis Bow Animus"> Artemis Bow Animus </option>
+              <option value="Artemis Bow Novus"> Artemis Bow Novus </option>
+              <option value="Artemis Bow Nexus"> Artemis Bow Nexus </option>
+              <option value="Yoichi Bow"> Yoichi Bow </option>
+              <option value="Yoichi Bow Zeta"> Yoichi Bow Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Berimbau">Animated Berimbau</option>
+              <option value="Berimbau_Awoken">Berimbau Awoken</option>
+              <option value="Gandiva">Gandiva</option>
+              <option value="Hyperconductive_Gandiva">Hyperconductive Gandiva</option>
+              <option value="Bow_of_the_Autarch">Bow of the Autarch</option>
+              <option value="Sharpened_Bow_of_the_Autarch">Sharpened Bow of the Autarch</option>
+              <option value="Terpander">Terpander</option>
+              <option value="Terpander_Lux">Terpander Lux</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Failnaught">Antiquated Failnaught</option>
+              <option value="Failnaught">Failnaught</option>
+              <option value="Failnaught_1">Failnaught +1</option>
+              <option value="Failnaught_2">Failnaught +2</option>
+              <option value="Failnaught_Anemos">Failnaught Anemos</option>
+              <option value="Failnaught_Pagos">Failnaught Pagos</option>
+              <option value="Failnaught_Pagos_1">Failnaught Pagos +1</option>
+              <option value="Elemental Harp Bow"> Elemental Harp Bow </option>
+              <option value="Elemental Harp Bow +1"> Elemental Harp Bow +1 </option>
+              <option value="Elemental Harp Bow +2"> Elemental Harp Bow +2 </option>
+              <option value="Pyros Harp Bow"> Pyros Harp Bow </option>
+              <option value="Hydatos Harp Bow"> Hydatos Harp Bow </option>
+              <option value="Hydatos Harp Bow +1"> Hydatos Harp Bow +1 </option>
+              <option value="Circinae"> Circinae </option>
+              <option value="Circinae Eureka"> Circinae Eureka </option>
+              <option value="Circinae Physeos"> Circinae Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Brilliance"> Brilliance </option>
+              <option value="Augmented Brilliance"> Augmented Brilliance </option>
+              <option value="Brilliance Recollection"> Brilliance Recollection </option>
+              <option value="Law's Order Composite Bow"> Law's Order Composite Bow </option>
+              <option value="Augmented Law's Order Composite Bow"> Augmented Law's Order Composite Bow </option>
+              <option value="Blade's Muse"> Blade's Muse </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Harp Bow"> Manderville Harp Bow </option>
+              <option value="Amazing Manderville Harp Bow"> Amazing Manderville Harp Bow </option>
+              <option value="Majestic Manderville Harp Bow"> Majestic Manderville Harp Bow </option>
+              <option value="Mandervillous Compound Bow"> Mandervillous Compound Bow </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Harp Bow Umbrae"> Phantom Harp Bow Umbrae </option>
+              <option value="Phantom Harp Bow Penumbrae"> Phantom Harp Bow Penumbrae </option>
+              <option value="Phantom Longbow Obscurum"> Phantom Longbow Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 07 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/BlackMage.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="Stardust Rod"> Stardust Rod </option>
-			<option value="Stardust Rod Zenith"> Stardust Rod Zenith </option>
-			<option value="Stardust Rod Atma"> Stardust Rod Atma </option>
-			<option value="Stardust Rod Animus"> Stardust Rod Animus </option>
-			<option value="Stardust Rod Novus"> Stardust Rod Novus </option>
-			<option value="Stardust Rod Nexus"> Stardust Rod Nexus </option>
-			<option value="Lilith Rod"> Lilith Rod </option>
-			<option value="Lilith Rod Zeta"> Lilith Rod Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Hvergelmir"> Hvergelmir </option>
-			<option value="Hyperconductive Hvergelmir"> Hyperconductive Hvergelmir </option>
-			<option value="Rod of the Black Khan"> Rod of the Black Khan </option>
-			<option value="Sharpened Rod of the Black Khan"> Sharpened Rod of the Black Khan </option>
-			<option value="Kaladanda"> Kaladanda </option>
-			<option value="Kaladanda Lux"> Kaladanda Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Rod"> Elemental Rod </option>
-			<option value="Elemental Rod +1"> Elemental Rod +1 </option>
-			<option value="Elemental Rod +2"> Elemental Rod +2 </option>
-			<option value="Pyros Rod"> Pyros Rod </option>
-			<option value="Hydatos Rod"> Hydatos Rod </option>
-			<option value="Hydatos Rod +1"> Hydatos Rod +1 </option>
-			<option value="Paikea"> Paikea </option>
-			<option value="Paikea Eureka"> Paikea Eureka </option>
-			<option value="Paikea Physeos"> Paikea Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Soulscourge"> Soulscourge </option>
-			<option value="Augmented Soulscourge"> Augmented Soulscourge </option>
-			<option value="Soulscourge Recollection"> Soulscourge Recollection </option>
-			<option value="Law's Order Rod"> Law's Order Rod </option>
-			<option value="Augmented Law's Order Rod"> Augmented Law's Order Rod </option>
-			<option value="Blade's Fury"> Blade's Fury </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Rod"> Manderville Rod </option>
-			<option value="Amazing Manderville Rod"> Amazing Manderville Rod </option>
-			<option value="Majestic Manderville Staff"> Majestic Manderville Staff </option>
-			<option value="Mandervillous Rod"> Mandervillous Rod </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Staff Umbrae"> Phantom Staff Umbrae </option>
-			<option value="Phantom Staff Penumbrae"> Phantom Staff Penumbrae </option>
-			<option value="Phantom Longpole Obscurum"> Phantom Longpole Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 07 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/BlackMage.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="Stardust Rod"> Stardust Rod </option>
+              <option value="Stardust Rod Zenith"> Stardust Rod Zenith </option>
+              <option value="Stardust Rod Atma"> Stardust Rod Atma </option>
+              <option value="Stardust Rod Animus"> Stardust Rod Animus </option>
+              <option value="Stardust Rod Novus"> Stardust Rod Novus </option>
+              <option value="Stardust Rod Nexus"> Stardust Rod Nexus </option>
+              <option value="Lilith Rod"> Lilith Rod </option>
+              <option value="Lilith Rod Zeta"> Lilith Rod Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Lunaris_Rod">Animated Lunaris Rod</option>
+              <option value="Lunaris_Rod_Awoken">Lunaris Rod Awoken</option>
+              <option value="Hvergelmir"> Hvergelmir </option>
+              <option value="Hyperconductive Hvergelmir"> Hyperconductive Hvergelmir </option>
+              <option value="Rod of the Black Khan"> Rod of the Black Khan </option>
+              <option value="Sharpened Rod of the Black Khan"> Sharpened Rod of the Black Khan </option>
+              <option value="Kaladanda"> Kaladanda </option>
+              <option value="Kaladanda Lux"> Kaladanda Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Vanargand">Antiquated Vanargand</option>
+              <option value="Vanargand">Vanargand</option>
+              <option value="Vanargand_1">Vanargand +1</option>
+              <option value="Vanargand_2">Vanargand +2</option>
+              <option value="Vanargand_Anemos">Vanargand Anemos</option>
+              <option value="Vanargand_Pagos">Vanargand Pagos</option>
+              <option value="Vanargand_Pagos_1">Vanargand Pagos +1</option>
+              <option value="Elemental Rod"> Elemental Rod </option>
+              <option value="Elemental Rod +1"> Elemental Rod +1 </option>
+              <option value="Elemental Rod +2"> Elemental Rod +2 </option>
+              <option value="Pyros Rod"> Pyros Rod </option>
+              <option value="Hydatos Rod"> Hydatos Rod </option>
+              <option value="Hydatos Rod +1"> Hydatos Rod +1 </option>
+              <option value="Paikea"> Paikea </option>
+              <option value="Paikea Eureka"> Paikea Eureka </option>
+              <option value="Paikea Physeos"> Paikea Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Soulscourge"> Soulscourge </option>
+              <option value="Augmented Soulscourge"> Augmented Soulscourge </option>
+              <option value="Soulscourge Recollection"> Soulscourge Recollection </option>
+              <option value="Law's Order Rod"> Law's Order Rod </option>
+              <option value="Augmented Law's Order Rod"> Augmented Law's Order Rod </option>
+              <option value="Blade's Fury"> Blade's Fury </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Rod"> Manderville Rod </option>
+              <option value="Amazing Manderville Rod"> Amazing Manderville Rod </option>
+              <option value="Majestic Manderville Staff"> Majestic Manderville Staff </option>
+              <option value="Mandervillous Rod"> Mandervillous Rod </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Staff Umbrae"> Phantom Staff Umbrae </option>
+              <option value="Phantom Staff Penumbrae"> Phantom Staff Penumbrae </option>
+              <option value="Phantom Longpole Obscurum"> Phantom Longpole Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 08 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Summoner.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="The Veil of Wiyu"> The Veil of Wiyu </option>
-			<option value="The Veil of Wiyu Zenith"> The Veil of Wiyu Zenith </option>
-			<option value="The Veil of Wiyu Atma"> The Veil of Wiyu Atma </option>
-			<option value="The Veil of Wiyu Animus"> The Veil of Wiyu Animus </option>
-			<option value="The Veil of Wiyu Novus"> The Veil of Wiyu Novus </option>
-			<option value="The Veil of Wiyu Nexus"> The Veil of Wiyu Nexus </option>
-			<option value="Apocalypse"> Apocalypse </option>
-			<option value="Apocalypse Zeta"> Apocalypse Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Draconomicon"> Draconomicon </option>
-			<option value="Hyperconductive Draconomicon"> Hyperconductive Draconomicon </option>
-			<option value="Book of the Mad Queen"> Book of the Mad Queen </option>
-			<option value="Sharpened Book of the Mad Queen"> Sharpened Book of the Mad Queen </option>
-			<option value="Mimesis"> Mimesis </option>
-			<option value="Mimesis Lux"> Mimesis Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Grimoire"> Elemental Grimoire </option>
-			<option value="Elemental Grimoire +1"> Elemental Grimoire +1 </option>
-			<option value="Elemental Grimoire +2"> Elemental Grimoire +2 </option>
-			<option value="Pyros Grimoire"> Pyros Grimoire </option>
-			<option value="Hydatos Grimoire"> Hydatos Grimoire </option>
-			<option value="Hydatos Grimoire +1"> Hydatos Grimoire +1 </option>
-			<option value="Tuah"> Tuah </option>
-			<option value="Tuah Eureka"> Tuah Eureka </option>
-			<option value="Tuah Physeos"> Tuah Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Espiritus"> Espiritus </option>
-			<option value="Augmented Espiritus"> Augmented Espiritus </option>
-			<option value="Espiritus Recollection"> Espiritus Recollection </option>
-			<option value="Law's Order Index"> Law's Order Index </option>
-			<option value="Augmented Law's Order Index"> Augmented Law's Order Index </option>
-			<option value="Blade's Acumen"> Blade's Acumen </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Index"> Manderville Index </option>
-			<option value="Amazing Manderville Index"> Amazing Manderville Index </option>
-			<option value="Majestic Manderville Index"> Majestic Manderville Index </option>
-			<option value="Mandervillous Index"> Mandervillous Index </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Index Umbrae"> Phantom Index Umbrae </option>
-			<option value="Phantom Index Penumbrae"> Phantom Index Penumbrae </option>
-			<option value="Phantom Index Obscurum"> Phantom Index Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 08 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Summoner.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="The Veil of Wiyu"> The Veil of Wiyu </option>
+              <option value="The Veil of Wiyu Zenith"> The Veil of Wiyu Zenith </option>
+              <option value="The Veil of Wiyu Atma"> The Veil of Wiyu Atma </option>
+              <option value="The Veil of Wiyu Animus"> The Veil of Wiyu Animus </option>
+              <option value="The Veil of Wiyu Novus"> The Veil of Wiyu Novus </option>
+              <option value="The Veil of Wiyu Nexus"> The Veil of Wiyu Nexus </option>
+              <option value="Apocalypse"> Apocalypse </option>
+              <option value="Apocalypse Zeta"> Apocalypse Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Almandal">Animated Almandal</option>
+              <option value="Almandal_Awoken">Almandal Awoken</option>
+              <option value="Draconomicon"> Draconomicon </option>
+              <option value="Hyperconductive Draconomicon"> Hyperconductive Draconomicon </option>
+              <option value="Book of the Mad Queen"> Book of the Mad Queen </option>
+              <option value="Sharpened Book of the Mad Queen"> Sharpened Book of the Mad Queen </option>
+              <option value="Mimesis"> Mimesis </option>
+              <option value="Mimesis Lux"> Mimesis Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Lemegeton">Antiquated Lemegeton</option>
+              <option value="Lemegeton">Lemegeton</option>
+              <option value="Lemegeton_1">Lemegeton +1</option>
+              <option value="Lemegeton_2">Lemegeton +2</option>
+              <option value="Lemegeton_Anemos">Lemegeton Anemos</option>
+              <option value="Lemegeton_Pagos">Lemegeton Pagos</option>
+              <option value="Lemegeton_Pagos_1">Lemegeton Pagos +1</option>
+              <option value="Elemental Grimoire"> Elemental Grimoire </option>
+              <option value="Elemental Grimoire +1"> Elemental Grimoire +1 </option>
+              <option value="Elemental Grimoire +2"> Elemental Grimoire +2 </option>
+              <option value="Pyros Grimoire"> Pyros Grimoire </option>
+              <option value="Hydatos Grimoire"> Hydatos Grimoire </option>
+              <option value="Hydatos Grimoire +1"> Hydatos Grimoire +1 </option>
+              <option value="Tuah"> Tuah </option>
+              <option value="Tuah Eureka"> Tuah Eureka </option>
+              <option value="Tuah Physeos"> Tuah Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Espiritus"> Espiritus </option>
+              <option value="Augmented Espiritus"> Augmented Espiritus </option>
+              <option value="Espiritus Recollection"> Espiritus Recollection </option>
+              <option value="Law's Order Index"> Law's Order Index </option>
+              <option value="Augmented Law's Order Index"> Augmented Law's Order Index </option>
+              <option value="Blade's Acumen"> Blade's Acumen </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Index"> Manderville Index </option>
+              <option value="Amazing Manderville Index"> Amazing Manderville Index </option>
+              <option value="Majestic Manderville Index"> Majestic Manderville Index </option>
+              <option value="Mandervillous Index"> Mandervillous Index </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Index Umbrae"> Phantom Index Umbrae </option>
+              <option value="Phantom Index Penumbrae"> Phantom Index Penumbrae </option>
+              <option value="Phantom Index Obscurum"> Phantom Index Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 09 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/WhiteMage.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="Thyrus"> Thyrus </option>
-			<option value="Thyrus Zenith"> Thyrus Zenith </option>
-			<option value="Thyrus Atma"> Thyrus Atma </option>
-			<option value="Thyrus Animus"> Thyrus Animus </option>
-			<option value="Thyrus Novus"> Thyrus Novus </option>
-			<option value="Thyrus Nexus"> Thyrus Nexus </option>
-			<option value="Nirvana"> Nirvana </option>
-			<option value="Nirvana Zeta"> Nirvana Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Majestas"> Majestas </option>
-			<option value="Hyperconductive Majestas"> Hyperconductive Majestas </option>
-			<option value="Cane of the White Tsar"> Cane of the White Tsar </option>
-			<option value="Sharpened Cane of the White Tsar"> Sharpened Cane of the White Tsar </option>
-			<option value="Sindri"> Sindri </option>
-			<option value="Sindri Lux"> Sindri Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Cane"> Elemental Cane </option>
-			<option value="Elemental Cane +1"> Elemental Cane +1 </option>
-			<option value="Elemental Cane +2"> Elemental Cane +2 </option>
-			<option value="Pyros Cane"> Pyros Cane </option>
-			<option value="Hydatos Cane"> Hydatos Cane </option>
-			<option value="Hydatos Cane +1"> Hydatos Cane +1 </option>
-			<option value="Rose Couverte"> Rose Couverte </option>
-			<option value="Rose Couverte Eureka"> Rose Couverte Eureka </option>
-			<option value="Rose Couverte Physeos"> Rose Couverte Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Ingrimm"> Ingrimm </option>
-			<option value="Augmented Ingrimm"> Augmented Ingrimm </option>
-			<option value="Ingrimm Recollection"> Ingrimm Recollection </option>
-			<option value="Law's Order Cane"> Law's Order Cane </option>
-			<option value="Augmented Law's Order Cane"> Augmented Law's Order Cane </option>
-			<option value="Blade's Mercy"> Blade's Mercy </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Cane"> Manderville Cane </option>
-			<option value="Amazing Manderville Cane"> Amazing Manderville Cane </option>
-			<option value="Majestic Manderville Wand"> Majestic Manderville Wand </option>
-			<option value="Mandervillous Cane"> Mandervillous Cane </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Crook Umbrae"> Phantom Crook Umbrae </option>
-			<option value="Phantom Crook Penumbrae"> Phantom Crook Penumbrae </option>
-			<option value="Phantom Cane Obscurum"> Phantom Cane Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 09 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/WhiteMage.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="Thyrus"> Thyrus </option>
+              <option value="Thyrus Zenith"> Thyrus Zenith </option>
+              <option value="Thyrus Atma"> Thyrus Atma </option>
+              <option value="Thyrus Animus"> Thyrus Animus </option>
+              <option value="Thyrus Novus"> Thyrus Novus </option>
+              <option value="Thyrus Nexus"> Thyrus Nexus </option>
+              <option value="Nirvana"> Nirvana </option>
+              <option value="Nirvana Zeta"> Nirvana Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Seraph_Cane">Animated Seraph Cane</option>
+              <option value="Seraph_Cane_Awoken">Seraph Cane Awoken</option>
+              <option value="Majestas"> Majestas </option>
+              <option value="Hyperconductive Majestas"> Hyperconductive Majestas </option>
+              <option value="Cane of the White Tsar"> Cane of the White Tsar </option>
+              <option value="Sharpened Cane of the White Tsar"> Sharpened Cane of the White Tsar </option>
+              <option value="Sindri"> Sindri </option>
+              <option value="Sindri Lux"> Sindri Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Aymur">Antiquated Aymur</option>
+              <option value="Aymur">Aymur</option>
+              <option value="Aymur_1">Aymur +1</option>
+              <option value="Aymur_2">Aymur +2</option>
+              <option value="Aymur_Anemos">Aymur Anemos</option>
+              <option value="Aymur_Pagos">Aymur Pagos</option>
+              <option value="Aymur_Pagos_1">Aymur Pagos +1</option>
+              <option value="Elemental Cane"> Elemental Cane </option>
+              <option value="Elemental Cane +1"> Elemental Cane +1 </option>
+              <option value="Elemental Cane +2"> Elemental Cane +2 </option>
+              <option value="Pyros Cane"> Pyros Cane </option>
+              <option value="Hydatos Cane"> Hydatos Cane </option>
+              <option value="Hydatos Cane +1"> Hydatos Cane +1 </option>
+              <option value="Rose Couverte"> Rose Couverte </option>
+              <option value="Rose Couverte Eureka"> Rose Couverte Eureka </option>
+              <option value="Rose Couverte Physeos"> Rose Couverte Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Ingrimm"> Ingrimm </option>
+              <option value="Augmented Ingrimm"> Augmented Ingrimm </option>
+              <option value="Ingrimm Recollection"> Ingrimm Recollection </option>
+              <option value="Law's Order Cane"> Law's Order Cane </option>
+              <option value="Augmented Law's Order Cane"> Augmented Law's Order Cane </option>
+              <option value="Blade's Mercy"> Blade's Mercy </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Cane"> Manderville Cane </option>
+              <option value="Amazing Manderville Cane"> Amazing Manderville Cane </option>
+              <option value="Majestic Manderville Wand"> Majestic Manderville Wand </option>
+              <option value="Mandervillous Cane"> Mandervillous Cane </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Crook Umbrae"> Phantom Crook Umbrae </option>
+              <option value="Phantom Crook Penumbrae"> Phantom Crook Penumbrae </option>
+              <option value="Phantom Cane Obscurum"> Phantom Cane Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 10 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Scholar.png">
-        </td>
-        <td class="dropdown-cell">
-          <select class="ARR">
-            <option value="" selected="">None</option>
-			<option value="Omnilex"> Omnilex </option>
-			<option value="Omnilex Zenith"> Omnilex Zenith </option>
-			<option value="Omnilex Atma"> Omnilex Atma </option>
-			<option value="Omnilex Animus"> Omnilex Animus </option>
-			<option value="Omnilex Novus"> Omnilex Novus </option>
-			<option value="Omnilex Nexus"> Omnilex Nexus </option>
-			<option value="Last Resort"> Last Resort </option>
-			<option value="Last Resort Zeta"> Last Resort Zeta </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Tetrabiblos"> Tetrabiblos </option>
-			<option value="Hyperconductive Tetrabiblos"> Hyperconductive Tetrabiblos </option>
-			<option value="Word of the Magnate"> Word of the Magnate </option>
-			<option value="Sharpened Word of the Magnate"> Sharpened Word of the Magnate </option>
-			<option value="Anabasis"> Anabasis </option>
-			<option value="Anabasis Lux"> Anabasis Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Codex"> Elemental Codex </option>
-			<option value="Elemental Codex +1"> Elemental Codex +1 </option>
-			<option value="Elemental Codex +2"> Elemental Codex +2 </option>
-			<option value="Pyros Codex"> Pyros Codex </option>
-			<option value="Hydatos Codex"> Hydatos Codex </option>
-			<option value="Hydatos Codex +1"> Hydatos Codex +1 </option>
-			<option value="Jebat"> Jebat </option>
-			<option value="Jebat Eureka"> Jebat Eureka </option>
-			<option value="Jebat Physeos"> Jebat Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Akademos"> Akademos </option>
-			<option value="Augmented Akademos"> Augmented Akademos </option>
-			<option value="Akademos Recollection"> Akademos Recollection </option>
-			<option value="Law's Order Codex"> Law's Order Codex </option>
-			<option value="Augmented Law's Order Codex"> Augmented Law's Order Codex </option>
-			<option value="Blade's Wisdom"> Blade's Wisdom </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Codex"> Manderville Codex </option>
-			<option value="Amazing Manderville Codex"> Amazing Manderville Codex </option>
-			<option value="Majestic Manderville Codex"> Majestic Manderville Codex </option>
-			<option value="Mandervillous Codex"> Mandervillous Codex </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Codex Umbrae"> Phantom Codex Umbrae </option>
-			<option value="Phantom Codex Penumbrae"> Phantom Codex Penumbrae </option>
-			<option value="Phantom Codex Obscurum"> Phantom Codex Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 10 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Scholar.png">
+          </td>
+          <td class="dropdown-cell">
+            <select class="ARR">
+              <option value="" selected="">None</option>
+              <option value="Omnilex"> Omnilex </option>
+              <option value="Omnilex Zenith"> Omnilex Zenith </option>
+              <option value="Omnilex Atma"> Omnilex Atma </option>
+              <option value="Omnilex Animus"> Omnilex Animus </option>
+              <option value="Omnilex Novus"> Omnilex Novus </option>
+              <option value="Omnilex Nexus"> Omnilex Nexus </option>
+              <option value="Last Resort"> Last Resort </option>
+              <option value="Last Resort Zeta"> Last Resort Zeta </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Elements">Animated Elements</option>
+              <option value="Elements_Awoken">Elements Awoken</option>
+              <option value="Tetrabiblos"> Tetrabiblos </option>
+              <option value="Hyperconductive Tetrabiblos"> Hyperconductive Tetrabiblos </option>
+              <option value="Word of the Magnate"> Word of the Magnate </option>
+              <option value="Sharpened Word of the Magnate"> Sharpened Word of the Magnate </option>
+              <option value="Anabasis"> Anabasis </option>
+              <option value="Anabasis Lux"> Anabasis Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Organum">Antiquated Organum</option>
+              <option value="Organum">Organum</option>
+              <option value="Organum_1">Organum +1</option>
+              <option value="Organum_2">Organum +2</option>
+              <option value="Organum_Anemos">Organum Anemos</option>
+              <option value="Organum_Pagos">Organum Pagos</option>
+              <option value="Organum_Pagos_1">Organum Pagos +1</option>
+              <option value="Elemental Codex"> Elemental Codex </option>
+              <option value="Elemental Codex +1"> Elemental Codex +1 </option>
+              <option value="Elemental Codex +2"> Elemental Codex +2 </option>
+              <option value="Pyros Codex"> Pyros Codex </option>
+              <option value="Hydatos Codex"> Hydatos Codex </option>
+              <option value="Hydatos Codex +1"> Hydatos Codex +1 </option>
+              <option value="Jebat"> Jebat </option>
+              <option value="Jebat Eureka"> Jebat Eureka </option>
+              <option value="Jebat Physeos"> Jebat Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Akademos"> Akademos </option>
+              <option value="Augmented Akademos"> Augmented Akademos </option>
+              <option value="Akademos Recollection"> Akademos Recollection </option>
+              <option value="Law's Order Codex"> Law's Order Codex </option>
+              <option value="Augmented Law's Order Codex"> Augmented Law's Order Codex </option>
+              <option value="Blade's Wisdom"> Blade's Wisdom </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Codex"> Manderville Codex </option>
+              <option value="Amazing Manderville Codex"> Amazing Manderville Codex </option>
+              <option value="Majestic Manderville Codex"> Majestic Manderville Codex </option>
+              <option value="Mandervillous Codex"> Mandervillous Codex </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Codex Umbrae"> Phantom Codex Umbrae </option>
+              <option value="Phantom Codex Penumbrae"> Phantom Codex Penumbrae </option>
+              <option value="Phantom Codex Obscurum"> Phantom Codex Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 11 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/DarkKnight.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Nothung"> Nothung </option>
-			<option value="Hyperconductive Nothung"> Hyperconductive Nothung </option>
-			<option value="Guillotine of the Tyrant"> Guillotine of the Tyrant </option>
-			<option value="Sharpened Guillotine of the Tyrant"> Sharpened Guillotine of the Tyrant </option>
-			<option value="Cronus"> Cronus </option>
-			<option value="Cronus Lux"> Cronus Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Guillotine"> Elemental Guillotine </option>
-			<option value="Elemental Guillotine +1"> Elemental Guillotine +1 </option>
-			<option value="Elemental Guillotine +2"> Elemental Guillotine +2 </option>
-			<option value="Pyros Guillotine"> Pyros Guillotine </option>
-			<option value="Hydatos Guillotine"> Hydatos Guillotine </option>
-			<option value="Hydatos Guillotine +1"> Hydatos Guillotine +1 </option>
-			<option value="Xiphias"> Xiphias </option>
-			<option value="Xiphias Eureka"> Xiphias Eureka </option>
-			<option value="Xiphias Physeos"> Xiphias Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Woeborn"> Woeborn </option>
-			<option value="Augmented Woeborn"> Augmented Woeborn </option>
-			<option value="Woeborn Recollection"> Woeborn Recollection </option>
-			<option value="Law's Order Zweihander"> Law's Order Zweihander </option>
-			<option value="Augmented Law's Order Zweihander"> Augmented Law's Order Zweihander </option>
-			<option value="Blade's Justice"> Blade's Justice </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Zweihander"> Manderville Zweihander </option>
-			<option value="Amazing Manderville Zweihander"> Amazing Manderville Zweihander </option>
-			<option value="Majestic Manderville Greatsword"> Majestic Manderville Greatsword </option>
-			<option value="Mandervillous Greatsword"> Mandervillous Greatsword </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Guillotine Umbrae"> Phantom Guillotine Umbrae </option>
-			<option value="Phantom Guillotine Penumbrae"> Phantom Guillotine Penumbrae </option>
-			<option value="Phantom Guillotine Obscurum"> Phantom Guillotine Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 11 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/DarkKnight.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Deathbringer">Animated Deathbringer</option>
+              <option value="Deathbringer_Awoken">Deathbringer Awoken</option>
+              <option value="Nothung"> Nothung </option>
+              <option value="Hyperconductive Nothung"> Hyperconductive Nothung </option>
+              <option value="Guillotine of the Tyrant"> Guillotine of the Tyrant </option>
+              <option value="Sharpened Guillotine of the Tyrant"> Sharpened Guillotine of the Tyrant </option>
+              <option value="Cronus"> Cronus </option>
+              <option value="Cronus Lux"> Cronus Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Caladbolg">Antiquated Caladbolg</option>
+              <option value="Caladbolg">Caladbolg</option>
+              <option value="Caladbolg_1">Caladbolg +1</option>
+              <option value="Caladbolg_2">Caladbolg +2</option>
+              <option value="Caladbolg_Anemos">Caladbolg Anemos</option>
+              <option value="Caladbolg_Pagos">Caladbolg Pagos</option>
+              <option value="Caladbolg_Pagos_1">Caladbolg Pagos +1</option>
+              <option value="Elemental Guillotine"> Elemental Guillotine </option>
+              <option value="Elemental Guillotine +1"> Elemental Guillotine +1 </option>
+              <option value="Elemental Guillotine +2"> Elemental Guillotine +2 </option>
+              <option value="Pyros Guillotine"> Pyros Guillotine </option>
+              <option value="Hydatos Guillotine"> Hydatos Guillotine </option>
+              <option value="Hydatos Guillotine +1"> Hydatos Guillotine +1 </option>
+              <option value="Xiphias"> Xiphias </option>
+              <option value="Xiphias Eureka"> Xiphias Eureka </option>
+              <option value="Xiphias Physeos"> Xiphias Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Woeborn"> Woeborn </option>
+              <option value="Augmented Woeborn"> Augmented Woeborn </option>
+              <option value="Woeborn Recollection"> Woeborn Recollection </option>
+              <option value="Law's Order Zweihander"> Law's Order Zweihander </option>
+              <option value="Augmented Law's Order Zweihander"> Augmented Law's Order Zweihander </option>
+              <option value="Blade's Justice"> Blade's Justice </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Zweihander"> Manderville Zweihander </option>
+              <option value="Amazing Manderville Zweihander"> Amazing Manderville Zweihander </option>
+              <option value="Majestic Manderville Greatsword"> Majestic Manderville Greatsword </option>
+              <option value="Mandervillous Greatsword"> Mandervillous Greatsword </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Guillotine Umbrae"> Phantom Guillotine Umbrae </option>
+              <option value="Phantom Guillotine Penumbrae"> Phantom Guillotine Penumbrae </option>
+              <option value="Phantom Guillotine Obscurum"> Phantom Guillotine Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 12 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Machinist.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Armageddon"> Armageddon </option>
-			<option value="Hyperconductive Armageddon"> Hyperconductive Armageddon </option>
-			<option value="Flame of the Dynast"> Flame of the Dynast </option>
-			<option value="Sharpened Flame of the Dynast"> Sharpened Flame of the Dynast </option>
-			<option value="Deathlocke"> Deathlocke </option>
-			<option value="Deathlocke Lux"> Deathlocke Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Handgonne"> Elemental Handgonne </option>
-			<option value="Elemental Handgonne +1"> Elemental Handgonne +1 </option>
-			<option value="Elemental Handgonne +2"> Elemental Handgonne +2 </option>
-			<option value="Pyros Handgonne"> Pyros Handgonne </option>
-			<option value="Hydatos Handgonne"> Hydatos Handgonne </option>
-			<option value="Hydatos Handgonne +1"> Hydatos Handgonne +1 </option>
-			<option value="Mollfrith"> Mollfrith </option>
-			<option value="Mollfrith Eureka"> Mollfrith Eureka </option>
-			<option value="Mollfrith Physeos"> Mollfrith Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Lawman"> Lawman </option>
-			<option value="Augmented Lawman"> Augmented Lawman </option>
-			<option value="Lawman Recollection"> Lawman Recollection </option>
-			<option value="Law's Order Revolver"> Law's Order Revolver </option>
-			<option value="Augmented Law's Order Revolver"> Augmented Law's Order Revolver </option>
-			<option value="Blade's Ingenuity"> Blade's Ingenuity </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Revolver"> Manderville Revolver </option>
-			<option value="Amazing Manderville Revolver"> Amazing Manderville Revolver </option>
-			<option value="Majestic Manderville Pistol"> Majestic Manderville Pistol </option>
-			<option value="Mandervillous Revolver"> Mandervillous Revolver </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Arquebus Umbrae"> Phantom Arquebus Umbrae </option>
-			<option value="Phantom Arquebus Penumbrae"> Phantom Arquebus Penumbrae </option>
-			<option value="Phantom Musketoon Obscurum"> Phantom Musketoon Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 12 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Machinist.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Ferdinand">Animated Ferdinand</option>
+              <option value="Ferdinand_Awoken">Ferdinand Awoken</option>
+              <option value="Armageddon"> Armageddon </option>
+              <option value="Hyperconductive Armageddon"> Hyperconductive Armageddon </option>
+              <option value="Flame of the Dynast"> Flame of the Dynast </option>
+              <option value="Sharpened Flame of the Dynast"> Sharpened Flame of the Dynast </option>
+              <option value="Deathlocke"> Deathlocke </option>
+              <option value="Deathlocke Lux"> Deathlocke Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Outsider">Antiquated Outsider</option>
+              <option value="Outsider">Outsider</option>
+              <option value="Outsider_1">Outsider +1</option>
+              <option value="Outsider_2">Outsider +2</option>
+              <option value="Outsider_Anemos">Outsider Anemos</option>
+              <option value="Outsider_Pagos">Outsider Pagos</option>
+              <option value="Outsider_Pagos_1">Outsider Pagos +1</option>
+              <option value="Elemental Handgonne"> Elemental Handgonne </option>
+              <option value="Elemental Handgonne +1"> Elemental Handgonne +1 </option>
+              <option value="Elemental Handgonne +2"> Elemental Handgonne +2 </option>
+              <option value="Pyros Handgonne"> Pyros Handgonne </option>
+              <option value="Hydatos Handgonne"> Hydatos Handgonne </option>
+              <option value="Hydatos Handgonne +1"> Hydatos Handgonne +1 </option>
+              <option value="Mollfrith"> Mollfrith </option>
+              <option value="Mollfrith Eureka"> Mollfrith Eureka </option>
+              <option value="Mollfrith Physeos"> Mollfrith Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Lawman"> Lawman </option>
+              <option value="Augmented Lawman"> Augmented Lawman </option>
+              <option value="Lawman Recollection"> Lawman Recollection </option>
+              <option value="Law's Order Revolver"> Law's Order Revolver </option>
+              <option value="Augmented Law's Order Revolver"> Augmented Law's Order Revolver </option>
+              <option value="Blade's Ingenuity"> Blade's Ingenuity </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Revolver"> Manderville Revolver </option>
+              <option value="Amazing Manderville Revolver"> Amazing Manderville Revolver </option>
+              <option value="Majestic Manderville Pistol"> Majestic Manderville Pistol </option>
+              <option value="Mandervillous Revolver"> Mandervillous Revolver </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Arquebus Umbrae"> Phantom Arquebus Umbrae </option>
+              <option value="Phantom Arquebus Penumbrae"> Phantom Arquebus Penumbrae </option>
+              <option value="Phantom Musketoon Obscurum"> Phantom Musketoon Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 13 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Astrologian.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="HW">
-            <option value="" selected="">None</option>
-			<option value="Deneb"> Deneb </option>
-			<option value="Hyperconductive Deneb"> Hyperconductive Deneb </option>
-			<option value="Sphere of the Last Heir"> Sphere of the Last Heir </option>
-			<option value="Sharpened Sphere of the Last Heir"> Sharpened Sphere of the Last Heir </option>
-			<option value="Canopus"> Canopus </option>
-			<option value="Canopus Lux"> Canopus Lux </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Astrometer"> Elemental Astrometer </option>
-			<option value="Elemental Astrometer +1"> Elemental Astrometer +1 </option>
-			<option value="Elemental Astrometer +2"> Elemental Astrometer +2 </option>
-			<option value="Pyros Astrometer"> Pyros Astrometer </option>
-			<option value="Hydatos Astrometer"> Hydatos Astrometer </option>
-			<option value="Hydatos Astrometer +1"> Hydatos Astrometer +1 </option>
-			<option value="Albireo"> Albireo </option>
-			<option value="Albireo Eureka"> Albireo Eureka </option>
-			<option value="Albireo Physeos"> Albireo Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Solstice"> Solstice </option>
-			<option value="Augmented Solstice"> Augmented Solstice </option>
-			<option value="Solstice Recollection"> Solstice Recollection </option>
-			<option value="Law's Order Astrometer"> Law's Order Astrometer </option>
-			<option value="Augmented Law's Order Astrometer"> Augmented Law's Order Astrometer </option>
-			<option value="Blade's Providence"> Blade's Providence </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Torquetum"> Manderville Torquetum </option>
-			<option value="Amazing Manderville Torquetum"> Amazing Manderville Torquetum </option>
-			<option value="Majestic Manderville Orrery"> Majestic Manderville Orrery </option>
-			<option value="Mandervillous Torquetum"> Mandervillous Torquetum </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Star Globe Umbrae"> Phantom Star Globe Umbrae </option>
-			<option value="Phantom Star Globe Penumbrae"> Phantom Star Globe Penumbrae </option>
-			<option value="Phantom Star Pendant Obscurum"> Phantom Star Pendant Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 13 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Astrologian.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="HW">
+              <option value="" selected="">None</option>
+              <option value="Animated_Atlas">Animated Atlas</option>
+              <option value="Atlas_Awoken">Atlas Awoken</option>
+              <option value="Deneb"> Deneb </option>
+              <option value="Hyperconductive Deneb"> Hyperconductive Deneb </option>
+              <option value="Sphere of the Last Heir"> Sphere of the Last Heir </option>
+              <option value="Sharpened Sphere of the Last Heir"> Sharpened Sphere of the Last Heir </option>
+              <option value="Canopus"> Canopus </option>
+              <option value="Canopus Lux"> Canopus Lux </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Pleiades">Antiquated Pleiades</option>
+              <option value="Pleiades">Pleiades</option>
+              <option value="Pleiades_1">Pleiades +1</option>
+              <option value="Pleiades_2">Pleiades +2</option>
+              <option value="Pleiades_Anemos">Pleiades Anemos</option>
+              <option value="Pleiades_Pagos">Pleiades Pagos</option>
+              <option value="Pleiades_Pagos_1">Pleiades Pagos +1</option>
+              <option value="Elemental Astrometer"> Elemental Astrometer </option>
+              <option value="Elemental Astrometer +1"> Elemental Astrometer +1 </option>
+              <option value="Elemental Astrometer +2"> Elemental Astrometer +2 </option>
+              <option value="Pyros Astrometer"> Pyros Astrometer </option>
+              <option value="Hydatos Astrometer"> Hydatos Astrometer </option>
+              <option value="Hydatos Astrometer +1"> Hydatos Astrometer +1 </option>
+              <option value="Albireo"> Albireo </option>
+              <option value="Albireo Eureka"> Albireo Eureka </option>
+              <option value="Albireo Physeos"> Albireo Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Solstice"> Solstice </option>
+              <option value="Augmented Solstice"> Augmented Solstice </option>
+              <option value="Solstice Recollection"> Solstice Recollection </option>
+              <option value="Law's Order Astrometer"> Law's Order Astrometer </option>
+              <option value="Augmented Law's Order Astrometer"> Augmented Law's Order Astrometer </option>
+              <option value="Blade's Providence"> Blade's Providence </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Torquetum"> Manderville Torquetum </option>
+              <option value="Amazing Manderville Torquetum"> Amazing Manderville Torquetum </option>
+              <option value="Majestic Manderville Orrery"> Majestic Manderville Orrery </option>
+              <option value="Mandervillous Torquetum"> Mandervillous Torquetum </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Star Globe Umbrae"> Phantom Star Globe Umbrae </option>
+              <option value="Phantom Star Globe Penumbrae"> Phantom Star Globe Penumbrae </option>
+              <option value="Phantom Star Pendant Obscurum"> Phantom Star Pendant Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 14 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Samurai.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Blade"> Elemental Blade </option>
-			<option value="Elemental Blade +1"> Elemental Blade +1 </option>
-			<option value="Elemental Blade +2"> Elemental Blade +2 </option>
-			<option value="Pyros Blade"> Pyros Blade </option>
-			<option value="Hydatos Blade"> Hydatos Blade </option>
-			<option value="Hydatos Blade +1"> Hydatos Blade +1 </option>
-			<option value="Torigashira"> Torigashira </option>
-			<option value="Torigashira Eureka"> Torigashira Eureka </option>
-			<option value="Torigashira Physeos"> Torigashira Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Hoshikiri"> Hoshikiri </option>
-			<option value="Augmented Hoshikiri"> Augmented Hoshikiri </option>
-			<option value="Hoshikiri Recollection"> Hoshikiri Recollection </option>
-			<option value="Law's Order Samurai Blade"> Law's Order Samurai Blade </option>
-			<option value="Augmented Law's Order Samurai Blade"> Augmented Law's Order Samurai Blade </option>
-			<option value="Blade's Fealty"> Blade's Fealty </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Samurai Blade"> Manderville Samurai Blade </option>
-			<option value="Amazing Manderville Samurai Blade"> Amazing Manderville Samurai Blade </option>
-			<option value="Majestic Manderville Samurai Blade"> Majestic Manderville Samurai Blade </option>
-			<option value="Mandervillous Samurai Blade"> Mandervillous Samurai Blade </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Blade Umbrae"> Phantom Blade Umbrae </option>
-			<option value="Phantom Blade Penumbrae"> Phantom Blade Penumbrae </option>
-			<option value="Phantom Blade Obscurum"> Phantom Blade Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 14 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Samurai.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Kiku-ichimonji">Antiquated Kiku-ichimonji</option>
+              <option value="Kiku-ichimonji">Kiku-ichimonji</option>
+              <option value="Kiku-ichimonji_1">Kiku-ichimonji +1</option>
+              <option value="Kiku-ichimonji_2">Kiku-ichimonji +2</option>
+              <option value="Kiku-ichimonji_Anemos">Kiku-ichimonji Anemos</option>
+              <option value="Kiku-ichimonji_Pagos">Kiku-ichimonji Pagos</option>
+              <option value="Kiku-ichimonji_Pagos_1">Kiku-ichimonji Pagos +1</option>
+              <option value="Elemental Blade"> Elemental Blade </option>
+              <option value="Elemental Blade +1"> Elemental Blade +1 </option>
+              <option value="Elemental Blade +2"> Elemental Blade +2 </option>
+              <option value="Pyros Blade"> Pyros Blade </option>
+              <option value="Hydatos Blade"> Hydatos Blade </option>
+              <option value="Hydatos Blade +1"> Hydatos Blade +1 </option>
+              <option value="Torigashira"> Torigashira </option>
+              <option value="Torigashira Eureka"> Torigashira Eureka </option>
+              <option value="Torigashira Physeos"> Torigashira Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Hoshikiri"> Hoshikiri </option>
+              <option value="Augmented Hoshikiri"> Augmented Hoshikiri </option>
+              <option value="Hoshikiri Recollection"> Hoshikiri Recollection </option>
+              <option value="Law's Order Samurai Blade"> Law's Order Samurai Blade </option>
+              <option value="Augmented Law's Order Samurai Blade"> Augmented Law's Order Samurai Blade </option>
+              <option value="Blade's Fealty"> Blade's Fealty </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Samurai Blade"> Manderville Samurai Blade </option>
+              <option value="Amazing Manderville Samurai Blade"> Amazing Manderville Samurai Blade </option>
+              <option value="Majestic Manderville Samurai Blade"> Majestic Manderville Samurai Blade </option>
+              <option value="Mandervillous Samurai Blade"> Mandervillous Samurai Blade </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Blade Umbrae"> Phantom Blade Umbrae </option>
+              <option value="Phantom Blade Penumbrae"> Phantom Blade Penumbrae </option>
+              <option value="Phantom Blade Obscurum"> Phantom Blade Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 15 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/RedMage.png">
-        </td>
-		<td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="SB">
-            <option value="" selected="">None</option>
-			<option value="Elemental Tuck"> Elemental Tuck </option>
-			<option value="Elemental Tuck +1"> Elemental Tuck +1 </option>
-			<option value="Elemental Tuck +2"> Elemental Tuck +2 </option>
-			<option value="Pyros Tuck"> Pyros Tuck </option>
-			<option value="Hydatos Tuck"> Hydatos Tuck </option>
-			<option value="Hydatos Tuck +1"> Hydatos Tuck +1 </option>
-			<option value="Brunello"> Brunello </option>
-			<option value="Brunello Eureka"> Brunello Eureka </option>
-			<option value="Brunello Physeos"> Brunello Physeos </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Talekeeper"> Talekeeper </option>
-			<option value="Augmented Talekeeper"> Augmented Talekeeper </option>
-			<option value="Talekeeper Recollection"> Talekeeper Recollection </option>
-			<option value="Law's Order Rapier"> Law's Order Rapier </option>
-			<option value="Augmented Law's Order Rapier"> Augmented Law's Order Rapier </option>
-			<option value="Blade's Temperance"> Blade's Temperance </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Rapier"> Manderville Rapier </option>
-			<option value="Amazing Manderville Rapier"> Amazing Manderville Rapier </option>
-			<option value="Majestic Manderville Degen"> Majestic Manderville Degen </option>
-			<option value="Mandervillous Rapier"> Mandervillous Rapier </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Rapier Umbrae"> Phantom Rapier Umbrae </option>
-			<option value="Phantom Rapier Penumbrae"> Phantom Rapier Penumbrae </option>
-			<option value="Phantom Hanger Obscurum"> Phantom Hanger Obscurum </option>
-          </select>
-        </td>
+        <!-- ROW 15 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/RedMage.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="SB">
+              <option value="" selected="">None</option>
+              <option value="Antiquated_Murgleis">Antiquated Murgleis</option>
+              <option value="Murgleis">Murgleis</option>
+              <option value="Murgleis_1">Murgleis +1</option>
+              <option value="Murgleis_2">Murgleis +2</option>
+              <option value="Murgleis_Anemos">Murgleis Anemos</option>
+              <option value="Murgleis_Pagos">Murgleis Pagos</option>
+              <option value="Murgleis_Pagos_1">Murgleis Pagos +1</option>
+              <option value="Elemental Tuck"> Elemental Tuck </option>
+              <option value="Elemental Tuck +1"> Elemental Tuck +1 </option>
+              <option value="Elemental Tuck +2"> Elemental Tuck +2 </option>
+              <option value="Pyros Tuck"> Pyros Tuck </option>
+              <option value="Hydatos Tuck"> Hydatos Tuck </option>
+              <option value="Hydatos Tuck +1"> Hydatos Tuck +1 </option>
+              <option value="Brunello"> Brunello </option>
+              <option value="Brunello Eureka"> Brunello Eureka </option>
+              <option value="Brunello Physeos"> Brunello Physeos </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Talekeeper"> Talekeeper </option>
+              <option value="Augmented Talekeeper"> Augmented Talekeeper </option>
+              <option value="Talekeeper Recollection"> Talekeeper Recollection </option>
+              <option value="Law's Order Rapier"> Law's Order Rapier </option>
+              <option value="Augmented Law's Order Rapier"> Augmented Law's Order Rapier </option>
+              <option value="Blade's Temperance"> Blade's Temperance </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Rapier"> Manderville Rapier </option>
+              <option value="Amazing Manderville Rapier"> Amazing Manderville Rapier </option>
+              <option value="Majestic Manderville Degen"> Majestic Manderville Degen </option>
+              <option value="Mandervillous Rapier"> Mandervillous Rapier </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Rapier Umbrae"> Phantom Rapier Umbrae </option>
+              <option value="Phantom Rapier Penumbrae"> Phantom Rapier Penumbrae </option>
+              <option value="Phantom Hanger Obscurum"> Phantom Hanger Obscurum </option>
+            </select>
+          </td>
 
-      </tr>
+        </tr>
 
-      <!-- ROW 16 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Gunbreaker.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled SB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Crownsblade"> Crownsblade </option>
-			<option value="Augmented Crownsblade"> Augmented Crownsblade </option>
-			<option value="Crownsblade Recollection"> Crownsblade Recollection </option>
-			<option value="Law's Order Manatrigger"> Law's Order Manatrigger </option>
-			<option value="Augmented Law's Order Manatrigger"> Augmented Law's Order Manatrigger </option>
-			<option value="Blade's Resolve"> Blade's Resolve </option>
+        <!-- ROW 16 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Gunbreaker.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled SB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Crownsblade"> Crownsblade </option>
+              <option value="Augmented Crownsblade"> Augmented Crownsblade </option>
+              <option value="Crownsblade Recollection"> Crownsblade Recollection </option>
+              <option value="Law's Order Manatrigger"> Law's Order Manatrigger </option>
+              <option value="Augmented Law's Order Manatrigger"> Augmented Law's Order Manatrigger </option>
+              <option value="Blade's Resolve"> Blade's Resolve </option>
 
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Gunblade"> Manderville Gunblade </option>
-			<option value="Amazing Manderville Gunblade"> Amazing Manderville Gunblade </option>
-			<option value="Majestic Manderville Bayonet"> Majestic Manderville Bayonet </option>
-			<option value="Mandervillous Gunblade"> Mandervillous Gunblade </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Bayonet Umbrae"> Phantom Bayonet Umbrae </option>
-			<option value="Phantom Bayonet Penumbrae"> Phantom Bayonet Penumbrae </option>
-			<option value="Phantom Gunblade Obscurum"> Phantom Gunblade Obscurum </option>
-          </select>
-        </td>
-      </tr>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Gunblade"> Manderville Gunblade </option>
+              <option value="Amazing Manderville Gunblade"> Amazing Manderville Gunblade </option>
+              <option value="Majestic Manderville Bayonet"> Majestic Manderville Bayonet </option>
+              <option value="Mandervillous Gunblade"> Mandervillous Gunblade </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Bayonet Umbrae"> Phantom Bayonet Umbrae </option>
+              <option value="Phantom Bayonet Penumbrae"> Phantom Bayonet Penumbrae </option>
+              <option value="Phantom Gunblade Obscurum"> Phantom Gunblade Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 17 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Dancer.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled SB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="ShB">
-            <option value="" selected="">None</option>
-			<option value="Enchufla"> Enchufla </option>
-			<option value="Augmented Enchufla"> Augmented Enchufla </option>
-			<option value="Enchufla Recollection"> Enchufla Recollection </option>
-			<option value="Law's Order Chakrams"> Law's Order Chakrams </option>
-			<option value="Augmented Law's Order Chakrams"> Augmented Law's Order Chakrams </option>
-			<option value="Blade's Euphoria"> Blade's Euphoria </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Chakrams"> Manderville Chakrams </option>
-			<option value="Amazing Manderville Chakrams"> Amazing Manderville Chakrams </option>
-			<option value="Majestic Manderville Chakrams"> Majestic Manderville Chakrams </option>
-			<option value="Mandervillous Chakrams"> Mandervillous Chakrams </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Terpna Umbrae"> Phantom Terpna Umbrae </option>
-			<option value="Phantom Terpna Penumbrae"> Phantom Terpna Penumbrae </option>
-			<option value="Phantom Tathlums Obscurum"> Phantom Tathlums Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 17 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Dancer.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled SB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="ShB">
+              <option value="" selected="">None</option>
+              <option value="Enchufla"> Enchufla </option>
+              <option value="Augmented Enchufla"> Augmented Enchufla </option>
+              <option value="Enchufla Recollection"> Enchufla Recollection </option>
+              <option value="Law's Order Chakrams"> Law's Order Chakrams </option>
+              <option value="Augmented Law's Order Chakrams"> Augmented Law's Order Chakrams </option>
+              <option value="Blade's Euphoria"> Blade's Euphoria </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Chakrams"> Manderville Chakrams </option>
+              <option value="Amazing Manderville Chakrams"> Amazing Manderville Chakrams </option>
+              <option value="Majestic Manderville Chakrams"> Majestic Manderville Chakrams </option>
+              <option value="Mandervillous Chakrams"> Mandervillous Chakrams </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Terpna Umbrae"> Phantom Terpna Umbrae </option>
+              <option value="Phantom Terpna Penumbrae"> Phantom Terpna Penumbrae </option>
+              <option value="Phantom Tathlums Obscurum"> Phantom Tathlums Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 18 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Reaper.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled SB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ShB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Scythe"> Manderville Scythe </option>
-			<option value="Amazing Manderville Scythe"> Amazing Manderville Scythe </option>
-			<option value="Majestic Manderville War Scythe"> Majestic Manderville War Scythe </option>
-			<option value="Mandervillous Zaghnal"> Mandervillous Zaghnal </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom War Scythe Umbrae"> Phantom War Scythe Umbrae </option>
-			<option value="Phantom War Scythe Penumbrae"> Phantom War Scythe Penumbrae </option>
-			<option value="Phantom War Scythe Obscurum"> Phantom War Scythe Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 18 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Reaper.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled SB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ShB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Scythe"> Manderville Scythe </option>
+              <option value="Amazing Manderville Scythe"> Amazing Manderville Scythe </option>
+              <option value="Majestic Manderville War Scythe"> Majestic Manderville War Scythe </option>
+              <option value="Mandervillous Zaghnal"> Mandervillous Zaghnal </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom War Scythe Umbrae"> Phantom War Scythe Umbrae </option>
+              <option value="Phantom War Scythe Penumbrae"> Phantom War Scythe Penumbrae </option>
+              <option value="Phantom War Scythe Obscurum"> Phantom War Scythe Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 19 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Sage.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled SB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ShB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="EW">
-            <option value="" selected="">None</option>
-			<option value="Manderville Milpreves"> Manderville Milpreves </option>
-			<option value="Amazing Manderville Milpreves"> Amazing Manderville Milpreves </option>
-			<option value="Majestic Manderville Wings"> Majestic Manderville Wings </option>
-			<option value="Mandervillous Wings"> Mandervillous Wings </option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Pendulums Umbrae"> Phantom Pendulums Umbrae </option>
-			<option value="Phantom Pendulums Penumbrae"> Phantom Pendulums Penumbrae </option>
-			<option value="Phantom Wings Obscurum"> Phantom Wings Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 19 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Sage.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled SB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ShB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="EW">
+              <option value="" selected="">None</option>
+              <option value="Manderville Milpreves"> Manderville Milpreves </option>
+              <option value="Amazing Manderville Milpreves"> Amazing Manderville Milpreves </option>
+              <option value="Majestic Manderville Wings"> Majestic Manderville Wings </option>
+              <option value="Mandervillous Wings"> Mandervillous Wings </option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Pendulums Umbrae"> Phantom Pendulums Umbrae </option>
+              <option value="Phantom Pendulums Penumbrae"> Phantom Pendulums Penumbrae </option>
+              <option value="Phantom Wings Obscurum"> Phantom Wings Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 20 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Viper.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled SB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ShB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled EW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Twinfangs Umbrae"> Phantom Twinfangs Umbrae </option>
-			<option value="Phantom Twinfangs Penumbrae"> Phantom Twinfangs Penumbrae </option>
-			<option value="Phantom Twinfangs Obscurum"> Phantom Twinfangs Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 20 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Viper.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled SB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ShB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled EW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Twinfangs Umbrae"> Phantom Twinfangs Umbrae </option>
+              <option value="Phantom Twinfangs Penumbrae"> Phantom Twinfangs Penumbrae </option>
+              <option value="Phantom Twinfangs Obscurum"> Phantom Twinfangs Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-      <!-- ROW 21 -->
-      <tr>
-        <td class="row-img-cell">
-          <img src="./resources/img/FFXIVIconsJobIcons/Job/Pictomancer.png">
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ARR">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled HW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled SB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled ShB">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select disabled="" class="disabled EW">
-            <option value="" disabled="" selected="">None</option>
-          </select>
-        </td>
-        <td class="dropdown-cell">
-          <select class="DT">
-            <option value="" selected="">None</option>
-			<option value="Phantom Twinfangs Umbrae"> Phantom Twinfangs Umbrae </option>
-			<option value="Phantom Twinfangs Penumbrae"> Phantom Twinfangs Penumbrae </option>
-			<option value="Phantom Twinfangs Obscurum"> Phantom Twinfangs Obscurum </option>
-          </select>
-        </td>
-      </tr>
+        <!-- ROW 21 -->
+        <tr>
+          <td class="row-img-cell">
+            <img src="./resources/img/FFXIVIconsJobIcons/Job/Pictomancer.png">
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ARR">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled HW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled SB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled ShB">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select disabled="" class="disabled EW">
+              <option value="" disabled="" selected="">None</option>
+            </select>
+          </td>
+          <td class="dropdown-cell">
+            <select class="DT">
+              <option value="" selected="">None</option>
+              <option value="Phantom Twinfangs Umbrae"> Phantom Twinfangs Umbrae </option>
+              <option value="Phantom Twinfangs Penumbrae"> Phantom Twinfangs Penumbrae </option>
+              <option value="Phantom Twinfangs Obscurum"> Phantom Twinfangs Obscurum </option>
+            </select>
+          </td>
+        </tr>
 
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 
 
 
 </body>
+
 </html>

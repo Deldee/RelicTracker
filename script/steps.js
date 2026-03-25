@@ -101,6 +101,10 @@ export const LuxHW = new Step([
     entry(Items.Archaic_Enchanted_Ink,1)
 ])
 
+export const AntiquatedSB = new Step([
+    entry(Items.Gil,10000)
+])
+
 export const StarterSB = new Step([
     entry(Items.Protean_Crystal,100)
 ])
@@ -285,6 +289,7 @@ export const HWSteps= [
 ]
 //EXCLUDES One time, handle those manually
 export const SBSteps=[
+    AntiquatedSB,
     StarterSB,
     Starter1SB,
     Starter2SB,
