@@ -1,9 +1,11 @@
 import * as Items from './items.js';
 import * as Steps from "./steps.js"
+import { Expansions } from './expansions.js';
 window.Steps = Steps;
 window.Items = Items;
 window.getStepsCount = getStepsCount;
 window.renderItemIcons = renderItemIcons;
+
 
 //Take the Id of the expansion (1-6) and return an array of every steps of every row
 function getStepsArray(expansion){
@@ -68,6 +70,10 @@ function restoreSelects() {
 document.addEventListener("change", (e) => {
     if (e.target.tagName === "SELECT") {
         saveSelectsToCookie();
+
+        const currentExpansion = Expansions.find(exp => e.target.classList.contains(exp.abbreviation));
+        console.log(currentExpansion);
+        getStepsArray(currentExpansion.numericID);
     }
 });
 

@@ -1,8 +1,6 @@
 import * as Items from "./items.js"
 import { Item, Step ,entry } from './models.js'
 
-//Collection of steps, so that they match 1-1 with the index returned by the relic tracker, to make it easy to calculate the materials
-
 
 export const BaseARR = new Step([
     entry(Items.Radz_at_Han_Quenching_Oil,1)
@@ -263,6 +261,7 @@ export const ObscurumDT = new Step([
     entry(Items.Waning_Arcanite,3),
 ])
 
+//Collection of steps, so that they match 1-1 with the index returned by the relic tracker, to make it easy to calculate the materials
 export const ARRSteps= [
     BaseARR,
     ZenithARR,

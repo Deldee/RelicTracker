@@ -79,3 +79,12 @@ export class Step {
 export function entry(item, count, costIndex = 0) {
     return { item, count, costIndex };
 }
+
+export class Expansion {
+    constructor(name, abbreviation, numericID, maximumSteps) {
+        this.name         = name;
+        this.abbreviation = abbreviation;
+        this.numericID    = numericID;
+        this.maximumRelics = maximumRelics;
+    }
+}
