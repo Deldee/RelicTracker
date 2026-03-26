@@ -194,3 +194,85 @@
     opacity: 0.6;
     cursor: not-allowed;
 }
+
+input.materialInput {
+    background-color: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input.materialInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.15);
+}
+
+details {
+    margin-bottom: 1rem;
+}
+
+details summary {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border);
+    list-style: none;
+    user-select: none;
+    background-color: var(--surface2);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+details[open] summary {
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid var(--border);
+}
+
+details summary:hover {
+    color: var(--accent);
+    background-color: var(--surface);
+    border-color: var(--accent);
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+tr.completed {
+    border-left: 3px solid #4fc8a8;
+}
+
+tr.completed td {
+    background-color: color-mix(in srgb, #4fc8a8 20%, var(--surface));
+    color: var(--accent2);
+    opacity: 0.85;
+}
+
+tr.completed input.materialInput {
+    border-color: #4fc8a8;
+    color: var(--accent2);
+}
+
+details.completed > summary {
+    background-color: color-mix(in srgb, #4fc8a8 20%, var(--surface2));
+    border-color: #4fc8a8;
+    color: var(--accent2);
+}
+
+tr.currency-summary-row td {
+    background-color: var(--surface2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}

@@ -1,5 +1,5 @@
 ﻿$outFolder = "G:\FFXIVmods\RelicTracker\resources\img\itemIcon"
-$text = '+Name~"Book of Skylight"'
+$text = '+Name~"Serpent Seal"'
 $query = [System.Net.WebUtility]::UrlEncode($text)
 #Get all Atmas
 $response = Invoke-RestMethod "https://v2.xivapi.com/api/search?query=$query&sheets=Item&fields=Name%2CIcon.path"
