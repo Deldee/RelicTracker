@@ -15,6 +15,7 @@ window.Items = Items;
 window.getStepsCount = getStepsCount;
 window.renderItemIcons = renderItemIcons;
 window.calculateTotalCosts = calculateTotalCosts;
+window.getAllTotals =  getAllTotals;
 window.totals = totals;
 
 
@@ -124,13 +125,18 @@ function calculateTotalCosts(currentExpansion) {
 
     return total;
 }
-
 function updateExpansionTotal(expansion) {
     totals[expansion.numericID] = calculateTotalCosts(expansion);
 }
-
 function updateAllTotals() {
     Expansions.forEach(expansion => updateExpansionTotal(expansion));
+}
+function getAllTotals() {
+    const combined = new CostSummary();
+    Object.values(totals).forEach(expansionTotal => {
+        combined.add(expansionTotal);
+    });
+    return combined;
 }
 
 // Restore on page load
