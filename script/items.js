@@ -917,3 +917,13 @@ export const Crystal_Sand = new ShopItem(
 
     ]
 )
+export const Mahatmas = new ShopItem(
+    "Mahatmas",
+    "./resources/img/itemIcon/Atma_of_the_Archer.png",
+    "ARR",
+    [
+        new Cost("", [
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics,50)
+        ])
+    ]
+)

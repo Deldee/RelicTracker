@@ -57,7 +57,7 @@ export const BravesARR = new Step([
 ])
 
 export const ZetaARR = new Step([
-    entry(Items.Allagan_Tomestone_of_Poetics,600)
+    entry(Items.Mahatmas,12)
 ])
 
 export const AnimatedHW = new Step([
@@ -66,7 +66,6 @@ export const AnimatedHW = new Step([
 ])
 
 export const AwokenHW = new Step([
-    entry(Items.Astral_Nodule,1)
 ])
 
 export const AnimaHW = new Step([
