@@ -295,7 +295,7 @@ function renderTotals() {
             header.appendChild(th);
         });
 
-        groups[expac].forEach(({ item, count }) => {
+        groups[expac].reverse().forEach(({ item, count }) => {
             const row = table.insertRow();
             const owned     = parseInt(inputState[item.name] ?? 0);
             const missing   = Math.max(0, count - owned);
@@ -381,7 +381,7 @@ function renderTotals() {
                         imgAlt.height = 24;
 
                         const altNameSpan = document.createElement("span");
-                        altNameSpan.textContent = value + " " + currency.name;
+                        altNameSpan.textContent = (completed ? 0 : value * missing) + " " + currency.name;
 
                         altRow.appendChild(imgAlt);
                         altRow.appendChild(altNameSpan);

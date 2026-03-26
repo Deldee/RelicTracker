@@ -583,8 +583,9 @@ export const Unidentifiable_Ore = new ShopItem(
 )
 
 export const Unidentifiable_Seeds = new ShopItem(
-    "Unidentifiable Bone",
+    "Unidentifiable Seeds",
     "./resources/img/itemIcon/Unidentifiable_Seeds.png",
+    "HW",
     [
         new Cost("", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
