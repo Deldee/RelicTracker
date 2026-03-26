@@ -15,15 +15,16 @@ export class Cost {
 }
 
 export class Item{
-  constructor(name,icon){
+  constructor(name,icon,expac="multi"){
     this.name = name,
     this.icon = icon
+    this.expac = expac
   }
 }
 
 export class ShopItem extends Item {
   constructor(name, icon, costs = []) {
-    super(name,icon)
+    super(name,icon,"multi")
     this.costs = costs; // Cost[]
   }
 

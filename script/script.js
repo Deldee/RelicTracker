@@ -85,6 +85,7 @@ document.addEventListener("change", (e) => {
 
         const currentExpansion = Expansions.find(exp => e.target.classList.contains(exp.abbreviation));
         updateExpansionTotal(currentExpansion);
+        updateAllTotals();
     }
 });
 
@@ -130,6 +131,7 @@ function updateExpansionTotal(expansion) {
 }
 function updateAllTotals() {
     Expansions.forEach(expansion => updateExpansionTotal(expansion));
+    renderTotals();
 }
 function getAllTotals() {
     const combined = new CostSummary();
@@ -139,6 +141,63 @@ function getAllTotals() {
     return combined;
 }
 
+
+//UI
+function renderTotals() {
+    const data = getAllTotals().getAll();
+    const container = document.getElementById("totals-table-container");
+
+    container.innerHTML = "";
+
+    const table = document.createElement("table");
+    table.id = "totals-table";
+
+    // Header
+    const header = table.insertRow();
+    ["Owned", "Required", "", "Material"].forEach(text => {
+        const th = document.createElement("th");
+        th.textContent = text;
+        header.appendChild(th);
+    });
+
+    // Rows
+    data.forEach(({ item, count }) => {
+        const row = table.insertRow();
+
+        // Column 1 — number input
+        const inputCell = row.insertCell();
+        const input = document.createElement("input");
+        input.type = "number";
+        input.min = 0;
+        input.value = 0;
+        input.classList.add("materialInput");
+        input.dataset.itemName = item.name;
+        inputCell.appendChild(input);
+
+        // Column 2 — required count
+        const countCell = row.insertCell();
+        countCell.textContent = count;
+
+        // Column 3 — empty for now
+        row.insertCell();
+
+        // Column 4 — icon + name
+        const nameCell = row.insertCell();
+        const img = document.createElement("img");
+        img.src = item.icon;
+        img.alt = item.name;
+        img.width = 24;
+        img.height = 24;
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = item.name;
+        nameCell.appendChild(img);
+        nameCell.appendChild(nameSpan);
+    });
+
+    container.appendChild(table);
+}
+
 // Restore on page load
 restoreSelects();
 updateAllTotals();
+renderTotals();
