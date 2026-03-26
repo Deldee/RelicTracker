@@ -23,8 +23,8 @@ export class Item{
 }
 
 export class ShopItem extends Item {
-  constructor(name, icon, costs = []) {
-    super(name,icon,"multi")
+  constructor(name, icon, costs = [],expac) {
+    super(name,icon,expac)
     this.costs = costs; // Cost[]
   }
 

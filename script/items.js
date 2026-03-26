@@ -53,62 +53,74 @@ export const Purple_Gatherers_Scrip = new Item(
 
 export const Atma_of_the_Archer = new Item(
     "Atma of the Archer",
-    "./resources/img/itemIcon/Atma_of_the_Archer.png"
+    "./resources/img/itemIcon/Atma_of_the_Archer.png",
+    "ARR"
 )
 
 export const Atma_of_the_Bull = new Item(
     "Atma of the Bull",
-    "./resources/img/itemIcon/Atma_of_the_Bull.png"
+    "./resources/img/itemIcon/Atma_of_the_Bull.png",
+    "ARR"
 )
 
 export const Atma_of_the_Crab = new Item(
     "Atma of the Crab",
-    "./resources/img/itemIcon/Atma_of_the_Crab.png"
+    "./resources/img/itemIcon/Atma_of_the_Crab.png",
+    "ARR"
 )
 
 export const Atma_of_the_Fish = new Item(
     "Atma of the Fish",
-    "./resources/img/itemIcon/Atma_of_the_Fish.png"
+    "./resources/img/itemIcon/Atma_of_the_Fish.png",
+    "ARR"
 )
 
 export const Atma_of_the_Goat = new Item(
     "Atma of the Goat",
-    "./resources/img/itemIcon/Atma_of_the_Goat.png"
+    "./resources/img/itemIcon/Atma_of_the_Goat.png",
+    "ARR"
 )
 
 export const Atma_of_the_Lion = new Item(
     "Atma of the Lion",
-    "./resources/img/itemIcon/Atma_of_the_Lion.png"
+    "./resources/img/itemIcon/Atma_of_the_Lion.png",
+    "ARR"
 )
 
 export const Atma_of_the_Maiden = new Item(
     "Atma of the Maiden",
-    "./resources/img/itemIcon/Atma_of_the_Maiden.png"
+    "./resources/img/itemIcon/Atma_of_the_Maiden.png",
+    "ARR"
 )
 
 export const Atma_of_the_Ram = new Item(
     "Atma of the Ram",
-    "./resources/img/itemIcon/Atma_of_the_Ram.png"
+    "./resources/img/itemIcon/Atma_of_the_Ram.png",
+    "ARR"
 )
 
 export const Atma_of_the_Scales = new Item(
     "Atma of the Scales",
-    "./resources/img/itemIcon/Atma_of_the_Scales.png"
+    "./resources/img/itemIcon/Atma_of_the_Scales.png",
+    "ARR"
 )
 
 export const Atma_of_the_Scorpion = new Item(
     "Atma of the Scorpion",
-    "./resources/img/itemIcon/Atma_of_the_Scorpion.png"
+    "./resources/img/itemIcon/Atma_of_the_Scorpion.png",
+    "ARR"
 )
 
 export const Atma_of_the_Twins = new Item(
     "Atma of the Twins",
-    "./resources/img/itemIcon/Atma_of_the_Twins.png"
+    "./resources/img/itemIcon/Atma_of_the_Twins.png",
+    "ARR"
 )
 
 export const Atma_of_the_Water_bearer = new Item(
     "Atma of the Water bearer",
-    "./resources/img/itemIcon/Atma_of_the_Water-bearer.png"
+    "./resources/img/itemIcon/Atma_of_the_Water-bearer.png",
+    "ARR"
 )
 
 export const Azurite_Demiatma = new Item(
@@ -147,10 +159,10 @@ export const Compact_Axle = new Item(
     "./resources/img/itemIcon/Compact_Axle.png"
 )
 
-
 export const Crystalline_Scale = new Item(
     "Crystalline Scale",
-    "./resources/img/itemIcon/Crystalline_Scale.png"
+    "./resources/img/itemIcon/Crystalline_Scale.png",
+    "SB"
 )
 
 export const Crystal_Paste = new Item(
@@ -160,18 +172,14 @@ export const Crystal_Paste = new Item(
 
 export const Eureka_Fragment = new Item(
     "Eureka Fragment",
-    "./resources/img/itemIcon/Eureka_Fragment.png"
+    "./resources/img/itemIcon/Eureka_Fragment.png",
+    "SB"
 )
 
 export const Frosted_Protean_Crystal = new Item(
     "Frosted Protean Crystal",
-    "./resources/img/itemIcon/Frosted_Protean_Crystal.png"
-)
-
-
-export const Furnace_Ring = new Item(
-    "Furnace Ring",
-    "./resources/img/itemIcon/Furnace_Ring.png"
+    "./resources/img/itemIcon/Frosted_Protean_Crystal.png",
+    "SB"
 )
 
 export const Harrowing_Memory_of_the_Dying = new Item(
@@ -186,7 +194,8 @@ export const Haunting_Memory_of_the_Dying = new Item(
 
 export const Hydatos_Crystal = new Item(
     "Hydatos Crystal",
-    "./resources/img/itemIcon/Hydatos_Crystal.png"
+    "./resources/img/itemIcon/Hydatos_Crystal.png",
+    "SB"
 )
 
 export const Loathsome_Memory_of_the_Dying = new Item(
@@ -196,32 +205,38 @@ export const Loathsome_Memory_of_the_Dying = new Item(
 
 export const Luminous_Earth_Crystal = new Item(
     "Luminous Earth Crystal",
-    "./resources/img/itemIcon/Luminous_Earth_Crystal.png"
+    "./resources/img/itemIcon/Luminous_Earth_Crystal.png",
+    "HW"
 )
 
 export const Luminous_Fire_Crystal = new Item(
     "Luminous Fire Crystal",
-    "./resources/img/itemIcon/Luminous_Fire_Crystal.png"
+    "./resources/img/itemIcon/Luminous_Fire_Crystal.png",
+    "HW"
 )
 
 export const Luminous_Ice_Crystal = new Item(
     "Luminous Ice Crystal",
-    "./resources/img/itemIcon/Luminous_Ice_Crystal.png"
+    "./resources/img/itemIcon/Luminous_Ice_Crystal.png",
+    "HW"
 )
 
 export const Luminous_Lightning_Crystal = new Item(
     "Luminous Lightning Crystal",
-    "./resources/img/itemIcon/Luminous_Lightning_Crystal.png"
+    "./resources/img/itemIcon/Luminous_Lightning_Crystal.png",
+    "HW"
 )
 
 export const Luminous_Water_Crystal = new Item(
     "Luminous Water Crystal",
-    "./resources/img/itemIcon/Luminous_Water_Crystal.png"
+    "./resources/img/itemIcon/Luminous_Water_Crystal.png",
+    "HW"
 )
 
 export const Luminous_Wind_Crystal = new Item(
     "Luminous Wind Crystal",
-    "./resources/img/itemIcon/Luminous_Wind_Crystal.png"
+    "./resources/img/itemIcon/Luminous_Wind_Crystal.png",
+    "HW"
 )
 
 export const Lurid_Memory_of_the_Dying = new Item(
@@ -241,7 +256,8 @@ export const Orpiment_Demiatma = new Item(
 
 export const Pagos_Crystal = new Item(
     "Pagos Crystal",
-    "./resources/img/itemIcon/Pagos_Crystal.png"
+    "./resources/img/itemIcon/Pagos_Crystal.png",
+    "SB"
 )
 
 export const Perfect_Cloth = new Item(
@@ -251,37 +267,57 @@ export const Perfect_Cloth = new Item(
 
 export const Perfect_Firewood = new Item(
     "Perfect Firewood",
-    "./resources/img/itemIcon/Perfect_Firewood.png"
+    "./resources/img/itemIcon/Perfect_Firewood.png",
+    "ARR"
 )
 
 export const Perfect_Mortar = new Item(
     "Perfect Mortar",
-    "./resources/img/itemIcon/Perfect_Mortar.png"
+    "./resources/img/itemIcon/Perfect_Mortar.png",
+    "ARR"
+    
 )
 
 export const Perfect_Pestle = new Item(
     "Perfect Pestle",
-    "./resources/img/itemIcon/Perfect_Pestle.png"
+    "./resources/img/itemIcon/Perfect_Pestle.png",
+    "ARR"
 )
 
 export const Perfect_Pounce = new Item(
     "Perfect Pounce",
-    "./resources/img/itemIcon/Perfect_Pounce.png"
+    "./resources/img/itemIcon/Perfect_Pounce.png",
+    "ARR"
 )
 
 export const Perfect_Vellum = new Item(
     "Perfect Vellum",
-    "./resources/img/itemIcon/Perfect_Vellum.png"
+    "./resources/img/itemIcon/Perfect_Vellum.png",
+    "ARR"
+)
+
+export const Tailor_made_Eel_Pie = new Item(
+    "Tailor made Eel Pie",
+    "./resources/img/itemIcon/Tailor-made_Eel_Pie.png",
+    "ARR"
+)
+
+export const Furnace_Ring = new Item(
+    "Furnace Ring",
+    "./resources/img/itemIcon/Furnace_Ring.png",
+    "ARR"
 )
 
 export const Protean_Crystal = new Item(
     "Protean Crystal",
-    "./resources/img/itemIcon/Protean_Crystal.png"
+    "./resources/img/itemIcon/Protean_Crystal.png",
+    "SB"
 )
 
 export const Pyros_Crystal = new Item(
     "Pyros Crystal",
-    "./resources/img/itemIcon/Pyros_Crystal.png"
+    "./resources/img/itemIcon/Pyros_Crystal.png",
+    "SB"
 )
 
 export const Raw_Emotion = new Item(
@@ -302,11 +338,6 @@ export const Sharlayan_Aether_Oil = new Item(
 export const Sorrowful_Memory_of_the_Dying = new Item(
     "Sorrowful Memory of the Dying",
     "./resources/img/itemIcon/Sorrowful_Memory_of_the_Dying.png"
-)
-
-export const Tailor_made_Eel_Pie = new Item(
-    "Tailor made Eel Pie",
-    "./resources/img/itemIcon/Tailor-made_Eel_Pie.png"
 )
 
 export const Timeworn_Artifact = new Item(
@@ -331,14 +362,13 @@ export const Vexatious_Memory_of_the_Dying = new Item(
 
 export const Alexandrite = new Item(
     "Alexandrite",
-    "./resources/img/itemIcon/Alexandrite.png"
+    "./resources/img/itemIcon/Alexandrite.png",
+    "ARR"
 )
 export const Compact_Spring = new Item(
     "Compact Spring",
     "./resources/img/itemIcon/Compact_Spring.png" 
 )
-
-
 
 export const Synthetic_Dark_Matter_Beta = new Item(
     "Synthetic Dark Matter Beta",

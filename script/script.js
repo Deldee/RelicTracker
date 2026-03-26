@@ -154,7 +154,7 @@ function renderTotals() {
 
     // Header
     const header = table.insertRow();
-    ["Owned", "Required", "", "Material"].forEach(text => {
+    ["Owned", "Required", "Material"].forEach(text => {
         const th = document.createElement("th");
         th.textContent = text;
         header.appendChild(th);
@@ -178,8 +178,6 @@ function renderTotals() {
         const countCell = row.insertCell();
         countCell.textContent = count;
 
-        // Column 3 — empty for now
-        row.insertCell();
 
         // Column 4 — icon + name
         const nameCell = row.insertCell();
