@@ -2,6 +2,12 @@ import * as Items from './items.js';
 import * as Steps from "./steps.js"
 import { Expansions } from './expansions.js';
 import { CostSummary } from './models.js';
+
+
+const totals = {};
+const log = false
+
+//Expose for debugging
 window.Expansions = Expansions;
 window.CostSummary = CostSummary;
 window.Steps = Steps;
@@ -9,8 +15,8 @@ window.Items = Items;
 window.getStepsCount = getStepsCount;
 window.renderItemIcons = renderItemIcons;
 window.calculateTotalCosts = calculateTotalCosts;
+window.totals = totals;
 
-const log = false
 
 //Take the Id of the expansion (1-6) and return an array of every steps of every row
 function getStepsArray(expansion){
@@ -34,6 +40,54 @@ function getStepsCount(expansion){
     return result;
 }
 
+
+// Get icon from an items and set it
+function renderItemIcons(Items) {
+    Object.values(Items).forEach(item => {
+        const img = document.createElement("img");
+        img.src = item.icon;
+        img.alt = item.name;
+        document.body.appendChild(img);
+    });
+}
+
+//Cookies
+function getSelectIndexes() {
+    const selects = document.querySelectorAll("select");
+    return Array.from(selects).map(select => select.selectedIndex);
+}
+function saveSelectsToCookie() {
+    const indexes = getSelectIndexes();
+    document.cookie = `relicTrack=${JSON.stringify(indexes)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+}
+function loadSelectsFromCookie() {
+    const match = document.cookie.split("; ").find(row => row.startsWith("relicTrack="));
+    if (!match) return null;
+    return JSON.parse(match.split("=")[1]);
+}
+function restoreSelects() {
+    const indexes = loadSelectsFromCookie();
+    if (!indexes) return;
+
+    const selects = document.querySelectorAll("select");
+    selects.forEach((select, i) => {
+        if (indexes[i] !== undefined) {
+            select.selectedIndex = indexes[i];
+        }
+    });
+}
+
+// Save whenever any select changes
+document.addEventListener("change", (e) => {
+    if (e.target.tagName === "SELECT") {
+        saveSelectsToCookie();
+
+        const currentExpansion = Expansions.find(exp => e.target.classList.contains(exp.abbreviation));
+        updateExpansionTotal(currentExpansion);
+    }
+});
+
+//Totals
 function calculateTotalCosts(currentExpansion) {
     const l = (...args) => log && console.log(...args);
     const lg = (label) => log && console.group(label);
@@ -71,54 +125,14 @@ function calculateTotalCosts(currentExpansion) {
     return total;
 }
 
-
-// Get icon from an items and set it
-function renderItemIcons(Items) {
-    Object.values(Items).forEach(item => {
-        const img = document.createElement("img");
-        img.src = item.icon;
-        img.alt = item.name;
-        document.body.appendChild(img);
-    });
+function updateExpansionTotal(expansion) {
+    totals[expansion.numericID] = calculateTotalCosts(expansion);
 }
 
-function getSelectIndexes() {
-    const selects = document.querySelectorAll("select");
-    return Array.from(selects).map(select => select.selectedIndex);
+function updateAllTotals() {
+    Expansions.forEach(expansion => updateExpansionTotal(expansion));
 }
-
-function saveSelectsToCookie() {
-    const indexes = getSelectIndexes();
-    document.cookie = `relicTrack=${JSON.stringify(indexes)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
-}
-
-function loadSelectsFromCookie() {
-    const match = document.cookie.split("; ").find(row => row.startsWith("relicTrack="));
-    if (!match) return null;
-    return JSON.parse(match.split("=")[1]);
-}
-
-function restoreSelects() {
-    const indexes = loadSelectsFromCookie();
-    if (!indexes) return;
-
-    const selects = document.querySelectorAll("select");
-    selects.forEach((select, i) => {
-        if (indexes[i] !== undefined) {
-            select.selectedIndex = indexes[i];
-        }
-    });
-}
-
-// Save whenever any select changes
-document.addEventListener("change", (e) => {
-    if (e.target.tagName === "SELECT") {
-        saveSelectsToCookie();
-
-        const currentExpansion = Expansions.find(exp => e.target.classList.contains(exp.abbreviation));
-        console.log(calculateTotalCosts(currentExpansion).getAll());
-    }
-});
 
 // Restore on page load
 restoreSelects();
+updateAllTotals();

@@ -282,7 +282,6 @@ export const ARRSteps= [
 ]
 
 export const HWSteps= [
-    None,
     AnimatedHW,
     AwokenHW,
     AnimaHW,
@@ -294,7 +293,6 @@ export const HWSteps= [
 ]
 //EXCLUDES One time, handle those manually
 export const SBSteps=[
-    None,
     AntiquatedSB,
     StarterSB,
     Starter1SB,
@@ -314,7 +312,6 @@ export const SBSteps=[
 ]
 
 export const ShBteps = [
-    None,
     ResistanceShB, 
     AugmentedResistanceShB,
     RecollectionShB,
@@ -324,7 +321,6 @@ export const ShBteps = [
 ]
 
 export const EWSteps = [
-    None,
     MandervilleEW,
     AmazingEW,
     MajesticEW,
@@ -332,7 +328,6 @@ export const EWSteps = [
 ]
 //EXCLUDES One time, handle those manually
 export const DTSteps = [
-    None,
     PenumbraeDT,
     UmbraeDT,
     ObscurumDT
