@@ -265,6 +265,10 @@ export const ObscurumDT = new Step([
     entry(Items.Waning_Arcanite,3),
 ])
 
+export const None = new Step([
+
+])
+
 //Collection of steps, so that they match 1-1 with the index returned by the relic tracker, to make it easy to calculate the materials
 export const ARRSteps= [
     BaseARR,
@@ -278,6 +282,7 @@ export const ARRSteps= [
 ]
 
 export const HWSteps= [
+    None,
     AnimatedHW,
     AwokenHW,
     AnimaHW,
@@ -289,6 +294,7 @@ export const HWSteps= [
 ]
 //EXCLUDES One time, handle those manually
 export const SBSteps=[
+    None,
     AntiquatedSB,
     StarterSB,
     Starter1SB,
@@ -308,6 +314,7 @@ export const SBSteps=[
 ]
 
 export const ShBteps = [
+    None,
     ResistanceShB, 
     AugmentedResistanceShB,
     RecollectionShB,
@@ -317,6 +324,7 @@ export const ShBteps = [
 ]
 
 export const EWSteps = [
+    None,
     MandervilleEW,
     AmazingEW,
     MajesticEW,
@@ -324,6 +332,7 @@ export const EWSteps = [
 ]
 //EXCLUDES One time, handle those manually
 export const DTSteps = [
+    None,
     PenumbraeDT,
     UmbraeDT,
     ObscurumDT

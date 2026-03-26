@@ -1,11 +1,16 @@
 import * as Items from './items.js';
 import * as Steps from "./steps.js"
 import { Expansions } from './expansions.js';
+import { CostSummary } from './models.js';
+window.Expansions = Expansions;
+window.CostSummary = CostSummary;
 window.Steps = Steps;
 window.Items = Items;
 window.getStepsCount = getStepsCount;
 window.renderItemIcons = renderItemIcons;
+window.calculateTotalCosts = calculateTotalCosts;
 
+const log = false
 
 //Take the Id of the expansion (1-6) and return an array of every steps of every row
 function getStepsArray(expansion){
@@ -16,7 +21,6 @@ function getStepsArray(expansion){
         if (select.classList.contains("disabled")) continue;
         result.push(select.selectedIndex);
     }
-    console.log("Raw array " + result)
     return result;
 }
 
@@ -26,9 +30,48 @@ function getStepsCount(expansion){
     for(var i = 0; i <= expansion.stepCollection.length; i++){
         result.push(array.filter(v => (v == i)).length)
     }
-    console.log("count of each steps : " + result)
     
+    return result;
 }
+
+function calculateTotalCosts(currentExpansion) {
+    const l = (...args) => log && console.log(...args);
+    const lg = (label) => log && console.group(label);
+    const lge = () => log && console.groupEnd();
+
+    const stepsArray = getStepsCount(currentExpansion);
+    const total = new CostSummary();
+    let remainingRelics = currentExpansion.maximumRelics;
+
+    lg(`calculateTotalCosts — ${currentExpansion.name}`);
+    l("Steps array:", stepsArray);
+    l("Starting relics:", remainingRelics);
+
+    for (let i = stepsArray.length - 1; i > 0; i--) {
+        remainingRelics -= stepsArray[i];
+        lg(`Step [${i}]`);
+        l("Raw value:        ", stepsArray[i]);
+        l("Remaining relics: ", remainingRelics);
+
+        if (remainingRelics <= 0) {
+            l("→ No relics remaining, exiting loop");
+            lge();
+            break;
+        }
+
+        l("→ After subtracting step:", remainingRelics);
+        total.add(currentExpansion.stepCollection[i - 1].getTotalCosts(remainingRelics));
+        l("→ Current total:", total.getAll());
+        lge();
+    }
+
+    l("Final total:", total.getAll());
+    lge();
+
+    return total;
+}
+
+
 // Get icon from an items and set it
 function renderItemIcons(Items) {
     Object.values(Items).forEach(item => {
@@ -73,8 +116,7 @@ document.addEventListener("change", (e) => {
         saveSelectsToCookie();
 
         const currentExpansion = Expansions.find(exp => e.target.classList.contains(exp.abbreviation));
-        console.log(currentExpansion);
-        getStepsCount(currentExpansion);
+        console.log(calculateTotalCosts(currentExpansion).getAll());
     }
 });
 

@@ -571,7 +571,7 @@ export const Arcanite = new ShopItem(
     "./resources/img/itemIcon/Arcanite.png",
     [
         new Cost("", [
-            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 1500)
+            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 500)
         ])
     ]
 )
@@ -581,7 +581,7 @@ export const Waning_Arcanite = new ShopItem(
     "./resources/img/itemIcon/Waning_Arcanite.png",
     [
         new Cost("", [
-            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 1500)
+            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 500)
         ])
     ]
 )
@@ -591,7 +591,7 @@ export const Waxing_Arcanite = new ShopItem(
     "./resources/img/itemIcon/Waxing_Arcanite.png",
     [
         new Cost("", [
-            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 1500)
+            new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 500)
         ])
     ]
 )
