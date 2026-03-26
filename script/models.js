@@ -23,7 +23,7 @@ export class Item{
 }
 
 export class ShopItem extends Item {
-  constructor(name, icon, costs = [],expac) {
+  constructor(name, icon,expac, costs = []) {
     super(name,icon,expac)
     this.costs = costs; // Cost[]
   }
@@ -43,24 +43,11 @@ export class Step {
         this.entries = entries; // { item: Item, count: number }[]
     }
 
-    getTotalCosts(count = 1) {
+        getTotalCosts(count = 1) {
         const summary = new CostSummary();
-
         this.entries.forEach(({ item, count: entryCount }) => {
-            if (item instanceof ShopItem) {
-                const source = item.getMainCost();
-                if (!source || !Array.isArray(source.amounts)) {
-                    console.warn(`Item "${item.name}" has an invalid Cost structure`, source);
-                    return;
-                }
-                source.amounts.forEach(({ currency, value }) => {
-                    summary.addCurrency(currency, value * entryCount * count);
-                });
-            } else {
-                summary.addItem(item, entryCount * count);
-            }
+            summary.addItem(item, entryCount * count);
         });
-
         return summary;
     }
 }

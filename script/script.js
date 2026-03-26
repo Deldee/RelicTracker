@@ -1,7 +1,7 @@
 import * as Items from './items.js';
 import * as Steps from "./steps.js"
 import { Expansions } from './expansions.js';
-import { CostSummary } from './models.js';
+import { CostSummary, ShopItem } from './models.js';
 
 
 const totals = {};
@@ -146,54 +146,134 @@ function getAllTotals() {
 function renderTotals() {
     const data = getAllTotals().getAll();
     const container = document.getElementById("totals-table-container");
-
     container.innerHTML = "";
 
-    const table = document.createElement("table");
-    table.id = "totals-table";
-
-    // Header
-    const header = table.insertRow();
-    ["Owned", "Required", "Material"].forEach(text => {
-        const th = document.createElement("th");
-        th.textContent = text;
-        header.appendChild(th);
-    });
-
-    // Rows
+    // Group items by expac
+    const groups = {};
     data.forEach(({ item, count }) => {
-        const row = table.insertRow();
-
-        // Column 1 — number input
-        const inputCell = row.insertCell();
-        const input = document.createElement("input");
-        input.type = "number";
-        input.min = 0;
-        input.value = 0;
-        input.classList.add("materialInput");
-        input.dataset.itemName = item.name;
-        inputCell.appendChild(input);
-
-        // Column 2 — required count
-        const countCell = row.insertCell();
-        countCell.textContent = count;
-
-
-        // Column 4 — icon + name
-        const nameCell = row.insertCell();
-        const img = document.createElement("img");
-        img.src = item.icon;
-        img.alt = item.name;
-        img.width = 24;
-        img.height = 24;
-        const nameSpan = document.createElement("span");
-        nameSpan.textContent = item.name;
-        nameCell.appendChild(img);
-        nameCell.appendChild(nameSpan);
+        const expac = item.expac ?? "unknown";
+        if (!groups[expac]) groups[expac] = [];
+        groups[expac].push({ item, count });
     });
 
-    container.appendChild(table);
+    // Sort groups — multi first, then by expansion order
+    const expansionOrder = Expansions.map(e => e.abbreviation);
+    const sortedKeys = Object.keys(groups).sort((a, b) => {
+        if (a === "multi") return -1;
+        if (b === "multi") return 1;
+        return expansionOrder.indexOf(a) - expansionOrder.indexOf(b);
+    });
+
+    sortedKeys.forEach(expac => {
+        // Section wrapper
+        const details = document.createElement("details");
+        details.open = true;
+
+        const summary = document.createElement("summary");
+        summary.textContent = expac === "multi" ? "Shared (Multiple Expansions)" :
+            Expansions.find(e => e.abbreviation === expac)?.name ?? expac;
+        details.appendChild(summary);
+
+        // Table for this section
+        const table = document.createElement("table");
+        table.classList.add("totals-table");
+
+        const header = table.insertRow();
+        ["Owned", "Required", "Material", "Cost", "Alternatives"].forEach(text => {
+            const th = document.createElement("th");
+            th.textContent = text;
+            header.appendChild(th);
+        });
+
+        groups[expac].forEach(({ item, count }) => {
+            const row = table.insertRow();
+
+            // Column 1 — number input
+            const inputCell = row.insertCell();
+            const input = document.createElement("input");
+            input.type = "number";
+            input.min = 0;
+            input.value = 0;
+            input.classList.add("materialInput");
+            input.dataset.itemName = item.name;
+            inputCell.appendChild(input);
+
+            // Column 2 — required count
+            const countCell = row.insertCell();
+            countCell.textContent = count;
+
+            // Column 3 — icon + name
+            const nameCell = row.insertCell();
+            const img = document.createElement("img");
+            img.src = item.icon;
+            img.alt = item.name;
+            img.width = 24;
+            img.height = 24;
+            const nameSpan = document.createElement("span");
+            nameSpan.textContent = item.name;
+            nameCell.appendChild(img);
+            nameCell.appendChild(nameSpan);
+
+            // Column 4 — main cost
+            const costCell = row.insertCell();
+            if (item instanceof ShopItem) {
+                console.log(item)
+                item.getMainCost().amounts.forEach(({ currency, value }) => {
+                    const costRow = document.createElement("div");
+                    costRow.style.display = "flex";
+                    costRow.style.alignItems = "center";
+                    costRow.style.gap = "4px";
+                    const imgCost = document.createElement("img");
+                    imgCost.src = currency.icon;
+                    imgCost.alt = currency.name;
+                    imgCost.width = 24;
+                    imgCost.height = 24;
+                    const costNameSpan = document.createElement("span");
+                    costNameSpan.textContent = value + " " + currency.name;
+                    costRow.appendChild(imgCost);
+                    costRow.appendChild(costNameSpan);
+                    costCell.appendChild(costRow);
+                });
+            }
+            
+
+            // Column 5 — alternative costs
+            const altCell = row.insertCell();
+            if (item instanceof ShopItem) {
+                item.getAlternateCosts().forEach((source, index) => {
+                    if (index > 0) {
+                        const separator = document.createElement("hr");
+                        separator.style.border = "none";
+                        separator.style.borderTop = "1px solid var(--border)";
+                        separator.style.margin = "4px 0";
+                        altCell.appendChild(separator);
+                    }
+                    source.amounts.forEach(({ currency, value }) => {
+                        const altRow = document.createElement("div");
+                        altRow.style.display = "flex";
+                        altRow.style.alignItems = "center";
+                        altRow.style.gap = "4px";
+                        const imgAlt = document.createElement("img");
+                        imgAlt.src = currency.icon;
+                        imgAlt.alt = currency.name;
+                        imgAlt.width = 24;
+                        imgAlt.height = 24;
+                        const altNameSpan = document.createElement("span");
+                        altNameSpan.textContent = value + " " + currency.name;
+                        altRow.appendChild(imgAlt);
+                        altRow.appendChild(altNameSpan);
+                        altCell.appendChild(altRow);
+                    });
+                });
+            }
+        });
+
+        details.appendChild(table);
+        container.appendChild(details);
+    });
 }
+
+
 
 // Restore on page load
 restoreSelects();
