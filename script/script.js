@@ -116,15 +116,17 @@ function calculateTotalCosts(currentExpansion) {
     const stepsArray = getStepsCount(currentExpansion);
     const total = new CostSummary();
     let remainingRelics = currentExpansion.maximumRelics;
+    const isShb = currentExpansion.abbreviation == "ShB"
+    const isDT = currentExpansion.abbreviation == "DT"
 
     lg(`calculateTotalCosts — ${currentExpansion.name}`);
     l("Steps array:", stepsArray);
     l("Starting relics:", remainingRelics);
 
-    for (let i = stepsArray.length - 1; i > 0; i--) {
-        remainingRelics -= stepsArray[i];
-        lg(`Step [${i}]`);
-        l("Raw value:        ", stepsArray[i]);
+    for (let step = stepsArray.length - 1; step > 0; step--) {
+        remainingRelics -= stepsArray[step];
+        lg(`Step [${step}]`);
+        l("Raw value:        ", stepsArray[step]);
         l("Remaining relics: ", remainingRelics);
 
         if (remainingRelics <= 0) {
@@ -132,9 +134,23 @@ function calculateTotalCosts(currentExpansion) {
             lge();
             break;
         }
+        //manually check one time steps
+        if(remainingRelics == currentExpansion.maximumRelics){
+            if(isDT && step == 3){
+                total.add(Steps.ObscurumPreDT.getTotalCosts(1))
+            } else if (isDT && step == 2){
+                total.add(Steps.UmbraePreDT.getTotalCosts(1))
+            } else if (isDT && step == 1){
+                total.add(Steps.PenumbraePreDT.getTotalCosts(1))
+            } else if (isShb && step == 6){
+                total.add(Steps.oneTime2ShB.getTotalCosts(1))
+            } else if (isShb && step == 5){
+                total.add(Steps.oneTime1ShB.getTotalCosts(1))
+            } 
+        }
 
         l("→ After subtracting step:", remainingRelics);
-        total.add(currentExpansion.stepCollection[i - 1].getTotalCosts(remainingRelics));
+        total.add(currentExpansion.stepCollection[step - 1].getTotalCosts(remainingRelics));
         l("→ Current total:", total.getAll());
         lge();
     }

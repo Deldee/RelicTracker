@@ -1,4 +1,4 @@
-import { ShopItem, Cost, Item,CurrencyAmount }                          from './models.js';
+import { ShopItem, Cost, Item,CurrencyAmount, CostSummary }                          from './models.js';
 
 
 export const Allagan_Tomestone_of_Poetics = new Item(
@@ -16,6 +16,12 @@ export const Gil = new Item(
     "Gil",
     "./resources/img/itemIcon/Gil.png",
 )
+
+export const Bicolor_Gemstone = new Item(
+    "Bicolor Gemstones",
+    "./resources/img/itemIcon/Bicolor_Gemstone.png",
+)
+
 
 export const Steel_Amaljok = new Item(
     "Steel Amalj'ok",
@@ -412,14 +418,12 @@ export const Synthetic_Dark_Matter_Gamma = new Item(
     "DT" 
 )
 
-export const Utohmu_Siderite = new Item(
-    "Ut'ohmu Siderite",
-    "./resources/img/itemIcon/Utohmu_Siderite.png" 
-)
+
 
 export const Aspected_Aetherocatalyst= new Item(
     "Aspected Aetherocatalyst",
-    "./resources/img/itemIcon/Aspected_Aetherocatalyst.png" 
+    "./resources/img/itemIcon/Aspected_Aetherocatalyst.png" ,
+    "DT"
 )
 
 export const Aspected_Aetheroconductor = new Item(
@@ -440,7 +444,16 @@ export const Aspected_Aether_Agglomerate = new Item(
 
 
 
-
+export const Utohmu_Siderite = new ShopItem(
+    "Ut'ohmu Siderite",
+    "./resources/img/itemIcon/Utohmu_Siderite.png",
+    "DT",    
+    [
+        new Cost("", [
+            new CurrencyAmount(Bicolor_Gemstone, 600)
+        ])
+    ]
+)
 
 export const Blue_Crafters_Scrip_Token = new ShopItem(
     "Blue Crafters Scrip Token",
@@ -448,7 +461,7 @@ export const Blue_Crafters_Scrip_Token = new ShopItem(
     [
         new Cost("",[
             new CurrencyAmount(Purple_Crafters_Scrip,25)
-        ]),
+        ])
     ]
 )
 
