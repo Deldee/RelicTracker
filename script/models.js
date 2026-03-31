@@ -29,12 +29,25 @@ export class Source {
             case "Quest":
                 this.icon = "./resources/img/contentIcon/Quest_icon.png";
                 break;
+            case "Society Quest":
+                this.icon = "./resources/img/contentIcon/Society_Quests.png";
+                break;
             case "Duty":
                 this.icon = "./resources/img/contentIcon/Dungeon.png";
                 break;
             case "Shop":
                 this.icon = "./resources/img/contentIcon/Shop.png";
                 break;
+            case "CE":
+                this.icon = "./resources/img/contentIcon/063909.png";
+                break;
+            case "Raids":
+                this.icon = "./resources/img/contentIcon/Raids.png"
+                break;
+            case "Trials":
+                this.icon = "./resources/img/contentIcon/Trials.png"
+                break;
+
             default:
                 this.icon = null;
                 break;

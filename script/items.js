@@ -1,4 +1,4 @@
-import { Cost, Item,CurrencyAmount, CostSummary ,Source}                          from './models.js';
+import { Item,CurrencyAmount ,Source}                          from './models.js';
 
 
 export const Allagan_Tomestone_of_Poetics = new Item(
@@ -25,22 +25,34 @@ export const Bicolor_Gemstone = new Item(
 
 export const Steel_Amaljok = new Item(
     "Steel Amalj'ok",
-    "./resources/img/itemIcon/Steel_Amaljok.png"
+    "./resources/img/itemIcon/Steel_Amaljok.png",
+    [
+        new Source("Society Quest","Daily Amalj'aa Quests")
+    ]
 )
 
 export const Sylphic_Goldleaf = new Item(
     "Sylphic Goldleaf",
-    "./resources/img/itemIcon/Sylphic_Goldleaf.png"
+    "./resources/img/itemIcon/Sylphic_Goldleaf.png",
+    [
+        new Source("Society Quest","Daily Sylph Quests")
+    ]
 )
 
 export const Titan_Cobaltpiece = new Item(
     "Titan Cobaltpiece",
-    "./resources/img/itemIcon/Titan_Cobaltpiece.png"
+    "./resources/img/itemIcon/Titan_Cobaltpiece.png",
+    [
+        new Source("Society Quest","Daily Kobold Quests")
+    ]
 )
 
 export const Rainbowtide_Psashp = new Item(
     "Rainbowtide Psashp",
-    "./resources/img/itemIcon/Rainbowtide_Psashp.png"
+    "./resources/img/itemIcon/Rainbowtide_Psashp.png",
+    [
+        new Source("Society Quest","Daily Sahagin Quests")
+    ]
 )
 
 export const Grand_Company_Seals = new Item(
