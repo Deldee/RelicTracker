@@ -1,4 +1,4 @@
-import { Item,CurrencyAmount ,Source}                          from './models.js';
+import { Item, CurrencyAmount, Source } from './models.js';
 
 
 export const Allagan_Tomestone_of_Poetics = new Item(
@@ -27,7 +27,7 @@ export const Steel_Amaljok = new Item(
     "Steel Amalj'ok",
     "./resources/img/itemIcon/Steel_Amaljok.png",
     [
-        new Source("Society Quest","Daily Amalj'aa Quests")
+        new Source("Society Quest", "Daily Amalj'aa Quests")
     ]
 )
 
@@ -35,7 +35,7 @@ export const Sylphic_Goldleaf = new Item(
     "Sylphic Goldleaf",
     "./resources/img/itemIcon/Sylphic_Goldleaf.png",
     [
-        new Source("Society Quest","Daily Sylph Quests")
+        new Source("Society Quest", "Daily Sylph Quests")
     ]
 )
 
@@ -43,7 +43,7 @@ export const Titan_Cobaltpiece = new Item(
     "Titan Cobaltpiece",
     "./resources/img/itemIcon/Titan_Cobaltpiece.png",
     [
-        new Source("Society Quest","Daily Kobold Quests")
+        new Source("Society Quest", "Daily Kobold Quests")
     ]
 )
 
@@ -51,7 +51,7 @@ export const Rainbowtide_Psashp = new Item(
     "Rainbowtide Psashp",
     "./resources/img/itemIcon/Rainbowtide_Psashp.png",
     [
-        new Source("Society Quest","Daily Sahagin Quests")
+        new Source("Society Quest", "Daily Sahagin Quests")
     ]
 )
 
@@ -109,7 +109,7 @@ export const Atma_of_the_Fish = new Item(
 export const Atma_of_the_Goat = new Item(
     "Atma of the Goat",
     "./resources/img/itemIcon/Atma_of_the_Goat.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "East Shroud")
     ]
@@ -118,7 +118,7 @@ export const Atma_of_the_Goat = new Item(
 export const Atma_of_the_Lion = new Item(
     "Atma of the Lion",
     "./resources/img/itemIcon/Atma_of_the_Lion.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "Outer La Noscea")
     ]
@@ -127,7 +127,7 @@ export const Atma_of_the_Lion = new Item(
 export const Atma_of_the_Maiden = new Item(
     "Atma of the Maiden",
     "./resources/img/itemIcon/Atma_of_the_Maiden.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "Central Shroud")
     ]
@@ -136,7 +136,7 @@ export const Atma_of_the_Maiden = new Item(
 export const Atma_of_the_Ram = new Item(
     "Atma of the Ram",
     "./resources/img/itemIcon/Atma_of_the_Ram.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "Middle La Noscea")
     ]
@@ -145,7 +145,7 @@ export const Atma_of_the_Ram = new Item(
 export const Atma_of_the_Scales = new Item(
     "Atma of the Scales",
     "./resources/img/itemIcon/Atma_of_the_Scales.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "Central Thanalan")
     ]
@@ -154,7 +154,7 @@ export const Atma_of_the_Scales = new Item(
 export const Atma_of_the_Scorpion = new Item(
     "Atma of the Scorpion",
     "./resources/img/itemIcon/Atma_of_the_Scorpion.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "Southern Thanalan")
     ]
@@ -163,7 +163,7 @@ export const Atma_of_the_Scorpion = new Item(
 export const Atma_of_the_Twins = new Item(
     "Atma of the Twins",
     "./resources/img/itemIcon/Atma_of_the_Twins.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "Western Thanalan")
     ]
@@ -172,7 +172,7 @@ export const Atma_of_the_Twins = new Item(
 export const Atma_of_the_Water_bearer = new Item(
     "Atma of the Water bearer",
     "./resources/img/itemIcon/Atma_of_the_Water-bearer.png",
-"ARR",
+    "ARR",
     [
         new Source("Fate", "Upper La Noscea")
     ]
@@ -224,9 +224,8 @@ export const Bitter_Memory_of_the_Dying = new Item(
     "ShB",
     [
         new Source("CE", "Killing enemies or CE in Bozjan Southern Front"),
-        new Source*("Dungeon", "Synced 60 dungeons"),
-        new Source("Duty Roulette", "Levelling Roulette")
-
+        new Source("Dungeon", "Synced 60 dungeons"),
+        new Source("Duty Roulettes", "Levelling Roulette")
     ]
 )
 
@@ -256,7 +255,7 @@ export const Crystalline_Scale = new Item(
     "./resources/img/itemIcon/Crystalline_Scale.png",
     "SB",
     [
-        new Source("NM","Crystalline Provenance (Hydatos)")
+        new Source("NM", "Crystalline Provenance (Hydatos)")
     ]
 )
 
@@ -281,8 +280,11 @@ export const Eureka_Fragment = new Item(
 export const Frosted_Protean_Crystal = new Item(
     "Frosted Protean Crystal",
     "./resources/img/itemIcon/Frosted_Protean_Crystal.png",
-    "SB",
-    new Source("NM", "Light Kettle (Pagos)")
+    "SB", [
+    new Source(
+        "NM", "Light Kettle (Pagos)"
+
+    )]
 )
 
 export const Harrowing_Memory_of_the_Dying = new Item(
@@ -318,7 +320,7 @@ export const Luminous_Earth_Crystal = new Item(
     "./resources/img/itemIcon/Luminous_Earth_Crystal.png",
     "HW",
     [
-        new Source("Fate","The Dravanian Forelands Fates")
+        new Source("Fate", "The Dravanian Forelands Fates")
     ]
 )
 
@@ -327,7 +329,7 @@ export const Luminous_Fire_Crystal = new Item(
     "./resources/img/itemIcon/Luminous_Fire_Crystal.png",
     "HW",
     [
-        new Source("Fate","Azys Lla Fates")
+        new Source("Fate", "Azys Lla Fates")
     ]
 )
 
@@ -336,7 +338,7 @@ export const Luminous_Ice_Crystal = new Item(
     "./resources/img/itemIcon/Luminous_Ice_Crystal.png",
     "HW",
     [
-        new Source("Fate","Coerthas Western Highland Fates")
+        new Source("Fate", "Coerthas Western Highland Fates")
     ]
 )
 
@@ -345,7 +347,7 @@ export const Luminous_Lightning_Crystal = new Item(
     "./resources/img/itemIcon/Luminous_Lightning_Crystal.png",
     "HW",
     [
-        new Source("Fate","The Churning Mists Fates")
+        new Source("Fate", "The Churning Mists Fates")
     ]
 )
 
@@ -354,7 +356,7 @@ export const Luminous_Water_Crystal = new Item(
     "./resources/img/itemIcon/Luminous_Water_Crystal.png",
     "HW",
     [
-        new Source("Fate","The Dravanian Hinterlands Fates")
+        new Source("Fate", "The Dravanian Hinterlands Fates")
     ]
 )
 
@@ -363,7 +365,7 @@ export const Luminous_Wind_Crystal = new Item(
     "./resources/img/itemIcon/Luminous_Wind_Crystal.png",
     "HW",
     [
-        new Source("Fate","The Sea of Clouds Fates")
+        new Source("Fate", "The Sea of Clouds Fates")
     ]
 )
 
@@ -412,44 +414,44 @@ export const Perfect_Cloth = new Item(
 export const Perfect_Firewood = new Item(
     "Perfect Firewood",
     "./resources/img/itemIcon/Perfect_Firewood.png",
-"ARR"
+    "ARR"
 )
 
 export const Perfect_Mortar = new Item(
     "Perfect Mortar",
     "./resources/img/itemIcon/Perfect_Mortar.png",
-"ARR"
-    
+    "ARR"
+
 )
 
 export const Perfect_Pestle = new Item(
     "Perfect Pestle",
     "./resources/img/itemIcon/Perfect_Pestle.png",
-"ARR"
+    "ARR"
 )
 
 export const Perfect_Pounce = new Item(
     "Perfect Pounce",
     "./resources/img/itemIcon/Perfect_Pounce.png",
-"ARR"
+    "ARR"
 )
 
 export const Perfect_Vellum = new Item(
     "Perfect Vellum",
     "./resources/img/itemIcon/Perfect_Vellum.png",
-"ARR"
+    "ARR"
 )
 
 export const Tailor_made_Eel_Pie = new Item(
     "Tailor made Eel Pie",
     "./resources/img/itemIcon/Tailor-made_Eel_Pie.png",
-"ARR"
+    "ARR"
 )
 
 export const Furnace_Ring = new Item(
     "Furnace Ring",
     "./resources/img/itemIcon/Furnace_Ring.png",
-"ARR"
+    "ARR"
 )
 
 export const Protean_Crystal = new Item(
@@ -530,12 +532,12 @@ export const Vexatious_Memory_of_the_Dying = new Item(
 export const Alexandrite = new Item(
     "Alexandrite",
     "./resources/img/itemIcon/Alexandrite.png",
-"ARR"
+    "ARR"
 )
 export const Compact_Spring = new Item(
     "Compact Spring",
     "./resources/img/itemIcon/Compact_Spring.png",
-    "ShB" ,
+    "ShB",
     [
         new Source("CE", "Zadnor Zone 1 CEs"),
         new Source("Raids", "Alexander 3,4,7,8,11,12")
@@ -545,39 +547,39 @@ export const Compact_Spring = new Item(
 export const Synthetic_Dark_Matter_Beta = new Item(
     "Synthetic Dark Matter Beta",
     "./resources/img/itemIcon/Synthetic_Dark_Matter_Beta.png",
-    "DT" 
+    "DT"
 )
 
 export const Synthetic_Dark_Matter_Alpha = new Item(
     "Synthetic Dark Matter Alpha",
     "./resources/img/itemIcon/Synthetic_Dark_Matter_Alpha.png",
-    "DT" 
+    "DT"
 )
 
 export const Synthetic_Dark_Matter_Gamma = new Item(
     "Synthetic Dark Matter Gamma",
     "./resources/img/itemIcon/Synthetic_Dark_Matter_Gamma.png",
-    "DT" 
+    "DT"
 )
 
 
 
-export const Aspected_Aetherocatalyst= new Item(
+export const Aspected_Aetherocatalyst = new Item(
     "Aspected Aetherocatalyst",
-    "./resources/img/itemIcon/Aspected_Aetherocatalyst.png" ,
+    "./resources/img/itemIcon/Aspected_Aetherocatalyst.png",
     "DT"
 )
 
 export const Aspected_Aetheroconductor = new Item(
     "Aspected Aetheroconductor",
     "./resources/img/itemIcon/Aspected_Aetheroconductor.png",
-    "DT" 
+    "DT"
 )
 
 export const Aspected_Aether_Agglomerate = new Item(
     "Aspected Aether Agglomerate",
     "./resources/img/itemIcon/Aspected_Aether_Agglomerate.png",
-    "DT" 
+    "DT"
 )
 
 
@@ -589,7 +591,7 @@ export const Aspected_Aether_Agglomerate = new Item(
 export const Utohmu_Siderite = new Item(
     "Ut'ohmu Siderite",
     "./resources/img/itemIcon/Utohmu_Siderite.png",
-    "DT",    
+    "DT",
     [
         new Source("Shop", "", [
             new CurrencyAmount(Bicolor_Gemstone, 600)
@@ -599,20 +601,20 @@ export const Utohmu_Siderite = new Item(
 
 export const Blue_Crafters_Scrip_Token = new Item(
     "Blue Crafters Scrip Token",
-    "./resources/img/itemIcon/Blue_Crafters_Scrip_Token.png" ,
+    "./resources/img/itemIcon/Blue_Crafters_Scrip_Token.png",
     [
-        new Source("Shop", "",[
-            new CurrencyAmount(Purple_Crafters_Scrip,25)
+        new Source("Shop", "", [
+            new CurrencyAmount(Purple_Crafters_Scrip, 25)
         ])
     ]
 )
 
 export const Blue_Gatherers_Scrip_Token = new Item(
     "Blue Gatherers Scrip Token",
-    "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png" ,
+    "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png",
     [
-        new Source("Shop", "",[
-            new CurrencyAmount(Purple_Gatherers_Scrip,25)
+        new Source("Shop", "", [
+            new CurrencyAmount(Purple_Gatherers_Scrip, 25)
         ]),
     ]
 )
@@ -620,7 +622,7 @@ export const Blue_Gatherers_Scrip_Token = new Item(
 export const Umbral_Clay = new Item(
     "Umbral Clay",
     "./resources/img/itemIcon/Umbral_Clay.png",
-    "DT" ,
+    "DT",
     [
         new Source("Shop", "", [
             new CurrencyAmount(Gil, 500000)
@@ -631,7 +633,7 @@ export const Umbral_Clay = new Item(
 export const Rroneek_Glue = new Item(
     "Rroneek Glue",
     "./resources/img/itemIcon/Rroneek_Glue.png",
-    "DT" ,
+    "DT",
     [
         new Source("Shop", "", [
             new CurrencyAmount(Gil, 300000)
@@ -692,7 +694,7 @@ export const Thavnairian_Scalepowder = new Item(
     "./resources/img/itemIcon/Thavnairian_Scalepowder.png",
     "ShB",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Auriana", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 250)
         ])
     ]
@@ -706,7 +708,7 @@ export const Unidentifiable_Bone = new Item(
         new Source("Shop", "", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "",[
+        new Source("Shop", "", [
             new CurrencyAmount(Steel_Amaljok, 3)
         ])
     ]
@@ -720,7 +722,7 @@ export const Unidentifiable_Shell = new Item(
         new Source("Shop", "", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "",[
+        new Source("Shop", "", [
             new CurrencyAmount(Rainbowtide_Psashp, 3)
         ])
     ]
@@ -734,7 +736,7 @@ export const Unidentifiable_Ore = new Item(
         new Source("Shop", "", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "",[
+        new Source("Shop", "", [
             new CurrencyAmount(Titan_Cobaltpiece, 3)
         ])
     ]
@@ -748,7 +750,7 @@ export const Unidentifiable_Seeds = new Item(
         new Source("Shop", "", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "",[
+        new Source("Shop", "", [
             new CurrencyAmount(Sylphic_Goldleaf, 3)
         ])
     ]
@@ -971,7 +973,7 @@ export const Pneumite = new Item(
         new Source("Shop", "", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 100),
         ]),
-        new Source("Shop", "",[
+        new Source("Shop", "", [
             new CurrencyAmount(Grand_Company_Seals, 4000)
         ])
     ]
@@ -1063,15 +1065,15 @@ export const Crystal_Sand = new Item(
     "./resources/img/itemIcon/Crystal_Sand.png",
     "HW",
     [
-        new Source("Shop", "",[
-            new CurrencyAmount(Blue_Gatherers_Scrip_Token,5)
+        new Source("Shop", "", [
+            new CurrencyAmount(Blue_Gatherers_Scrip_Token, 5)
         ]),
         new Source("Shop", "", [
             new CurrencyAmount(Superior_Enchanted_Ink, 5),
-            new CurrencyAmount(Thavnairian_Mist,5)
+            new CurrencyAmount(Thavnairian_Mist, 5)
         ]),
-        new Source("Shop", "",[
-            new CurrencyAmount(Blue_Crafters_Scrip_Token,5)
+        new Source("Shop", "", [
+            new CurrencyAmount(Blue_Crafters_Scrip_Token, 5)
         ])
 
     ]
@@ -1082,7 +1084,7 @@ export const Mahatmas = new Item(
     "ARR",
     [
         new Source("Shop", "", [
-            new CurrencyAmount(Allagan_Tomestone_of_Poetics,50)
+            new CurrencyAmount(Allagan_Tomestone_of_Poetics, 50)
         ])
     ]
 )

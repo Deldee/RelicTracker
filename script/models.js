@@ -24,7 +24,7 @@ export class Source {
                 this.icon = "./resources/img/contentIcon/60722.png";
                 break;
             case "NM":
-                this.icon = "./resources/img/contentIcon/607852.png";
+                this.icon = "./resources/img/contentIcon/60852.png";
                 break;
             case "Quest":
                 this.icon = "./resources/img/contentIcon/Quest_icon.png";
@@ -47,8 +47,11 @@ export class Source {
             case "Trials":
                 this.icon = "./resources/img/contentIcon/Trials.png"
                 break;
-            case "Roulettes":
+            case "Duty Roulettes":
                 this.icon = "./resources/img/contentIcon/Duty_Roulette.png"
+                break;
+            case "Dungeon":
+                this.icon = "./resources/img/contentIcon/Dungeon.png"
                 break;
             default:
                 this.icon = null;
@@ -70,7 +73,7 @@ export class Item {
     }
 
     hasCost() {
-        return this.sources.some(s => s.hasCost());
+        return this.sources?.some(s => s.hasCost()) ?? false;
     }
 
     getMainSource() {
