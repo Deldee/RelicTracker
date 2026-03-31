@@ -3,39 +3,73 @@
 export class CurrencyAmount {
     constructor(currency, value) {
         this.currency = currency;
-        this.value    = value;
+        this.value = value;
     }
 }
 
 export class Cost {
     constructor(label, amounts = []) {
-        this.label   = label;   // e.g. "Quartermasters's Shop"
+        this.label = label;   // e.g. "Quartermasters's Shop"
         this.amounts = amounts; // CurrencyAmount[]
     }
 }
+export class Source {
+    constructor(type, label, amounts = []) {
+        this.type = type;
+        this.label = label;
+        this.amounts = amounts; // CurrencyAmount[] — empty if no cost
 
-export class Item{
-  constructor(name,icon,expac="multi"){
-    this.name = name,
-    this.icon = icon
-    this.expac = expac
-  }
+        switch (type) {
+            case "Fate":
+                this.icon = "./resources/img/contentIcon/60722.png";
+                break;
+            case "NM":
+                this.icon = "./resources/img/contentIcon/607852.png";
+                break;
+            case "Quest":
+                this.icon = "./resources/img/contentIcon/Quest_icon.png";
+                break;
+            case "Duty":
+                this.icon = "./resources/img/contentIcon/Dungeon.png";
+                break;
+            case "Shop":
+                this.icon = "./resources/img/contentIcon/Shop.png";
+                break;
+            default:
+                this.icon = null;
+                break;
+        }
+    }
+
+    hasCost() {
+        return this.amounts.length > 0;
+    }
 }
 
-export class ShopItem extends Item {
-  constructor(name, icon,expac, costs = []) {
-    super(name,icon,expac)
-    this.costs = costs; // Cost[]
-  }
-
-    getMainCost() {
-        return this.costs[0] ?? null;
+export class Item {
+    constructor(name, icon, expac = "multi", sources = []) {
+        this.name = name;
+        this.icon = icon;
+        this.expac = expac;
+        this.sources = sources; // Source[]
     }
 
-    getAlternateCosts() {
-        return this.costs.slice(1);
+    hasCost() {
+        return this.sources.some(s => s.hasCost());
     }
-};
+
+    getMainSource() {
+        return this.sources[0] ?? null;
+    }
+
+    getAlternateSources() {
+        return this.sources.slice(1);
+    }
+
+    getSources() {
+        return this.sources.filter(s => !s.hasCost());
+    }
+}
 
 
 export class Step {
@@ -43,10 +77,22 @@ export class Step {
         this.entries = entries; // { item: Item, count: number }[]
     }
 
-        getTotalCosts(count = 1) {
+    getTotalCosts(count = 1) {
         const summary = new CostSummary();
         this.entries.forEach(({ item, count: entryCount }) => {
-            summary.addItem(item, entryCount * count);
+            if (item.hasCost()) {
+                const source = item.getMainSource();
+                if (!source || !Array.isArray(source.amounts)) {
+                    console.warn(`Item "${item.name}" has an invalid Cost structure`, source);
+                    return;
+                }
+                source.amounts.forEach(({ currency, value }) => {
+                    summary.addCurrency(currency, value * entryCount * count);
+                });
+                summary.addItem(item, entryCount * count);
+            } else {
+                summary.addItem(item, entryCount * count);
+            }
         });
         return summary;
     }
@@ -58,9 +104,9 @@ export function entry(item, count, costIndex = 0) {
 
 export class Expansion {
     constructor(name, abbreviation, numericID, maximumRelics, stepCollection) {
-        this.name         = name;
+        this.name = name;
         this.abbreviation = abbreviation;
-        this.numericID    = numericID;
+        this.numericID = numericID;
         this.maximumRelics = maximumRelics;
         this.stepCollection = stepCollection;
     }
