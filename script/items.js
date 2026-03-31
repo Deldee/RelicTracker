@@ -1,5 +1,7 @@
 import { Item, CurrencyAmount, Source } from './models.js';
 
+const auriannaNPC = "Auriana - Mor Dhona (x22,y6)"
+const gcQuartermasterNPC = "Grand Company Quartermaster"
 
 export const Allagan_Tomestone_of_Poetics = new Item(
     "Allagan Tomestone of Poetics",
@@ -280,7 +282,7 @@ export const Eureka_Fragment = new Item(
 export const Frosted_Protean_Crystal = new Item(
     "Frosted Protean Crystal",
     "./resources/img/itemIcon/Frosted_Protean_Crystal.png",
-    "SB", 
+    "SB",
     [
         new Source("NM", "Light Kettle (Pagos)")
     ]
@@ -409,6 +411,15 @@ export const Orpiment_Demiatma = new Item(
     ]
 )
 
+export const Anemos_Crystal = new Item(
+    "Anemos Crystal (RNG may vary)",
+    "./resources/img/itemIcon/Anemos_Crystal.png",
+    "SB",
+    [
+        new Source("NM", "Anemos Notorious Monsters")
+    ]
+)
+
 export const Pagos_Crystal = new Item(
     "Pagos Crystal",
     "./resources/img/itemIcon/Pagos_Crystal.png",
@@ -494,8 +505,14 @@ export const Furnace_Ring = new Item(
 export const Protean_Crystal = new Item(
     "Protean Crystal",
     "./resources/img/itemIcon/Protean_Crystal.png",
-    "SB"
+    "SB",
+    [
+        new Source("Shop", "Gerolt (Anemos)", [
+            new CurrencyAmount(Anemos_Crystal,0.3) // Average
+        ])
+    ]
 )
+
 
 export const Pyros_Crystal = new Item(
     "Pyros Crystal",
@@ -659,6 +676,7 @@ export const Aspected_Aether_Agglomerate = new Item(
 
 
 
+
 export const Utohmu_Siderite = new Item(
     "Ut'ohmu Siderite",
     "./resources/img/itemIcon/Utohmu_Siderite.png",
@@ -674,7 +692,7 @@ export const Blue_Crafters_Scrip_Token = new Item(
     "Blue Crafters Scrip Token",
     "./resources/img/itemIcon/Blue_Crafters_Scrip_Token.png",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Scrip Exchange - Limsa Lominsa Lower Decks (6, 11.9)", [
             new CurrencyAmount(Purple_Crafters_Scrip, 25)
         ])
     ]
@@ -685,7 +703,7 @@ export const Blue_Gatherers_Scrip_Token = new Item(
     "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Scrip Exchange - Limsa Lominsa Lower Decks (6, 11.9)", [
             new CurrencyAmount(Purple_Gatherers_Scrip, 25)
         ]),
     ]
@@ -755,7 +773,7 @@ export const Archaic_Enchanted_Ink = new Item(
     "./resources/img/itemIcon/Archaic_Enchanted_Ink.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
         ])
     ]
@@ -777,10 +795,10 @@ export const Unidentifiable_Bone = new Item(
     "./resources/img/itemIcon/Unidentifiable_Bone.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "", [
+        new Source("Shop", "Amalj'aa Vendor - Southern Thanalan (23.3, 14.1)", [
             new CurrencyAmount(Steel_Amaljok, 3)
         ])
     ]
@@ -791,10 +809,10 @@ export const Unidentifiable_Shell = new Item(
     "./resources/img/itemIcon/Unidentifiable_Shell.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "", [
+        new Source("Shop", "Sahagin Vendor - Western La Noscea (16, 22)", [
             new CurrencyAmount(Rainbowtide_Psashp, 3)
         ])
     ]
@@ -805,10 +823,10 @@ export const Unidentifiable_Ore = new Item(
     "./resources/img/itemIcon/Unidentifiable_Ore.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "", [
+        new Source("Shop", "Kobold Vendor - Outer La Noscea (21.6, 17.8)", [
             new CurrencyAmount(Titan_Cobaltpiece, 3)
         ])
     ]
@@ -819,10 +837,10 @@ export const Unidentifiable_Seeds = new Item(
     "./resources/img/itemIcon/Unidentifiable_Seeds.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 150),
         ]),
-        new Source("Shop", "", [
+        new Source("Shop", "Sylphic Vendor - East Shroud (22.3, 26.3)", [
             new CurrencyAmount(Sylphic_Goldleaf, 3)
         ])
     ]
@@ -833,7 +851,7 @@ export const Adamantite_Francesca = new Item(
     "./resources/img/itemIcon/Adamantite_Francesca.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", gcQuartermasterNPC, [
             new CurrencyAmount(Grand_Company_Seals, 5000)
         ])
     ]
@@ -844,7 +862,7 @@ export const Titanium_Alloy_Mirror = new Item(
     "./resources/img/itemIcon/Titanium_Alloy_Mirror.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", gcQuartermasterNPC, [
             new CurrencyAmount(Grand_Company_Seals, 5000)
         ])
     ]
@@ -855,7 +873,7 @@ export const Dispelling_Arrow = new Item(
     "./resources/img/itemIcon/Dispelling_Arrow.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", gcQuartermasterNPC, [
             new CurrencyAmount(Grand_Company_Seals, 5000)
         ])
     ]
@@ -866,7 +884,7 @@ export const Kingcake = new Item(
     "./resources/img/itemIcon/Kingcake.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", gcQuartermasterNPC, [
             new CurrencyAmount(Grand_Company_Seals, 5000)
         ])
     ]
@@ -910,7 +928,7 @@ export const Radz_at_Han_Quenching_Oil = new Item(
     "./resources/img/itemIcon/Radz-at-Han_Quenching_Oil.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 15)
         ])
     ]
@@ -921,7 +939,7 @@ export const Thavnairian_Mist = new Item(
     "./resources/img/itemIcon/Thavnairian_Mist.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 20)
         ])
     ]
@@ -932,7 +950,7 @@ export const Superior_Enchanted_Ink = new Item(
     "./resources/img/itemIcon/Superior_Enchanted_Ink.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 25)
         ])
     ]
@@ -943,7 +961,7 @@ export const Bombard_Core = new Item(
     "./resources/img/itemIcon/Bombard_Core.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", gcQuartermasterNPC, [
             new CurrencyAmount(Grand_Company_Seals, 20000)
         ])
     ]
@@ -954,7 +972,7 @@ export const Sacred_Spring_Water = new Item(
     "./resources/img/itemIcon/Sacred_Spring_Water.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 200)
         ])
     ]
@@ -965,7 +983,7 @@ export const Furite_Sand = new Item(
     "./resources/img/itemIcon/Furite_Sand.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Merchant & Mender - Coerthas Central Highlands (x13,y16)", [
             new CurrencyAmount(Gil, 100000)
         ])
     ]
@@ -976,7 +994,7 @@ export const Allagan_Resin = new Item(
     "./resources/img/itemIcon/Allagan_Resin.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Merchant & Mender - Southern Thanalan (x15,y29)", [
             new CurrencyAmount(Gil, 100000)
         ])
     ]
@@ -987,7 +1005,7 @@ export const Bronze_Lake_Crystal = new Item(
     "./resources/img/itemIcon/Bronze_Lake_Crystal.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Junkmonger - Upper La Noscea (x26,y26) ", [
             new CurrencyAmount(Gil, 100000)
         ])
     ]
@@ -998,7 +1016,7 @@ export const Brass_Kettle = new Item(
     "./resources/img/itemIcon/Brass_Kettle.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", " Tool Supplier & Mender - North Shroud (x29,y19) ", [
             new CurrencyAmount(Gil, 100000)
         ])
     ]
@@ -1009,7 +1027,7 @@ export const Aether_Oil = new Item(
     "./resources/img/itemIcon/Aether_Oil.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 350)
         ])
     ]
@@ -1020,7 +1038,7 @@ export const Umbrite = new Item(
     "./resources/img/itemIcon/Umbrite.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 75)
         ])
     ]
@@ -1031,9 +1049,11 @@ export const Singing_Cluster = new Item(
     "./resources/img/itemIcon/Singing_Cluster.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 40)
-        ])
+        ]),
+        new Source("Quest","Cut from a Different Cloth"),
+        new Source("Quest","Seeking Inspiration")
     ]
 )
 
@@ -1042,10 +1062,10 @@ export const Pneumite = new Item(
     "./resources/img/itemIcon/Pneumite.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", auriannaNPC, [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 100),
         ]),
-        new Source("Shop", "", [
+        new Source("Shop", gcQuartermasterNPC, [
             new CurrencyAmount(Grand_Company_Seals, 4000)
         ])
     ]
@@ -1100,7 +1120,7 @@ export const Book_of_The_Braves = new Item(
     "./resources/img/itemIcon/Book_of_Skylight.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "G'jusana - Mor Dhona (x22,y7)", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 100)
         ])
     ]
@@ -1111,7 +1131,7 @@ export const Astral_Nodule = new Item(
     "./resources/img/itemIcon/Astral_Nodule.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Syndony - Mor Dhona(x22,y5)", [
             new CurrencyAmount(Luminous_Wind_Crystal, 1),
             new CurrencyAmount(Luminous_Fire_Crystal, 1),
             new CurrencyAmount(Luminous_Lightning_Crystal, 1)
@@ -1124,7 +1144,7 @@ export const Umbral_Nodule = new Item(
     "./resources/img/itemIcon/Umbral_Nodule.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Syndony - Mor Dhona(x22,y5)", [
             new CurrencyAmount(Luminous_Ice_Crystal, 1),
             new CurrencyAmount(Luminous_Earth_Crystal, 1),
             new CurrencyAmount(Luminous_Water_Crystal, 1)
@@ -1137,14 +1157,14 @@ export const Crystal_Sand = new Item(
     "./resources/img/itemIcon/Crystal_Sand.png",
     "HW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Ulan - Idyllshire (6.4, 4.7)", [
             new CurrencyAmount(Blue_Gatherers_Scrip_Token, 5)
         ]),
-        new Source("Shop", "", [
+        new Source("Shop", "Ulan - Idyllshire (6.4, 4.7)", [
             new CurrencyAmount(Superior_Enchanted_Ink, 5),
             new CurrencyAmount(Thavnairian_Mist, 5)
         ]),
-        new Source("Shop", "", [
+        new Source("Shop", "Ulan - Idyllshire (6.4, 4.7)", [
             new CurrencyAmount(Blue_Crafters_Scrip_Token, 5)
         ])
 
@@ -1155,7 +1175,7 @@ export const Mahatmas = new Item(
     "./resources/img/itemIcon/Atma_of_the_Archer.png",
     "ARR",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Remon - Western La Noscea (34.3,31.7)", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 50)
         ])
     ]
