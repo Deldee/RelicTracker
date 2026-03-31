@@ -289,6 +289,52 @@ function renderTotalSection(grandTotals, inputState) {
 }
 
 // ── Expansion section rows ───────────────────────────────────────────
+function renderSourceDiv(source, missing, completed) {
+    const wrapper = document.createElement("div");
+    wrapper.style.display       = "flex";
+    wrapper.style.flexDirection = "column";
+    wrapper.style.gap           = "4px";
+
+    // Source icon + label row
+    const labelRow = document.createElement("div");
+    labelRow.style.display    = "flex";
+    labelRow.style.alignItems = "center";
+    labelRow.style.gap        = "4px";
+
+    if (source.icon) {
+        const img = document.createElement("img");
+        img.src    = source.icon;
+        img.alt    = source.type;
+        img.width  = 24;
+        img.height = 24;
+        labelRow.appendChild(img);
+    }
+
+    const label = document.createElement("span");
+    label.textContent = source.label;
+    labelRow.appendChild(label);
+    wrapper.appendChild(labelRow);
+
+    // Amounts indented below the label
+    if (source.hasCost()) {
+        source.amounts.forEach(({ currency, value }) => {
+            const costRow = document.createElement("div");
+            costRow.style.display    = "flex";
+            costRow.style.alignItems = "center";
+            costRow.style.gap        = "4px";
+            costRow.style.marginLeft = "28px"; // indent under label
+
+            costRow.appendChild(createItemIcon(currency));
+
+            const costSpan = document.createElement("span");
+            costSpan.textContent = (completed ? 0 : value * missing) + " " + currency.name;
+            costRow.appendChild(costSpan);
+            wrapper.appendChild(costRow);
+        });
+    }
+
+    return wrapper;
+}
 
 function renderItemRow(item, count, inputState) {
     const row       = document.createElement("tr");
@@ -313,34 +359,16 @@ function renderItemRow(item, count, inputState) {
     nameSpan.textContent = item.name;
     nameCell.appendChild(nameSpan);
 
-    // Column 4 — main cost
-    const costCell = row.insertCell();
-    if (item.hasCost()) {
-        const adjusted = completed
-            ? item.getMainSource().amounts.map(({ currency }) => ({ currency, value: 0 }))
-            : getAdjustedCosts(item, missing);
-
-        (adjusted ?? item.getMainSource().amounts).forEach(({ currency, value }) => {
-            costCell.appendChild(createCostDiv(currency, value));
-        });
-    }
-
-    // Column 5 — alternative costs
-    const altCell = row.insertCell();
-    if (item.hasCost()) {
-        item.getAlternateSources().forEach((source, index) => {
-            if (!source.hasCost()) return;
-
-            if (index > 0) {
-                const separator = document.createElement("hr");
-                separator.style.cssText = "border:none; border-top:1px solid var(--border); margin:4px 0";
-                altCell.appendChild(separator);
-            }
-            source.amounts.forEach(({ currency, value }) => {
-                altCell.appendChild(createCostDiv(currency, completed ? 0 : value * missing));
-            });
-        });
-    }
+    // Column 4 — sources (with or without cost)
+    const sourceCell = row.insertCell();
+    item.sources.forEach((source, index) => {
+        if (index > 0) {
+            const separator = document.createElement("hr");
+            separator.style.cssText = "border:none; border-top:1px solid var(--border); margin:4px 0";
+            sourceCell.appendChild(separator);
+        }
+        sourceCell.appendChild(renderSourceDiv(source, missing, completed));
+    });
 
     return row;
 }
@@ -358,7 +386,7 @@ function renderExpansionSection(expac, group, inputState) {
     table.classList.add("totals-table");
 
     const header = table.insertRow();
-    ["Owned", "Required", "Material", "Cost", "Alternatives"].forEach(text => {
+    ["Owned", "Required", "Material", "Source(s)"].forEach(text => {
         const th = document.createElement("th");
         th.textContent = text;
         header.appendChild(th);

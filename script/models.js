@@ -24,16 +24,43 @@ export class Source {
                 this.icon = "./resources/img/contentIcon/60722.png";
                 break;
             case "NM":
-                this.icon = "./resources/img/contentIcon/607852.png";
+                this.icon = "./resources/img/contentIcon/60852.png";
                 break;
             case "Quest":
                 this.icon = "./resources/img/contentIcon/Quest_icon.png";
+                break;
+            case "Society Quest":
+                this.icon = "./resources/img/contentIcon/Society_Quests.png";
                 break;
             case "Duty":
                 this.icon = "./resources/img/contentIcon/Dungeon.png";
                 break;
             case "Shop":
                 this.icon = "./resources/img/contentIcon/Shop.png";
+                break;
+            case "CE":
+                this.icon = "./resources/img/contentIcon/063909.png";
+                break;
+            case "Raids":
+                this.icon = "./resources/img/contentIcon/Raids.png"
+                break;
+            case "Trials":
+                this.icon = "./resources/img/contentIcon/Trials.png"
+                break;
+            case "Duty Roulettes":
+                this.icon = "./resources/img/contentIcon/Duty_Roulette.png"
+                break;
+            case "Dungeon":
+                this.icon = "./resources/img/contentIcon/Dungeon.png"
+                break;
+            case "Craft":
+                this.icon = "./resources/img/contentIcon/Disciples_of_the_Hand.png"
+                break;
+            case "Foray":
+                this.icon = "./resources/img/contentIcon/061837.png"
+                break;
+            case "Deep Dungeons":
+                this.icon = "./resources/img/contentIcon/Deep_Dungeons.png"
                 break;
             default:
                 this.icon = null;
@@ -55,7 +82,7 @@ export class Item {
     }
 
     hasCost() {
-        return this.sources.some(s => s.hasCost());
+        return this.sources?.some(s => s.hasCost()) ?? false;
     }
 
     getMainSource() {
