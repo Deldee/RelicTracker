@@ -256,7 +256,7 @@ export const ObscurumPreDT = new Step([
     entry(Items.Aspected_Aether_Agglomerate,1),
     entry(Items.Aspected_Aetherocatalyst,1),
     entry(Items.Aspected_Aetheroconductor,1),
-    entry(Items.Crystal_Paste,1200),
+    entry(Items.Crystal_Paste,1200)
 
 ])
 
