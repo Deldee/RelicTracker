@@ -101,7 +101,7 @@ export const LuxHW = new Step([
 ])
 
 export const AntiquatedSB = new Step([
-    entry(Items.Gil,10000)
+
 ])
 
 export const StarterSB = new Step([

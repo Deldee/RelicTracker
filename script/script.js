@@ -1,7 +1,7 @@
 import * as Items from './items.js';
 import * as Steps from "./steps.js"
 import { Expansions } from './expansions.js';
-import { CostSummary, ShopItem } from './models.js';
+import { CostSummary} from './models.js';
 
 
 const totals = {};
@@ -175,7 +175,7 @@ function getAllTotals() {
     return combined;
 }
 function getAdjustedCosts(item, missing) {
-    if (missing === 0 || !(item instanceof ShopItem)) return null;
+    if (missing === 0 || !(item.hasCost())) return null;
 
     const source = item.getMainCost();
     if (!source || !Array.isArray(source.amounts)) return null;
@@ -232,7 +232,7 @@ function renderTotals() {
     const grandTotals = {};
     Object.values(groups).forEach(group => {
         group.forEach(({ item, count }) => {
-            if (!(item instanceof ShopItem)) return;
+            if (!(item.hasCost())) return;
 
             const owned   = parseInt(inputState[item.name] ?? 0);
             const missing = Math.max(0, count - owned);
@@ -347,7 +347,7 @@ function renderTotals() {
 
             // Column 4 — main cost (adjusted for owned)
             const costCell = row.insertCell();
-            if (item instanceof ShopItem) {
+            if (item.hasCost()) {
                 const adjusted = completed
                     ? item.getMainCost().amounts.map(({ currency }) => ({ currency, value: 0 }))
                     : getAdjustedCosts(item, missing);
@@ -375,7 +375,7 @@ function renderTotals() {
 
             // Column 5 — alternative costs
             const altCell = row.insertCell();
-            if (item instanceof ShopItem) {
+            if (item.hasCost()) {
                 item.getAlternateCosts().forEach((source, index) => {
                     if (index > 0) {
                         const separator = document.createElement("hr");
@@ -470,32 +470,6 @@ function loadInputsFromCookie() {
     }
 }
 
-function getMultiCurrencyTotals(groups, inputState) {
-    const totals = {};
-
-    Object.values(groups).forEach(group => {
-        group.forEach(({ item, count }) => {
-            if (!(item instanceof ShopItem)) return;
-
-            const owned   = parseInt(inputState[item.name] ?? 0);
-            const missing = Math.max(0, count - owned);
-            if (missing === 0) return;
-
-            const source = item.getMainCost();
-            if (!source || !Array.isArray(source.amounts)) return;
-
-            source.amounts.forEach(({ currency, value }) => {
-                if (currency.expac !== "multi") return; // only multi-tagged currencies
-
-                const key = currency.name;
-                if (!totals[key]) totals[key] = { currency, total: 0 };
-                totals[key].total += value * missing;
-            });
-        });
-    });
-
-    return Object.values(totals);
-}
 
 
 // Restore on page load
