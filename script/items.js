@@ -538,7 +538,8 @@ export const Pazuzus_Feather = new Item(
     "./resources/img/itemIcon/Pazuzu's_Feather.png",
     "SB",
     [
-        new Source("Shop", "", [
+        new Source("NM", "Wail in the Willows (Anemos)"),
+        new Source("Shop", "Expedition Birdwatcher (Anemos)", [
             new CurrencyAmount(Protean_Crystal, 300)
         ])
     ]
@@ -549,7 +550,8 @@ export const Penthesileas_Flame = new Item(
     "./resources/img/itemIcon/Penthesilea's_Flame.png",
     "SB",
     [
-        new Source("Shop", "", [
+        new Source("NM", "Lost Epic (Pyros)"),
+        new Source("Shop", "Expedition Birdwatcher (Pyros)", [
             new CurrencyAmount(Pyros_Crystal, 50)
         ])
     ]
@@ -562,7 +564,7 @@ export const Louhis_Ice = new Item(
     "SB",
     [
         new Source("NM", "Louhi on Ice (Pagos)"),
-        new Source("Shop", "", [
+        new Source("Shop", "Expedition Birdwatcher (Pyros)", [
             new CurrencyAmount(Pagos_Crystal, 50)
         ])
     ]

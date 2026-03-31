@@ -177,7 +177,7 @@ function getAllTotals() {
 function getAdjustedCosts(item, missing) {
     if (missing === 0 || !(item.hasCost())) return null;
 
-    const source = item.getMainCost();
+    const source = item.getMainSource();
     if (!source || !Array.isArray(source.amounts)) return null;
 
     return source.amounts.map(({ currency, value }) => ({
@@ -186,6 +186,200 @@ function getAdjustedCosts(item, missing) {
     }));
 }
 //UI
+// ── Helpers ─────────────────────────────────────────────────────────
+
+function createItemIcon(item) {
+    const img = document.createElement("img");
+    img.src    = item.icon;
+    img.alt    = item.name;
+    img.width  = 24;
+    img.height = 24;
+    return img;
+}
+
+function createCostDiv(currency, value) {
+    const div = document.createElement("div");
+    div.style.display     = "flex";
+    div.style.alignItems  = "center";
+    div.style.gap         = "4px";
+    div.appendChild(createItemIcon(currency));
+    const span = document.createElement("span");
+    span.textContent = value + " " + currency.name;
+    div.appendChild(span);
+    return div;
+}
+
+function createNumberInput(itemName) {
+    const input = document.createElement("input");
+    input.type  = "number";
+    input.min   = 0;
+    input.value = 0;
+    input.classList.add("materialInput");
+    input.dataset.itemName = itemName;
+    return input;
+}
+
+// ── Grand totals section ─────────────────────────────────────────────
+
+function buildGrandTotals(groups, inputState) {
+    const grandTotals = {};
+    Object.values(groups).forEach(group => {
+        group.forEach(({ item, count }) => {
+            if (!item.hasCost()) return;
+
+            const owned   = parseInt(inputState[item.name] ?? 0);
+            const missing = Math.max(0, count - owned);
+            if (missing === 0) return;
+
+            const source = item.getMainSource();
+            if (!source || !Array.isArray(source.amounts)) return;
+
+            source.amounts.forEach(({ currency, value }) => {
+                const key = currency.name;
+                if (!grandTotals[key]) grandTotals[key] = { currency, total: 0 };
+                grandTotals[key].total += value * missing;
+            });
+        });
+    });
+    return grandTotals;
+}
+
+function renderTotalSection(grandTotals, inputState) {
+    const totalDetails = document.createElement("details");
+    totalDetails.open = true;
+    totalDetails.dataset.expac = "total";
+
+    const totalSummary = document.createElement("summary");
+    totalSummary.textContent = "Total Currencies";
+    totalDetails.appendChild(totalSummary);
+
+    const table = document.createElement("table");
+    table.classList.add("totals-table");
+
+    const header = table.insertRow();
+    ["Owned", "Required", "Currency"].forEach(text => {
+        const th = document.createElement("th");
+        th.textContent = text;
+        header.appendChild(th);
+    });
+
+    Object.values(grandTotals).reverse().forEach(({ currency, total }) => {
+        const row = table.insertRow();
+        const ownedCurrencyKey = `currency_${currency.name}`;
+        const ownedCurrency    = parseInt(inputState[ownedCurrencyKey] ?? 0);
+        const missingCurrency  = Math.max(0, total - ownedCurrency);
+        const completed        = ownedCurrency >= total;
+
+        if (completed) row.classList.add("completed");
+
+        row.insertCell().appendChild(createNumberInput(ownedCurrencyKey));
+
+        const totalCell = row.insertCell();
+        totalCell.textContent = missingCurrency;
+
+        const nameCell = row.insertCell();
+        nameCell.appendChild(createItemIcon(currency));
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = currency.name;
+        nameCell.appendChild(nameSpan);
+    });
+
+    totalDetails.appendChild(table);
+    return totalDetails;
+}
+
+// ── Expansion section rows ───────────────────────────────────────────
+
+function renderItemRow(item, count, inputState) {
+    const row       = document.createElement("tr");
+    const owned     = parseInt(inputState[item.name] ?? 0);
+    const missing   = Math.max(0, count - owned);
+    const completed = owned >= count;
+
+    if (completed) row.classList.add("completed");
+
+    // Column 1 — number input
+    const inputCell = row.insertCell();
+    inputCell.appendChild(createNumberInput(item.name));
+
+    // Column 2 — required count
+    const countCell = row.insertCell();
+    countCell.textContent = count;
+
+    // Column 3 — icon + name
+    const nameCell = row.insertCell();
+    nameCell.appendChild(createItemIcon(item));
+    const nameSpan = document.createElement("span");
+    nameSpan.textContent = item.name;
+    nameCell.appendChild(nameSpan);
+
+    // Column 4 — main cost
+    const costCell = row.insertCell();
+    if (item.hasCost()) {
+        const adjusted = completed
+            ? item.getMainSource().amounts.map(({ currency }) => ({ currency, value: 0 }))
+            : getAdjustedCosts(item, missing);
+
+        (adjusted ?? item.getMainSource().amounts).forEach(({ currency, value }) => {
+            costCell.appendChild(createCostDiv(currency, value));
+        });
+    }
+
+    // Column 5 — alternative costs
+    const altCell = row.insertCell();
+    if (item.hasCost()) {
+        item.getAlternateSources().forEach((source, index) => {
+            if (!source.hasCost()) return;
+
+            if (index > 0) {
+                const separator = document.createElement("hr");
+                separator.style.cssText = "border:none; border-top:1px solid var(--border); margin:4px 0";
+                altCell.appendChild(separator);
+            }
+            source.amounts.forEach(({ currency, value }) => {
+                altCell.appendChild(createCostDiv(currency, completed ? 0 : value * missing));
+            });
+        });
+    }
+
+    return row;
+}
+
+function renderExpansionSection(expac, group, inputState) {
+    const details = document.createElement("details");
+    details.open = true;
+    details.dataset.expac = expac;
+
+    const summary = document.createElement("summary");
+    summary.textContent = Expansions.find(e => e.abbreviation === expac)?.name ?? expac;
+    details.appendChild(summary);
+
+    const table = document.createElement("table");
+    table.classList.add("totals-table");
+
+    const header = table.insertRow();
+    ["Owned", "Required", "Material", "Cost", "Alternatives"].forEach(text => {
+        const th = document.createElement("th");
+        th.textContent = text;
+        header.appendChild(th);
+    });
+    const tbody = table.getElementsByTagName("tbody");
+    [...group].reverse().forEach(({ item, count }) => {
+        tbody[0].appendChild(renderItemRow(item, count, inputState));
+    });
+
+    const allCompleted = group.every(({ item, count }) => {
+        return parseInt(inputState[item.name] ?? 0) >= count;
+    });
+
+    if (allCompleted) details.classList.add("completed");
+
+    details.appendChild(table);
+    return details;
+}
+
+// ── Main render ──────────────────────────────────────────────────────
+
 function renderTotals() {
     const detailsState = saveDetailsState();
     const inputState   = { ...saveInputState(), ...loadInputsFromCookie() };
@@ -209,214 +403,11 @@ function renderTotals() {
         return expansionOrder.indexOf(a) - expansionOrder.indexOf(b);
     });
 
-    // ── Total section (top) ──────────────────────────────────────────
-    const totalDetails = document.createElement("details");
-    totalDetails.open = true;
-    totalDetails.dataset.expac = "total";
+    const grandTotals = buildGrandTotals(groups, inputState);
+    container.appendChild(renderTotalSection(grandTotals, inputState));
 
-    const totalSummary = document.createElement("summary");
-    totalSummary.textContent = "Total Currencies";
-    totalDetails.appendChild(totalSummary);
-
-    const totalTable = document.createElement("table");
-    totalTable.classList.add("totals-table");
-
-    const totalHeader = totalTable.insertRow();
-    ["Owned", "Required", "Currency"].forEach(text => {
-        const th = document.createElement("th");
-        th.textContent = text;
-        totalHeader.appendChild(th);
-    });
-
-    // Gather all currency totals across every group
-    const grandTotals = {};
-    Object.values(groups).forEach(group => {
-        group.forEach(({ item, count }) => {
-            if (!(item.hasCost())) return;
-
-            const owned   = parseInt(inputState[item.name] ?? 0);
-            const missing = Math.max(0, count - owned);
-            if (missing === 0) return;
-
-            const source = item.getMainCost();
-            if (!source || !Array.isArray(source.amounts)) return;
-
-            source.amounts.forEach(({ currency, value }) => {
-                const key = currency.name;
-                if (!grandTotals[key]) grandTotals[key] = { currency, total: 0 };
-                grandTotals[key].total += value * missing;
-            });
-        });
-    });
-
-    Object.values(grandTotals).forEach(({ currency, total }) => {
-        const row = totalTable.insertRow();
-
-        const ownedCurrencyKey = `currency_${currency.name}`;
-        const ownedCurrency    = parseInt(inputState[ownedCurrencyKey] ?? 0);
-        const missingCurrency  = Math.max(0, total - ownedCurrency);
-        const completed        = ownedCurrency >= total;
-
-        if (completed) row.classList.add("completed");
-
-        // Column 1 — number input
-        const inputCell = row.insertCell();
-        const input = document.createElement("input");
-        input.type = "number";
-        input.min = 0;
-        input.value = 0;
-        input.classList.add("materialInput");
-        input.dataset.itemName = ownedCurrencyKey;
-        inputCell.appendChild(input);
-
-        // Column 2 — required count (minus owned)
-        const totalCell = row.insertCell();
-        totalCell.textContent = missingCurrency;
-
-        // Column 3 — icon + name
-        const nameCell = row.insertCell();
-        const img = document.createElement("img");
-        img.src = currency.icon;
-        img.alt = currency.name;
-        img.width = 24;
-        img.height = 24;
-        const nameSpan = document.createElement("span");
-        nameSpan.textContent = currency.name;
-        nameCell.appendChild(img);
-        nameCell.appendChild(nameSpan);
-    });
-
-    totalDetails.appendChild(totalTable);
-    container.appendChild(totalDetails);
-
-    // ── Expansion sections ───────────────────────────────────────────
     sortedKeys.forEach(expac => {
-        const details = document.createElement("details");
-        details.open = true;
-        details.dataset.expac = expac;
-
-        const summary = document.createElement("summary");
-        summary.textContent = expac === "multi"
-            ? "Shared (Multiple Expansions)"
-            : Expansions.find(e => e.abbreviation === expac)?.name ?? expac;
-        details.appendChild(summary);
-
-        const table = document.createElement("table");
-        table.classList.add("totals-table");
-
-        const header = table.insertRow();
-        ["Owned", "Required", "Material", "Cost", "Alternatives"].forEach(text => {
-            const th = document.createElement("th");
-            th.textContent = text;
-            header.appendChild(th);
-        });
-
-        groups[expac].reverse().forEach(({ item, count }) => {
-            const row = table.insertRow();
-            const owned     = parseInt(inputState[item.name] ?? 0);
-            const missing   = Math.max(0, count - owned);
-            const completed = owned >= count;
-
-            if (completed) row.classList.add("completed");
-
-            // Column 1 — number input
-            const inputCell = row.insertCell();
-            const input = document.createElement("input");
-            input.type = "number";
-            input.min = 0;
-            input.value = 0;
-            input.classList.add("materialInput");
-            input.dataset.itemName = item.name;
-            inputCell.appendChild(input);
-
-            // Column 2 — required count
-            const countCell = row.insertCell();
-            countCell.textContent = count;
-
-            // Column 3 — icon + name
-            const nameCell = row.insertCell();
-            const img = document.createElement("img");
-            img.src = item.icon;
-            img.alt = item.name;
-            img.width = 24;
-            img.height = 24;
-            const nameSpan = document.createElement("span");
-            nameSpan.textContent = item.name;
-            nameCell.appendChild(img);
-            nameCell.appendChild(nameSpan);
-
-            // Column 4 — main cost (adjusted for owned)
-            const costCell = row.insertCell();
-            if (item.hasCost()) {
-                const adjusted = completed
-                    ? item.getMainCost().amounts.map(({ currency }) => ({ currency, value: 0 }))
-                    : getAdjustedCosts(item, missing);
-
-                (adjusted ?? item.getMainCost().amounts).forEach(({ currency, value }) => {
-                    const costRow = document.createElement("div");
-                    costRow.style.display = "flex";
-                    costRow.style.alignItems = "center";
-                    costRow.style.gap = "4px";
-
-                    const imgCost = document.createElement("img");
-                    imgCost.src = currency.icon;
-                    imgCost.alt = currency.name;
-                    imgCost.width = 24;
-                    imgCost.height = 24;
-
-                    const costNameSpan = document.createElement("span");
-                    costNameSpan.textContent = value + " " + currency.name;
-
-                    costRow.appendChild(imgCost);
-                    costRow.appendChild(costNameSpan);
-                    costCell.appendChild(costRow);
-                });
-            }
-
-            // Column 5 — alternative costs
-            const altCell = row.insertCell();
-            if (item.hasCost()) {
-                item.getAlternateCosts().forEach((source, index) => {
-                    if (index > 0) {
-                        const separator = document.createElement("hr");
-                        separator.style.border = "none";
-                        separator.style.borderTop = "1px solid var(--border)";
-                        separator.style.margin = "4px 0";
-                        altCell.appendChild(separator);
-                    }
-                    source.amounts.forEach(({ currency, value }) => {
-                        const altRow = document.createElement("div");
-                        altRow.style.display = "flex";
-                        altRow.style.alignItems = "center";
-                        altRow.style.gap = "4px";
-
-                        const imgAlt = document.createElement("img");
-                        imgAlt.src = currency.icon;
-                        imgAlt.alt = currency.name;
-                        imgAlt.width = 24;
-                        imgAlt.height = 24;
-
-                        const altNameSpan = document.createElement("span");
-                        altNameSpan.textContent = (completed ? 0 : value * missing) + " " + currency.name;
-
-                        altRow.appendChild(imgAlt);
-                        altRow.appendChild(altNameSpan);
-                        altCell.appendChild(altRow);
-                    });
-                });
-            }
-        });
-
-        // Mark details as completed if every row in the group is completed
-        const allCompleted = groups[expac].every(({ item, count }) => {
-            const owned = parseInt(inputState[item.name] ?? 0);
-            return owned >= count;
-        });
-
-        if (allCompleted) details.classList.add("completed");
-
-        details.appendChild(table);
-        container.appendChild(details);
+        container.appendChild(renderExpansionSection(expac, groups[expac], inputState));
     });
 
     restoreDetailsState(detailsState);

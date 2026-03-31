@@ -81,7 +81,7 @@ export class Step {
         const summary = new CostSummary();
         this.entries.forEach(({ item, count: entryCount }) => {
             if (item.hasCost()) {
-                const source = item.getMainCost();
+                const source = item.getMainSource();
                 if (!source || !Array.isArray(source.amounts)) {
                     console.warn(`Item "${item.name}" has an invalid Cost structure`, source);
                     return;
