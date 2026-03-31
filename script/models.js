@@ -47,7 +47,9 @@ export class Source {
             case "Trials":
                 this.icon = "./resources/img/contentIcon/Trials.png"
                 break;
-
+            case "Roulettes":
+                this.icon = "./resources/img/contentIcon/Duty_Roulette.png"
+                break;
             default:
                 this.icon = null;
                 break;

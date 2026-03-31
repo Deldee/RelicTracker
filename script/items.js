@@ -181,74 +181,118 @@ export const Atma_of_the_Water_bearer = new Item(
 export const Azurite_Demiatma = new Item(
     "Azurite Demiatma",
     "./resources/img/itemIcon/Azurite_Demiatma.png",
-    "DT"
+    "DT",
+    [
+        new Source("CE", "Occult Crescent CE (20%)"),
+        new Source("Fate", "Urqopacha/Occult Fates (5%)")
+    ]
+)
+
+export const Caput_Mortuum_Demiatma = new Item(
+    "Caput Mortuum Demiatma",
+    "./resources/img/itemIcon/Caput_Mortuum_Demiatma.png",
+    "DT",
+    [
+        new Source("CE", "Occult Crescent CE (20%)"),
+        new Source("Fate", "Heritage Found/Occult Fates (5%)")
+    ]
 )
 
 export const A_Day_in_the_Life_Battles_for_the_Realm = new Item(
     "A Day in the Life Battles for the Realm",
     "./resources/img/itemIcon/A_Day_in_the_Life_Battles_for_the_Realm.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Fate", "Zadnor Zone 2 Skirmishes"),
+        new Source("Raids", "Omega Raids 1,2,5,6,9,10")
+    ]
 )
 
 export const A_Day_in_the_Life_Beyond_the_Rift = new Item(
     "A Day in the Life Beyond the Rift",
     "./resources/img/itemIcon/A_Day_in_the_Life_Beyond_the_Rift.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("CE", "Zadnor Zone 2 CEs"),
+        new Source("Raids", "Omega 3,4,7,8,11,12")
+    ]
 )
 
 export const Bitter_Memory_of_the_Dying = new Item(
     "Bitter Memory of the Dying",
     "./resources/img/itemIcon/Bitter_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("CE", "Killing enemies or CE in Bozjan Southern Front"),
+        new Source*("Dungeon", "Synced 60 dungeons"),
+        new Source("Duty Roulette", "Levelling Roulette")
+
+    ]
 )
 
 export const Bleak_Memory_of_the_Dying = new Item(
     "Bleak Memory of the Dying",
     "./resources/img/itemIcon/Bleak_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Fate", "Zadnor Zone 3 Skirmishes"),
+        new Source("Raids", "Eden Raids 1,2,5,6,9,10")
+    ]
 )
 
-
-export const Caput_Mortuum_Demiatma = new Item(
-    "Caput Mortuum Demiatma",
-    "./resources/img/itemIcon/Caput_Mortuum_Demiatma.png",
-    "DT"
-)
 
 export const Compact_Axle = new Item(
     "Compact Axle",
     "./resources/img/itemIcon/Compact_Axle.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Fate", "Zadnor Zone 1 Skirmishes"),
+        new Source("Raids", "Alexander Raids 1,2,5,6,9,10")
+    ]
 )
 
 export const Crystalline_Scale = new Item(
     "Crystalline Scale",
     "./resources/img/itemIcon/Crystalline_Scale.png",
     "SB",
+    [
+        new Source("NM","Crystalline Provenance (Hydatos)")
+    ]
 )
 
 export const Crystal_Paste = new Item(
     "Crystal Paste",
     "./resources/img/itemIcon/Crystal_Paste.png",
-    "DT"
+    "DT",
+    [
+        new Source("Duty Roulette", "Levelling Roulette")
+    ]
 )
 
 export const Eureka_Fragment = new Item(
     "Eureka Fragment",
     "./resources/img/itemIcon/Eureka_Fragment.png",
     "SB",
+    [
+        new Source("Fate", "Baldesion Arsenal (Hydatos)")
+    ]
 )
 
 export const Frosted_Protean_Crystal = new Item(
     "Frosted Protean Crystal",
     "./resources/img/itemIcon/Frosted_Protean_Crystal.png",
     "SB",
+    new Source("NM", "Light Kettle (Pagos)")
 )
 
 export const Harrowing_Memory_of_the_Dying = new Item(
     "Harrowing Memory of the Dying",
     "./resources/img/itemIcon/Harrowing_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Fate", "Azys Lla/Dravanian Hinterlands Fate"),
+        new Source("CE", "Bozjan Southern Front Zone 3 Skirmish/CE"),
+    ]
 )
 
 export const Haunting_Memory_of_the_Dying = new Item(
@@ -272,55 +316,85 @@ export const Loathsome_Memory_of_the_Dying = new Item(
 export const Luminous_Earth_Crystal = new Item(
     "Luminous Earth Crystal",
     "./resources/img/itemIcon/Luminous_Earth_Crystal.png",
-    "HW"
+    "HW",
+    [
+        new Source("Fate","The Dravanian Forelands Fates")
+    ]
 )
 
 export const Luminous_Fire_Crystal = new Item(
     "Luminous Fire Crystal",
     "./resources/img/itemIcon/Luminous_Fire_Crystal.png",
-    "HW"
+    "HW",
+    [
+        new Source("Fate","Azys Lla Fates")
+    ]
 )
 
 export const Luminous_Ice_Crystal = new Item(
     "Luminous Ice Crystal",
     "./resources/img/itemIcon/Luminous_Ice_Crystal.png",
-    "HW"
+    "HW",
+    [
+        new Source("Fate","Coerthas Western Highland Fates")
+    ]
 )
 
 export const Luminous_Lightning_Crystal = new Item(
     "Luminous Lightning Crystal",
     "./resources/img/itemIcon/Luminous_Lightning_Crystal.png",
-    "HW"
+    "HW",
+    [
+        new Source("Fate","The Churning Mists Fates")
+    ]
 )
 
 export const Luminous_Water_Crystal = new Item(
     "Luminous Water Crystal",
     "./resources/img/itemIcon/Luminous_Water_Crystal.png",
-    "HW"
+    "HW",
+    [
+        new Source("Fate","The Dravanian Hinterlands Fates")
+    ]
 )
 
 export const Luminous_Wind_Crystal = new Item(
     "Luminous Wind Crystal",
     "./resources/img/itemIcon/Luminous_Wind_Crystal.png",
-    "HW"
+    "HW",
+    [
+        new Source("Fate","The Sea of Clouds Fates")
+    ]
 )
 
 export const Lurid_Memory_of_the_Dying = new Item(
     "Lurid Memory of the Dying",
     "./resources/img/itemIcon/Lurid_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("CE", "Zadnor Zone 3 CEs"),
+        new Source("Raids", "Eden 3,4,7,8,11,12")
+    ]
 )
 
 export const Malachite_Demiatma = new Item(
     "Malachite Demiatma",
     "./resources/img/itemIcon/Malachite_Demiatma.png",
-    "DT"
+    "DT",
+    [
+        new Source("CE", "Occult Crescent CE (20%)"),
+        new Source("Fate", "Yak T'el/Occult Fates (5%)")
+    ]
 )
 
 export const Orpiment_Demiatma = new Item(
     "Orpiment Demiatma",
     "./resources/img/itemIcon/Orpiment_Demiatma.png",
-    "DT"
+    "DT",
+    [
+        new Source("CE", "Occult Crescent CE (20%)"),
+        new Source("Fate", "Living Memory/Occult Fates (5%)")
+    ]
 )
 
 export const Pagos_Crystal = new Item(
@@ -399,7 +473,11 @@ export const Raw_Emotion = new Item(
 export const Realgar_Demiatma = new Item(
     "Realgar Demiatma",
     "./resources/img/itemIcon/Realgar_Demiatma.png",
-    "DT"
+    "DT",
+    [
+        new Source("CE", "Occult Crescent CE (20%)"),
+        new Source("Fate", "Shaaloani/Occult Fates (5%)")
+    ]
 )
 
 export const Sharlayan_Aether_Oil = new Item(
@@ -410,7 +488,11 @@ export const Sharlayan_Aether_Oil = new Item(
 export const Sorrowful_Memory_of_the_Dying = new Item(
     "Sorrowful Memory of the Dying",
     "./resources/img/itemIcon/Sorrowful_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Fate", "Churning Mists/Dravanian Forelands Fate"),
+        new Source("CE", "Bozjan Southern Front Zone 2 Skirmish/CE"),
+    ]
 )
 
 export const Timeworn_Artifact = new Item(
@@ -422,13 +504,21 @@ export const Timeworn_Artifact = new Item(
 export const Tortured_Memory_of_the_Dying = new Item(
     "Tortured Memory of the Dying",
     "./resources/img/itemIcon/Tortured_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Fate", "Sea of Clouds/Coerthas Western Highlands Fate"),
+        new Source("CE", "Bozjan Southern Front Zone 1 Skirmish/CE"),
+    ]
 )
 
 export const Verdigris_Demiatma = new Item(
     "Verdigris Demiatma",
     "./resources/img/itemIcon/Verdigris_Demiatma.png",
-    "DT"
+    "DT",
+    [
+        new Source("CE", "Occult Crescent CE (20%)"),
+        new Source("Fate", "Kozama'uka/Occult Fates (5%)")
+    ]
 )
 
 export const Vexatious_Memory_of_the_Dying = new Item(
@@ -445,7 +535,11 @@ export const Alexandrite = new Item(
 export const Compact_Spring = new Item(
     "Compact Spring",
     "./resources/img/itemIcon/Compact_Spring.png",
-    "ShB" 
+    "ShB" ,
+    [
+        new Source("CE", "Zadnor Zone 1 CEs"),
+        new Source("Raids", "Alexander 3,4,7,8,11,12")
+    ]
 )
 
 export const Synthetic_Dark_Matter_Beta = new Item(
