@@ -57,7 +57,7 @@ export class Source {
                 this.icon = "./resources/img/contentIcon/Disciples_of_the_Hand.png"
                 break;
             case "Foray":
-                this.icon = "./resources/img/contentIcon/063972.png"
+                this.icon = "./resources/img/contentIcon/061837.png"
                 break;
             case "Deep Dungeons":
                 this.icon = "./resources/img/contentIcon/Deep_Dungeons.png"

@@ -386,7 +386,7 @@ function renderExpansionSection(expac, group, inputState) {
     table.classList.add("totals-table");
 
     const header = table.insertRow();
-    ["Owned", "Required", "Material", "Source"].forEach(text => {
+    ["Owned", "Required", "Material", "Source(s)"].forEach(text => {
         const th = document.createElement("th");
         th.textContent = text;
         header.appendChild(th);

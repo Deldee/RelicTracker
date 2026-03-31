@@ -280,11 +280,10 @@ export const Eureka_Fragment = new Item(
 export const Frosted_Protean_Crystal = new Item(
     "Frosted Protean Crystal",
     "./resources/img/itemIcon/Frosted_Protean_Crystal.png",
-    "SB", [
-    new Source(
-        "NM", "Light Kettle (Pagos)"
-
-    )]
+    "SB", 
+    [
+        new Source("NM", "Light Kettle (Pagos)")
+    ]
 )
 
 export const Harrowing_Memory_of_the_Dying = new Item(
@@ -302,21 +301,28 @@ export const Haunting_Memory_of_the_Dying = new Item(
     "./resources/img/itemIcon/Haunting_Memory_of_the_Dying.png",
     "ShB",
     [
-        new Source("Raid" , "Heavensward Alliance Raids"),
-        new Source("Fate" , "Gyr Abania Fates")
+        new Source("Raid", "Heavensward Alliance Raids"),
+        new Source("Fate", "Gyr Abania Fates")
     ]
 )
 
 export const Hydatos_Crystal = new Item(
     "Hydatos Crystal",
     "./resources/img/itemIcon/Hydatos_Crystal.png",
-    "SB"
+    "SB", [
+    new Source("NM", "Hydatos Notorious Monsters")
+]
 )
 
 export const Loathsome_Memory_of_the_Dying = new Item(
     "Loathsome Memory of the Dying",
     "./resources/img/itemIcon/Loathsome_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("CE", "The Battle of Castrum Lacus Litore"),
+        new Source("CE", "Bozjan Southern Front CE"),
+        new Source("Raids", "Crystal Tower Raids")
+    ]
 )
 
 export const Luminous_Earth_Crystal = new Item(
@@ -408,7 +414,7 @@ export const Pagos_Crystal = new Item(
     "./resources/img/itemIcon/Pagos_Crystal.png",
     "SB",
     [
-        new Source("NM","Pagos NMs")
+        new Source("NM", "Pagos Notorious Monsters")
     ]
 )
 
@@ -496,7 +502,7 @@ export const Pyros_Crystal = new Item(
     "./resources/img/itemIcon/Pyros_Crystal.png",
     "SB",
     [
-        new Source("NM", "Pyros NMs")
+        new Source("NM", "Pyros Notorious Monsters")
     ]
 )
 
@@ -573,8 +579,8 @@ export const Vexatious_Memory_of_the_Dying = new Item(
     "./resources/img/itemIcon/Vexatious_Memory_of_the_Dying.png",
     "ShB",
     [
-        new Source("Raid" , "Stormblood Alliance Raids"),
-        new Source("Fate" , "Othard Fates")
+        new Source("Raid", "Stormblood Alliance Raids"),
+        new Source("Fate", "Othard Fates")
     ]
 )
 
@@ -661,7 +667,7 @@ export const Blue_Crafters_Scrip_Token = new Item(
 export const Blue_Gatherers_Scrip_Token = new Item(
     "Blue Gatherers Scrip Token",
     "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png",
-   "HW",
+    "HW",
     [
         new Source("Shop", "", [
             new CurrencyAmount(Purple_Gatherers_Scrip, 25)
