@@ -300,7 +300,11 @@ export const Harrowing_Memory_of_the_Dying = new Item(
 export const Haunting_Memory_of_the_Dying = new Item(
     "Haunting Memory of the Dying",
     "./resources/img/itemIcon/Haunting_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Raid" , "Heavensward Alliance Raids"),
+        new Source("Fate" , "Gyr Abania Fates")
+    ]
 )
 
 export const Hydatos_Crystal = new Item(
@@ -403,55 +407,82 @@ export const Pagos_Crystal = new Item(
     "Pagos Crystal",
     "./resources/img/itemIcon/Pagos_Crystal.png",
     "SB",
+    [
+        new Source("NM","Pagos NMs")
+    ]
 )
 
 export const Perfect_Cloth = new Item(
     "Perfect Cloth",
     "./resources/img/itemIcon/Perfect_Cloth.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Perfect_Firewood = new Item(
     "Perfect Firewood",
     "./resources/img/itemIcon/Perfect_Firewood.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Perfect_Mortar = new Item(
     "Perfect Mortar",
     "./resources/img/itemIcon/Perfect_Mortar.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 
 )
 
 export const Perfect_Pestle = new Item(
     "Perfect Pestle",
     "./resources/img/itemIcon/Perfect_Pestle.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Perfect_Pounce = new Item(
     "Perfect Pounce",
     "./resources/img/itemIcon/Perfect_Pounce.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Perfect_Vellum = new Item(
     "Perfect Vellum",
     "./resources/img/itemIcon/Perfect_Vellum.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Tailor_made_Eel_Pie = new Item(
     "Tailor made Eel Pie",
     "./resources/img/itemIcon/Tailor-made_Eel_Pie.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Furnace_Ring = new Item(
     "Furnace Ring",
     "./resources/img/itemIcon/Furnace_Ring.png",
-    "ARR"
+    "ARR",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Protean_Crystal = new Item(
@@ -463,13 +494,23 @@ export const Protean_Crystal = new Item(
 export const Pyros_Crystal = new Item(
     "Pyros Crystal",
     "./resources/img/itemIcon/Pyros_Crystal.png",
-    "SB"
+    "SB",
+    [
+        new Source("NM", "Pyros NMs")
+    ]
 )
 
 export const Raw_Emotion = new Item(
     "Raw Emotion",
     "./resources/img/itemIcon/Raw_Emotion.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("CE", "Dalriada (Zadnor)"),
+        new Source("Foray", "Delebrum Reginae"),
+        new Source("Deep Dungeons", "Heaven-on-High"),
+        new Source("Dungeon", "Level 70 Dungeons"),
+
+    ]
 )
 
 export const Realgar_Demiatma = new Item(
@@ -500,7 +541,11 @@ export const Sorrowful_Memory_of_the_Dying = new Item(
 export const Timeworn_Artifact = new Item(
     "Timeworn Artifact",
     "./resources/img/itemIcon/Timeworn_Artifact.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Foray", "Delebrum Reginae"),
+        new Source("Deep Dungeons", "Palace of the Dead"),
+    ]
 )
 
 export const Tortured_Memory_of_the_Dying = new Item(
@@ -526,7 +571,11 @@ export const Verdigris_Demiatma = new Item(
 export const Vexatious_Memory_of_the_Dying = new Item(
     "Vexatious Memory of the Dying",
     "./resources/img/itemIcon/Vexatious_Memory_of_the_Dying.png",
-    "ShB"
+    "ShB",
+    [
+        new Source("Raid" , "Stormblood Alliance Raids"),
+        new Source("Fate" , "Othard Fates")
+    ]
 )
 
 export const Alexandrite = new Item(
@@ -612,6 +661,7 @@ export const Blue_Crafters_Scrip_Token = new Item(
 export const Blue_Gatherers_Scrip_Token = new Item(
     "Blue Gatherers Scrip Token",
     "./resources/img/itemIcon/Blue_Gatherers_Scrip_Token.png",
+   "HW",
     [
         new Source("Shop", "", [
             new CurrencyAmount(Purple_Gatherers_Scrip, 25)
@@ -672,7 +722,7 @@ export const Louhis_Ice = new Item(
     "SB",
     [
         new Source("NM", "Louhi on Ice (Pagos)"),
-        new Source("Shop", "Expedition Birdwatcher (Pyros)", [
+        new Source("Shop", "Expedition Birdwatcher (Pagos)", [
             new CurrencyAmount(Pagos_Crystal, 50)
         ])
     ]
