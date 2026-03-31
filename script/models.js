@@ -42,6 +42,7 @@ export class Source {
                 this.icon = "./resources/img/contentIcon/063909.png";
                 break;
             case "Raids":
+            case "Raid":
                 this.icon = "./resources/img/contentIcon/Raids.png"
                 break;
             case "Trials":
