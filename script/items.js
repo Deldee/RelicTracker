@@ -225,7 +225,7 @@ export const Bitter_Memory_of_the_Dying = new Item(
     [
         new Source("CE", "Killing enemies or CE in Bozjan Southern Front"),
         new Source("Dungeon", "Synced 60 dungeons"),
-        new Source("Duty Roulettes", "Levelling Roulette")
+        new Source("Duty Roulettes", "Leveling Roulette")
     ]
 )
 
@@ -264,7 +264,7 @@ export const Crystal_Paste = new Item(
     "./resources/img/itemIcon/Crystal_Paste.png",
     "DT",
     [
-        new Source("Duty Roulette", "Levelling Roulette")
+        new Source("Duty Roulettes", "Levelling Roulette")
     ]
 )
 
@@ -602,39 +602,55 @@ export const Compact_Spring = new Item(
 export const Synthetic_Dark_Matter_Beta = new Item(
     "Synthetic Dark Matter Beta",
     "./resources/img/itemIcon/Synthetic_Dark_Matter_Beta.png",
-    "DT"
+    "DT",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Synthetic_Dark_Matter_Alpha = new Item(
     "Synthetic Dark Matter Alpha",
     "./resources/img/itemIcon/Synthetic_Dark_Matter_Alpha.png",
-    "DT"
+    "DT",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Synthetic_Dark_Matter_Gamma = new Item(
     "Synthetic Dark Matter Gamma",
     "./resources/img/itemIcon/Synthetic_Dark_Matter_Gamma.png",
-    "DT"
+    "DT",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
-
-
 
 export const Aspected_Aetherocatalyst = new Item(
     "Aspected Aetherocatalyst",
     "./resources/img/itemIcon/Aspected_Aetherocatalyst.png",
-    "DT"
+    "DT",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Aspected_Aetheroconductor = new Item(
     "Aspected Aetheroconductor",
     "./resources/img/itemIcon/Aspected_Aetheroconductor.png",
-    "DT"
+    "DT",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 export const Aspected_Aether_Agglomerate = new Item(
     "Aspected Aether Agglomerate",
     "./resources/img/itemIcon/Aspected_Aether_Agglomerate.png",
-    "DT"
+    "DT",
+    [
+        new Source("Craft", "Crafted")
+    ]
 )
 
 
@@ -648,7 +664,7 @@ export const Utohmu_Siderite = new Item(
     "./resources/img/itemIcon/Utohmu_Siderite.png",
     "DT",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Rral Wuruq - Yak T'el (X:13.8, Y:12.7)", [
             new CurrencyAmount(Bicolor_Gemstone, 600)
         ])
     ]
@@ -680,7 +696,7 @@ export const Umbral_Clay = new Item(
     "./resources/img/itemIcon/Umbral_Clay.png",
     "DT",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Goplu - Tuliyollal (X:13.1, Y:12.7)", [
             new CurrencyAmount(Gil, 500000)
         ])
     ]
@@ -691,7 +707,7 @@ export const Rroneek_Glue = new Item(
     "./resources/img/itemIcon/Rroneek_Glue.png",
     "DT",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Goplu - Tuliyollal (X:13.1, Y:12.7)", [
             new CurrencyAmount(Gil, 300000)
         ])
     ]
@@ -861,7 +877,7 @@ export const Arcanite = new Item(
     "./resources/img/itemIcon/Arcanite.png",
     "DT",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Ermina - Phantom Village (X:6.9, Y:7.3)", [
             new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 500)
         ])
     ]
@@ -872,7 +888,7 @@ export const Waning_Arcanite = new Item(
     "./resources/img/itemIcon/Waning_Arcanite.png",
     "DT",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Ermina - Phantom Village (X:6.9, Y:7.3)", [
             new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 500)
         ])
     ]
@@ -883,7 +899,7 @@ export const Waxing_Arcanite = new Item(
     "./resources/img/itemIcon/Waxing_Arcanite.png",
     "DT",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Ermina - Phantom Village (X:6.9, Y:7.3)", [
             new CurrencyAmount(Allagan_Tomestone_of_Mathematics, 500)
         ])
     ]
@@ -1040,7 +1056,7 @@ export const Manderium_Meteorite = new Item(
     "./resources/img/itemIcon/Manderium_Meteorite.png",
     "EW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Jubrunnah - Radz-at-Han (12.2, 10.9)", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
         ])
     ]
@@ -1051,7 +1067,7 @@ export const Complementary_Chondrite = new Item(
     "./resources/img/itemIcon/Complementary_Chondrite.png",
     "EW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Jubrunnah - Radz-at-Han (12.2, 10.9)", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
         ])
     ]
@@ -1062,7 +1078,7 @@ export const Amplifying_Achondrite = new Item(
     "./resources/img/itemIcon/Amplifying_Achondrite.png",
     "EW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Jubrunnah - Radz-at-Han (12.2, 10.9)", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
         ])
     ]
@@ -1073,7 +1089,7 @@ export const Cosmic_Crystallite = new Item(
     "./resources/img/itemIcon/Cosmic_Crystallite.png",
     "EW",
     [
-        new Source("Shop", "", [
+        new Source("Shop", "Jubrunnah - Radz-at-Han (12.2, 10.9)", [
             new CurrencyAmount(Allagan_Tomestone_of_Poetics, 500)
         ])
     ]
