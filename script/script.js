@@ -99,7 +99,7 @@ document.addEventListener("change", (e) => {
         updateAllTotals();
     }
 });
-document.getElementById("totals-table-container").addEventListener("input", (e) => {
+document.getElementById("totals-table-container").addEventListener("change", (e) => {
     if (e.target.classList.contains("materialInput")) {
         sanitizeInput(e.target);
         saveInputsToCookie();
